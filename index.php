@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	require("includes/Donnees.inc.php");
 	
 	function normaliserCaracteres($s) {
@@ -15,6 +16,13 @@
 		return strtr($s, $normalizeChars);
 	}
 ?>
+<?php 
+	
+	if(!isset($_SESSION['Favoris'])) {
+		$_SESSION['Favoris'] = array(3 => 3, 5 => 5); //TODO: virer l'interieur de l'array (debug)
+	}
+	
+?>
 
 <!DOCTYPE html>
 <html>
@@ -25,6 +33,14 @@
 		<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
 		<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lobster'>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+		<script> //TODO
+			function removeFavori($i) {
+				unset($_SESSION['Favoris'][$i]);
+			}
+			function addFavori($i) {
+				$_SESSION['Favoris'][$i] = $i;
+			}
+		</script>
 	</head>
 	
 	<body>

@@ -63,15 +63,14 @@ nav {
 	text-align: center;
 }
 nav ul {
-	display: inline-block;
+	display: flex;
+	justify-content: center;
+	margin: 0;
 	padding: 0;
 	height: 100%;
-	margin-top: 0;
 }
 nav ul li {
-	display: inline-block;
 	padding: 0;
-	height: 100%;
 	transition: background 0.2s ease-in-out;
 }
 nav ul li:hover {
@@ -84,10 +83,14 @@ nav ul li.selected {
 nav ul li.separator:hover {
 	background: none;
 }
+nav ul li a, nav ul li.separator {
+	display: flex;
+	align-items: center;
+	padding: 0 10px;
+}
 nav ul li a {
-	display: block;
+	height: 100%;
 	margin: 0;
-	padding: 23px 15px 25% 15px;
 	color: white;
 	transition: color 0.2s ease-in-out;
 }

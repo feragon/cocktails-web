@@ -1,3 +1,12 @@
+@font-face {
+    font-family: "Lobster";
+    src: url("resources/fonts/Lobster-Regular.ttf");
+}
+@font-face {
+    font-family: "Roboto";
+    src: url("resources/fonts/Roboto-Regular.ttf");
+}
+
 body {
 	background: #FCFCFC;
 	margin: 0;
@@ -15,24 +24,24 @@ li {
 
 header {
 	width: 100%;
-	height: 150px;
+	height: 160px;
 	margin: 0;
-	padding: 20px 0;
+	padding: 15px 0;
 	text-align: center;
 	background: #1de9b6;
 	color: #455a64;
 }
 header h1 {
 	display: inline-block;
-	margin: 0 0 -15px 0;
+	margin: 0 0 -20px 0;
 	font-family: 'Lobster', 'Arial';
 	font-weight: 100;
-	font-size: 80px;
-	transition: transform 0.15s ease-in-out;
+	font-size: 90px;
+	transition: transform 0.2s ease-in-out;
 }
 header h1:hover {
-	transform: scale(1.08);
-	transition: transform 0.15s ease-in-out;
+	transform: scale(1.07);
+	transition: transform 0.2s ease-in-out;
 }
 header h1 a {
 	color: white;
@@ -40,11 +49,12 @@ header h1 a {
 }
 header h1 a:hover {
 	color: #009688;
+	transition: color 0.15s ease-in-out;
 }
 
 nav {
 	width: 100%;
-	height: 60px;
+	height: 65px;
 	background: #455a64;
 	color: white;
 	text-align: center;
@@ -74,7 +84,7 @@ nav ul li.separator:hover {
 nav ul li a {
 	display: block;
 	margin: 0;
-	padding: 18px 15px 50% 15px;
+	padding: 23px 15px 25% 15px;
 	color: white;
 	transition: color 0.2s ease-in-out;
 }
@@ -92,6 +102,7 @@ main {
 	padding: 10px 15px;
 	width: calc(100% - 30px);
 	max-width: 1100px;
+	min-height: 300px;
 	color: #37474f;
 }
 .cocktail_desc {
@@ -113,13 +124,17 @@ main {
 	max-width: 300px;
 	max-height: 250px;
 }
+#ajouter, #retirer {
+	display: inline-block;
+	margin: 15px 0;
+}
 .cocktail_desc .favoris, .cocktail_desc .retirer_favoris {
 	color: #37474f;
-	border: solid 1px #37474f;
-	border-radius: 20px;
+	border: solid 1.5px #37474f;
+	border-radius: 50px;
 	padding: 10px 15px;
-	margin: 15px 0;
 	transition: transform 0.2s ease-in-out;
+	cursor: pointer;
 }
 .cocktail_desc .favoris:hover, .cocktail_desc .retirer_favoris:hover {
 	transform: scale(1.05);
@@ -157,7 +172,7 @@ main h1 {
 }
 main hr {
 	width: 95%;
-	max-width: 800px;
+	max-width: 900px;
 	height: 1px;
 	background: lightgray;
 	border: none;
@@ -167,12 +182,13 @@ main ul {
 	display: inline-block;
 	max-width: 820px;
 	text-align: left;
+	margin: 0;
 }
 main ul li {
 	width: 250px;
 	background: #FFAA20;
 	display: inline-block;
-	margin: 10px 10px 10px 0;
+	margin: 10px 10px 2px 0;
 	transition: background 0.2s ease-in-out;
 	text-align: left;
 }
@@ -207,18 +223,21 @@ main ul .li_cocktail * {
 	color: white;
 }
 .ingrds_path {
+	display: inline-block;
 	background: #1de9b6;
-	padding: 3px 5px;
+	padding: 5px 7px;
 	border-radius: 5px;
 	color: #37474f;
+	margin-bottom: 5px;
 }
 .ingrds_path_selected {
-	background: #009688;
+	background: #37474f;
 	color: #FCFCFC;
 }
 .item {
+	position: relative;
 	width: 250px;
-	height: 320px;
+	min-height: 400px;
 	background: white;
 	border: solid 1px #DDDDDD;
 	box-shadow: 0px 5px 15px #E0E0E0;
@@ -229,15 +248,70 @@ main ul .li_cocktail * {
 	text-align: center;
 	transition: transform 0.15s ease-in-out;
 }
-.item img {
-	height: 200px;
-}
 .item:hover {
 	transform: scale(1.05);
 	transition: transform 0.15s ease-in-out;
 }
+.item img {
+	height: 200px;
+}
 .item h4 {
 	color: #009688;
+	width: 90%;
+	margin-left: 5%;
+}
+.item p {
+	margin: -10px 0 0 0;
+	padding: 10px;
+	text-align: left;
+	font-size: 14px;
+	width: 70%;
+	display: inline-block;
+	color: #455a64;
+}
+.item i {
+	margin: 0;
+	display: inline-block;
+	vertical-align: top;
+	color: #455a64;
+}
+.item i.fa-star-o {
+	color: #FFAA20;
+	font-size: 40px;
+	position: absolute;
+	bottom: 7px;
+	right: 8px;
+}
+
+footer {
+	position: relative;
+	width: 80%;
+	height: 100px;
+	background: #009688;
+	text-align: justify;
+	margin-top: 20px;
+	padding: 0 10%;
+}
+footer>* {
+	position: absolute;
+	display: inline-block;
+	color: #FCFCFC;
+	top: 20px;
+}
+footer h2 {
+	font-family: 'Lobster', 'Arial';
+	font-weight: 100;
+	font-size: 45px;
+	margin: 0;
+	left: 15%;
+}
+footer p {
+	font-style: italic;
+	right: 15%;
+	font-size: 1.1em;
+}
+footer em {
+	color: #1de9b6;
 }
 
 @keyframes arrivee_fondue {
@@ -251,5 +325,5 @@ main ul .li_cocktail * {
 	}
 }
 .hidden {
-	display: none;
+	display: none!important;
 }

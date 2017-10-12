@@ -23,35 +23,9 @@
 		<title>Cocktails</title>
 		<meta charset='utf-8'>
 		<link rel="stylesheet" href="style.css">
-		<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
-		<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lobster'>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-		<script>
-            function favorisResponse(json) {
-                var data = JSON.parse(json);
-                if(data && data.success === true) {
-                    document.getElementById("retirer").classList.toggle("hidden");
-                    document.getElementById("ajouter").classList.toggle("hidden");
-                }
-            }
-
-			function removeFavori(i) {
-			    $.ajax("ajax/favori.php", {
-			        data: {
-			            remove: i
-                    }
-                })
-                .done(favorisResponse);
-			}
-			function addFavori(i) {
-                $.ajax("ajax/favori.php", {
-                    data: {
-                        add: i
-                    }
-                })
-                .done(favorisResponse);
-			}
-		</script>
+		<link rel="stylesheet" href="resources/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/favoris.js"></script>
 	</head>
 	
 	<body>
@@ -89,6 +63,9 @@
 				require("includes/home.inc.php");
 ?>
 		</main>
-        <script type="text/javascript" src="js/jquery.js"></script>
+		
+		<footer>
+			<h2>Cocktails</h2><p>ROMEO Florian <em>&amp;</em> WEBERT Chris</p>
+		</footer>
 	</body>
 </html>

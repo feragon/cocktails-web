@@ -16,13 +16,6 @@
 		return strtr($s, $normalizeChars);
 	}
 ?>
-<?php 
-	
-	if(!isset($_SESSION['Favoris'])) {
-		$_SESSION['Favoris'] = array(3 => 3, 5 => 5); //TODO: virer l'interieur de l'array (debug)
-	}
-	
-?>
 
 <!DOCTYPE html>
 <html>
@@ -33,12 +26,30 @@
 		<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
 		<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lobster'>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-		<script> //TODO
-			function removeFavori($i) {
-				unset($_SESSION['Favoris'][$i]);
+		<script>
+            function favorisResponse(json) {
+                var data = JSON.parse(json);
+                if(data && data.success === true) {
+                    document.getElementById("retirer").classList.toggle("hidden");
+                    document.getElementById("ajouter").classList.toggle("hidden");
+                }
+            }
+
+			function removeFavori(i) {
+			    $.ajax("ajax/favori.php", {
+			        data: {
+			            remove: i
+                    }
+                })
+                .done(favorisResponse);
 			}
-			function addFavori($i) {
-				$_SESSION['Favoris'][$i] = $i;
+			function addFavori(i) {
+                $.ajax("ajax/favori.php", {
+                    data: {
+                        add: i
+                    }
+                })
+                .done(favorisResponse);
 			}
 		</script>
 	</head>
@@ -78,5 +89,6 @@
 				require("includes/home.inc.php");
 ?>
 		</main>
+        <script type="text/javascript" src="js/jquery.js"></script>
 	</body>
 </html>

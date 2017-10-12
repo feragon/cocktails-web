@@ -250,3 +250,6 @@ main ul .li_cocktail * {
 		transform: translateY(0px);
 	}
 }
+.hidden {
+	display: none;
+}

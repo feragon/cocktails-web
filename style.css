@@ -14,6 +14,9 @@ body {
 	font-family: 'Roboto', 'Times New Roman';
 	text-align: center;
 	min-width: 700px;
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
 }
 a {
 	text-decoration: none;
@@ -98,12 +101,11 @@ nav i {
 
 main {
 	display: inline-block;
-	margin: 0;
-	padding: 10px 15px;
+	margin: auto;
 	width: calc(100% - 30px);
 	max-width: 1100px;
-	min-height: 300px;
 	color: #37474f;
+	flex: 1;
 }
 .cocktail_desc {
 	position: relative;

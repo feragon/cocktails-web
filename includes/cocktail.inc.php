@@ -26,7 +26,7 @@
 		$ingrs = explode("|", $Recettes[$_GET['K']]['ingredients']);
 		
 		foreach($ingrs as $ing) {
-			echo "<li><i class='fa fa-tint' aria-hidden='true'></i> ".$ing."</li>\n";
+			echo "<li><i class='fa fa-tint'></i> ".$ing."</li>\n";
 		}
 	?>
 

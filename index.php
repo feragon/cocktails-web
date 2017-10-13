@@ -2,7 +2,7 @@
 	session_start();
 	require("includes/Donnees.inc.php");
 	require("includes/functions.inc.php");
-	
+
 	init();
 ?>
 
@@ -36,19 +36,10 @@
 		<main>
 <?php
 			if(isset($_GET["R"])) {
-				if($_GET["R"] == "Ingredients")
-					require("includes/ingredients.inc.php");
-				else if($_GET["R"] == "Cocktails")
-					require("includes/cocktails.inc.php");
-				else if($_GET["R"] == "MesRecettes")
-					require("includes/mesrecettes.inc.php");
-				else if($_GET["R"] == "Cocktail")
-					require("includes/cocktail.inc.php");
-				else
-					require("includes/404.inc.php");
+				require(getFichierTemplate($_GET['R']));
 			}
 			else
-				require("includes/home.inc.php");
+				require(__DIR__ . '/includes/home.inc.php');
 ?>
 		</main>
 		

@@ -50,4 +50,14 @@
 		}
 	}
 
+    function getFichierTemplate($nom) {
+        $chemin = __DIR__ . '/' . strtolower($nom) . '.inc.php';
+
+        if(file_exists($chemin)) {
+            return $chemin;
+        }
+        else {
+            return __DIR__ . '/404.inc.php';
+        }
+    }
 ?>

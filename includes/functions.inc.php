@@ -1,5 +1,10 @@
 <?php
-	
+    function init() {
+        if(!array_key_exists('Favoris', $_SESSION)) {
+            $_SESSION['Favoris'] = array();
+        }
+    }
+
 	function normaliserCaracteres($s) {
 		$normalizeChars = array(
 			'Š'=>'S', 'š'=>'s', 'Ð'=>'Dj','Ž'=>'Z', 'ž'=>'z', 'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A',

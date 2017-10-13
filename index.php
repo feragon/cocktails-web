@@ -2,6 +2,8 @@
 	session_start();
 	require("includes/Donnees.inc.php");
 	require("includes/functions.inc.php");
+	
+	init();
 ?>
 
 <!DOCTYPE html>

@@ -51,13 +51,14 @@
 	}
 
     function getFichierTemplate($nom) {
-        $chemin = __DIR__ . '/' . strtolower($nom) . '.inc.php';
+        $chemin = __DIR__ . '/../templates/' . strtolower($nom) . '.inc.php';
 
         if(file_exists($chemin)) {
             return $chemin;
         }
         else {
-            return __DIR__ . '/404.inc.php';
+            http_response_code(404);
+            return __DIR__ . '/../templates/404.inc.php';
         }
     }
 ?>

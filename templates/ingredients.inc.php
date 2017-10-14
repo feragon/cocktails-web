@@ -1,7 +1,10 @@
-			<h1>Nos ingrédients</h1>
-			<hr/>
-			
-			<?php
+<?php require(__DIR__ . '/header.inc.php'); ?>
+
+<main>
+    <h1>Nos ingrédients</h1>
+    <hr/>
+
+    <?php
 	
 	$step = isset($_GET['C']) ? $_GET['C'] : "Aliment";
 	$path = array();
@@ -23,7 +26,7 @@
 	
 ?><br/><br/>
 
-			<ul><?php 
+    <ul><?php
 			
 	$categorie = "Aliment";
 	if(isset($_GET['C'])) $categorie = $_GET['C'];
@@ -49,4 +52,7 @@
 	
 ?>
 
-			</ul>
+    </ul>
+</main>
+
+<?php require(__DIR__ . '/footer.inc.php'); ?>

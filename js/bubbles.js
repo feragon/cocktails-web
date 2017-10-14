@@ -1,10 +1,10 @@
 function bubbles() {
 	
-	for(var i =0; i < 25; i++) {
+	for(var i = 0; i < 30; i++) {
 		
 		var tailleRdm = Math.floor(Math.random() * (25)) + 5;
 		var transpRdm = (Math.random() * (0.8) + 0.2).toFixed(2);
-		var marginRdm = Math.floor(Math.random() * (590));
+		var marginRdm = 20*i;
 		var startRdm = (Math.random() * (3)).toFixed(2);
 		var speedRdm = (Math.random() * (1) + 2).toFixed(2);
 		

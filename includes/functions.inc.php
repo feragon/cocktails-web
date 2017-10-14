@@ -38,7 +38,7 @@
 		
 		foreach($tab as $key => $value) {
 			$recette = ($isFavoris ? $Recettes[$key] : $value);
-			?>
+?>
 			<a href='<?php echo "?R=Cocktail&K=".$key; ?>'>
 				<div class="item"><?php if(array_key_exists($key, $_SESSION['Favoris'])) echo "
 					<i class='fa fa-star-o'></i>"; ?>

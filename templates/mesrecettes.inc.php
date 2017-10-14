@@ -19,7 +19,7 @@
         else {
 ?>
 	<div>
-		<a class="vider_favoris" onclick="cleanFavori()"><i class='fa fa-trash'></i>&nbsp; Supprimer toutes mes recettes</a>
+		<a class="vider_favoris boutonRond" onclick="cleanFavori()"><i class='fa fa-trash'></i>&nbsp; Supprimer toutes mes recettes</a>
 	</div>
 	<br/><br/>
 	

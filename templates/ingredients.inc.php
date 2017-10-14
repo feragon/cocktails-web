@@ -17,12 +17,11 @@
 		else break;
 	}
 	array_push($path, $step);
-	$path = array_reverse($path);
 	
-	for($i = 0; $i < count($path) - 1; $i++) {
+	for($i = count($path)-1; $i > 0; $i--) {
 		echo "<a class='ingrds_path' href=\"?R=Ingredients&C=".$path[$i]."\">".$path[$i]."</a> &#129094; ";
 	}
-	echo "<a class='ingrds_path ingrds_path_selected' href=\"?R=Ingredients&C=".$path[$i]."\">".$path[$i]."</a>";
+	echo "<a class='ingrds_path ingrds_path_selected' href=\"?R=Ingredients&C=".$path[0]."\">".$path[0]."</a>";
 	
 ?><br/><br/>
 

@@ -12,7 +12,7 @@
 		<input type="password" name="password" id="password" placeholder="Mot de passe" required/>
 		<br/>
 
-		<input type="submit"/>
+		<input class="boutonRond" type="submit"/>
 	</form>
 </main>
 

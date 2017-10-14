@@ -30,5 +30,7 @@ function cleanFavori() {
 			removeAll: null
 		}
 	})
-	window.location.reload();
+	.done(function () {
+        window.location.reload();
+    });
 }

@@ -23,3 +23,12 @@ function addFavori(i) {
 	})
 	.done(favorisResponse);
 }
+
+function cleanFavori() {
+	$.ajax("ajax/favori.php", {
+		data: {
+			removeAll: null
+		}
+	})
+	window.location.reload();
+}

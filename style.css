@@ -6,6 +6,9 @@
     font-family: "Roboto";
     src: url("resources/fonts/Roboto-Regular.ttf");
 }
+body.drunk {
+	animation: drunk 5s ease-in-out infinite;
+}
 
 body {
 	background: #FCFCFC;
@@ -156,7 +159,7 @@ main {
 	display: inline-block;
 	margin: 15px 0;
 }
-.cocktail_desc .favoris, .cocktail_desc .retirer_favoris {
+.cocktail_desc .favoris, .cocktail_desc .retirer_favoris, .vider_favoris {
 	color: #37474f;
 	border: solid 1.5px #37474f;
 	border-radius: 50px;
@@ -164,7 +167,7 @@ main {
 	cursor: pointer;
 	transition: color 0.2s ease-in-out, border 0.2s ease-in-out;
 }
-.cocktail_desc .favoris:hover {
+.cocktail_desc .favoris:hover, .vider_favoris:hover {
 	color: #FFAA20;
 	border-color: #FFAA20;
 	transition: color 0.15s ease-in-out, border 0.15s ease-in-out;
@@ -363,6 +366,32 @@ footer em {
 	100% {
 		opacity: 0.1;
 		transform: translateY(-35px);
+	}
+}
+@keyframes drunk {
+	0% {
+		filter: blur(0px) sepia(80%);
+		transform: scale(1);
+	}
+	20% {
+		filter: blur(2px) sepia(100%);
+		transform: scale(1.008);
+	}
+	60% {
+		filter: blur(1px) sepia(90%);
+		transform: scale(1.005);
+	}
+	70% {
+		filter: blur(5px) sepia(100%);
+		transform: scale(1.01);
+	}
+	80% {
+		filter: blur(1px) sepia(90%);
+		transform: scale(1.005);
+	}
+	100% {
+		filter: blur(0px) sepia(80%);
+		transform: scale(1);
 	}
 }
 

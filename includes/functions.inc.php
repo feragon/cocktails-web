@@ -19,22 +19,29 @@
 		return strtr($s, $normalizeChars);
 	}
 	
+	function getImageURL($key, $boolRenvoyerImageParDefaut) {
+		$url_photo = normaliserCaracteres($key);
+		$url_photo = ucfirst(strtolower($url_photo));
+		$url_photo = "resources/photos/".strtr($url_photo, ' ', '_').".jpg";
+		
+		if($boolRenvoyerImageParDefaut)
+			return file_exists($url_photo) ? $url_photo : "resources/photos/none.jpg";
+		else
+			return file_exists($url_photo) ? $url_photo : "";
+	}
+	
 	function afficherCocktails($tab, $isFavoris) {
 		
 		global $Recettes;
 		
 		foreach($tab as $key => $value) {
 			$recette = ($isFavoris ? $Recettes[$key] : $value);
-			
-			$url_photo = normaliserCaracteres($recette["titre"]);
-			$url_photo = ucfirst(strtolower($url_photo));
-			$url_photo = "resources/photos/".strtr($url_photo, ' ', '_').".jpg";
 			?>
 			<a href='<?php echo "?R=Cocktail&K=".$key; ?>'>
 				<div class="item"><?php if(array_key_exists($key, $_SESSION['Favoris'])) echo "
 					<i class='fa fa-star-o'></i>"; ?>
 					
-					<img src="<?php echo file_exists($url_photo) ? $url_photo : "resources/photos/none.jpg"; ?>" />
+					<img src="<?php echo getImageURL($recette["titre"], true); ?>" />
 					<h4><?php echo $recette["titre"]; ?></h4>
 					<div>
 						<i class='fa fa-tint'></i>

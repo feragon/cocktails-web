@@ -9,6 +9,9 @@ else if(isset($_GET['add'])) {
     $_SESSION['Favoris'][$_GET['add']] = true;
     echo json_encode(['success' => true]);
 }
+else if(isset($_GET['removeAll'])) {
+	$_SESSION['Favoris'] = array();
+}
 else {
     echo json_encode(['success' => false]);
 }

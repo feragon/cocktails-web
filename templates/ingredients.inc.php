@@ -36,7 +36,7 @@
 		
 			foreach($Hierarchie[$categorie]['sous-categorie'] as $key => $value) {
 				echo "
-				<li><a href=\"?R=Ingredients&C=".$value."\"><i class='fa fa-tint'></i> ".$value."</a></li>";
+		<li><a href=\"?R=Ingredients&C=".$value."\"><i class='fa fa-tint'></i> ".$value."</a></li>";
 			}
 		}
 		else {
@@ -44,7 +44,8 @@
 			foreach($Recettes as $key => $recette) {
 				foreach($recette['index'] as $ingredient) {
 					if($ingredient == $categorie)
-						echo "<li class='li_cocktail'><a href=\"?R=Cocktail&K=".$key."\"><i class='fa fa-glass'></i> ".$recette['titre']."</a></li>\n";
+						echo "
+		<li class='li_cocktail'><a href=\"?R=Cocktail&K=".$key."\"><i class='fa fa-glass'></i> ".$recette['titre']."</a></li>";
 				}
 			}
 		}

@@ -1,7 +1,11 @@
+var isLogin = true;
+
 function toggleLoginMode(loginMode) {
 	
 	var listOfInputs = document.getElementById('register_fields').getElementsByTagName('input');
-	
+
+	isLogin = loginMode;
+
 	if(loginMode) {
 		document.getElementById('register_fields').classList.add('hidden');
 		document.getElementById('login_button').classList.add('hidden');
@@ -22,4 +26,28 @@ function toggleLoginMode(loginMode) {
 			listOfInputs[i].removeAttribute("disabled");
 		}
 	}
+}
+
+function submitLoginForm() {
+    if(isLogin) {
+        $.ajax("ajax/login.php", {
+            data: {
+                'login': document.getElementById("login").value,
+                'password': document.getElementById("password").value
+            }
+        });
+    }
+    else {
+        $.post("ajax/register.php", {
+            'login': document.getElementById("login").value,
+            'password': document.getElementById("password").value,
+            'gender': $('input[name="gender"]:checked').val(),
+            'name': document.getElementById("name").value,
+            'lastname': document.getElementById("lastname").value,
+            'birthdate': document.getElementById("birthdate").value,
+            'email': document.getElementById("email").value,
+            'address': document.getElementById("address").value,
+            'phone': document.getElementById("phone").value
+        });
+    }
 }

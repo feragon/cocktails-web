@@ -3,7 +3,9 @@
 <head>
 	<title>Cocktails</title>
 	<meta charset='utf-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="style_mobile.css">
 	<link rel="stylesheet" href="resources/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
 
@@ -14,7 +16,11 @@
 	<div id="bubbles_box"></div>
 </header>
 
-<nav>
+<nav id="menu">
+	<div class="menu">
+		<a href="#menu" class="open_menu"><i class="fa fa-bars"></i></a>
+		<a href="#" class="close_menu"><i class="fa fa-times"></i></a>
+	</div>
 	<ul>
 		<li <?php if(!isset($_GET["R"])) echo " class='selected'"; ?>>
 			<a href="."><i class="fa fa-home"></i> Accueil</a>
@@ -30,7 +36,7 @@
 		</li>
 		<li class="separator">│</li>
 		<li <?php if(isset($_GET["R"])) if($_GET["R"] == "Connexion") echo " class='selected'"; ?>>
-			<a href="?R=Connexion"><i class="fa fa-user-circle"></i> Connexion</a>
+			<a href="?R=Connexion"><i class="fa fa-user-circle"></i> Mon espace</a>
 		</li>
 	</ul>
 </nav>

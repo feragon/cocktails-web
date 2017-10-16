@@ -2,7 +2,6 @@
 
 <main>
     <div class="cocktail_desc">
-        <img src="<?php echo getImageURL($Recettes[$_GET['K']]["titre"], false); ?>" />
         <h1><?php echo $Recettes[$_GET['K']]['titre'] ?></h1>
 
         <a class="arrow" href="?R=Cocktail&K=<?php echo ($_GET['K'] > 0) ? $_GET['K']-1 : $_GET['K']; ?>"><i class='fa fa-arrow-circle-o-left'></i></a>
@@ -15,6 +14,8 @@
         <div id="ajouter"<?php echo $retirer ? ' class="hidden"' : ''; ?>>
             <a class="favoris" onclick="addFavori(<?php echo $_GET['K']; ?>)"><i class='fa fa-star'></i>  Ajouter à mes recettes</a>
         </div>
+		
+        <img src="<?php echo getImageURL($Recettes[$_GET['K']]["titre"], false); ?>" />
         <br/><br/>
 		
         <h3>Ingrédients :</h3>

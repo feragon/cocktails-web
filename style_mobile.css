@@ -1,0 +1,105 @@
+@media only screen and (max-width: 750px) {
+	header h1 {
+		font-size: 75px;
+	}
+	header h3 {
+		font-size: 1.1em;
+		padding: 0 40px;
+	}
+	nav ul {
+		overflow: hidden;
+		display: block;
+	}
+	nav ul li.separator, nav ul li {
+		display: none;
+	}
+	nav ul li.selected {
+		display: inline-block;
+		height: 100%;
+		width: 100%;
+		background: none;
+	}
+	nav {
+		position: relative;
+	}
+	nav div.menu {
+		display: block;
+		position: absolute;
+		width: 65px;
+		height: 100%;
+		top: 0;
+		right: 0;
+		overflow: hidden;
+	}
+	nav div.menu a i {
+		font-size: 20px;
+		color: white;
+		background: #37474f;
+		width: 100%;
+		height: 42px;
+		padding-top: 23px;
+	}
+	#menu {
+		max-height: 65px;
+		overflow: hidden;
+	}
+	#menu:target {
+		height: auto;
+		max-height: 350px;
+		transition: max-height 0.4s ease-in-out;
+	}
+	#menu:target ul li:not(.separator) {
+		display: block;
+		height: 65px;
+	}
+	#menu:target ul li.selected {
+		background: #009688;
+	}
+	#menu:target .open_menu, .close_menu {
+		display: none;
+	}
+	#menu:target .close_menu {
+		display: block;
+	}
+	
+	.cocktail_desc {
+		text-align: center;
+	}
+	.cocktail_desc img {
+		position: static;
+		margin-top: 10px;
+	}
+	#ajouter, #retirer {
+		display: block;
+	}
+	.cocktail_desc p {
+		margin: 0;
+	}
+	.cocktail_desc li, .cocktail_desc h3 {
+		text-align: left;
+	}
+	main input {
+		width: 100%;
+		max-width: 300px;
+	}
+	
+	footer {
+		text-align: center;
+		width: 100%;
+		padding: 0;
+	}
+	footer h2, footer p {
+		position: static;
+		display: block;
+		width: auto;
+		margin: 0;
+		padding: 0;
+	}
+	footer h2 {
+		font-size: 45px;
+		margin-top: 5px;
+	}
+	footer p {
+		font-size: 16px;
+	}
+}

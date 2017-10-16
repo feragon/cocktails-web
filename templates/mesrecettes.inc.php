@@ -2,7 +2,6 @@
 
 <main>
     <h1>Mes recettes préférées</h1>
-    <hr/>
 	
 <?php
         global $Recettes;

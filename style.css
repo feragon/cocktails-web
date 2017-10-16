@@ -10,7 +10,7 @@ body {
 	background: #FCFCFC;
 	margin: 0;
 	padding: 0;
-	min-width: 680px;
+	min-width: 320px;
 	font-family: 'Roboto', 'Times New Roman';
 	text-align: center;
 	display: flex;
@@ -63,7 +63,7 @@ header h1 a:hover {
 	transition: color 0.15s ease-in-out;
 }
 header div#bubbles_box {
-	width: 600px;
+	max-width: 600px;
 	height: 100%;
 	position: absolute;
 	display: inline-block;
@@ -84,6 +84,9 @@ nav {
 	background: #455a64;
 	color: white;
 	text-align: center;
+}
+nav div.menu {
+	display: none;
 }
 nav ul {
 	display: flex;
@@ -151,6 +154,7 @@ main {
 }
 .cocktail_desc img {
 	position: absolute;
+	top: 0px;
 	right: 0px;
 	max-width: 300px;
 	max-height: 250px;

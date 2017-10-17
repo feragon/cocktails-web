@@ -60,7 +60,7 @@
             <br/>
         </div>
 
-        <input class="boutonRond" type="submit"/>
+        <input class="boutonRond" type="submit" value="Envoyer"/>
 
         <div id="register_button" class="boutonRondPlein" style="width: 117px;">
             <a onclick="toggleLoginMode(false)">S'inscrire</a>
@@ -73,8 +73,6 @@
 <?php 
 	}
 	else {
-		
-		require __DIR__ . '/../includes/user_functions.php';
 		
 		$db = getDB();
 		$query = $db->prepare("SELECT * FROM users WHERE login = ?");

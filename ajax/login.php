@@ -17,6 +17,7 @@ if($login_error == '' && $password_error == '') {
 	try {
 		if(verifyPassword($_GET['login'], $_GET['password'])) {
 			$_SESSION['login'] = $_GET['login'];
+			DBToSession();
 		}
 		else {
 			$password_error = 'Mauvais mot de passe';

@@ -6,6 +6,7 @@
             $_SESSION['Favoris'] = array();
         }
 		if(isset($_POST['deconnexion'])) {
+			sessionToDB();
 			$_SESSION = array();
 			$_POST = array();
 		}
@@ -72,7 +73,7 @@
 								}
 						?></p>
 					</div>
-					<span class="time"><?php if(array_key_exists($key, $_SESSION['Favoris'])) {$t = calculerTemps($_SESSION['Favoris'][$key]); echo "il y a ".$t;} ?></span>
+					<span class="time"><?php if(array_key_exists($key, $_SESSION['Favoris'])) {$t = calculerTemps($_SESSION['Favoris'][$key]); echo "<i class='fa fa-star-half-o'></i> il y a ".$t;} ?></span>
 				</div>
 			</a>
 <?php

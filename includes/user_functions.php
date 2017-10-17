@@ -107,3 +107,35 @@ function register($login, $password, $name, $lastname, $gender, $email, $birthda
 
 	return $error;
 }
+
+function sessionToDB() {
+	
+	$text = "";
+	
+	if(!empty($_SESSION['Favoris'])) {
+		foreach($_SESSION['Favoris'] as $key => $value) {
+			$text.= $key.":".$value.",";
+		}
+	}
+	
+	$db = getDB();
+	$query = $db->prepare("UPDATE users SET favs = ? WHERE login = ?;");
+	$query->execute(array($text, $_SESSION['login']));
+}
+
+function DBToSession() {
+	
+	$db = getDB();
+	$query = $db->prepare("SELECT favs FROM users WHERE login = ?;");
+	$query->execute(array($_SESSION['login']));
+	
+	$favoris = $query->fetch(PDO::FETCH_ASSOC);
+	
+	$favs_tab = explode(",", $favoris['favs']);
+	array_pop($favs_tab);
+	
+	foreach($favs_tab as $value) {
+		$fav = explode(":", $value);
+		$_SESSION['Favoris'] += array($fav[0] => $fav[1]);
+	}
+}

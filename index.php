@@ -1,6 +1,7 @@
 <?php
 	require("includes/Donnees.inc.php");
 	require("includes/functions.inc.php");
+	require ('includes/user_functions.php');
 
 	init();
 

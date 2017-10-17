@@ -36,8 +36,8 @@
 			<a href="?R=MesRecettes"><i class="fa fa-star"></i> Mes recettes préférées</a>
 		</li>
 		<li class="separator">│</li>
-		<li <?php if(isset($_GET["R"])) if($_GET["R"] == "Connexion") echo " class='selected'"; ?>>
-			<a href="?R=Connexion"><i class="fa fa-user-circle"></i> Mon espace</a>
+		<li <?php if(isset($_GET["R"])) if($_GET["R"] == "MonEspace") echo " class='selected'"; ?>>
+			<a href="?R=MonEspace"><i class="fa fa-user-circle"></i> Mon espace</a>
 		</li>
 	</ul>
 </nav>

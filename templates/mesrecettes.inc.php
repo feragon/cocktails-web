@@ -1,5 +1,3 @@
-<?php require(__DIR__ . '/header.inc.php'); ?>
-
 <main>
     <h1>Mes recettes préférées</h1>
 	
@@ -28,5 +26,3 @@
 
 ?>
 </main>
-
-<?php require(__DIR__ . '/footer.inc.php'); ?>

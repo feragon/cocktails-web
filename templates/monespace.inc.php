@@ -1,5 +1,3 @@
-<?php require(__DIR__ . '/header.inc.php'); ?>
-
 <main>
 	<h1 id='connexion_title'>Connexion</h1>
 
@@ -57,16 +55,3 @@
 		</div>
 	</form>
 </main>
-
-    <script type="text/javascript">
-        function submitLoginForm() {
-            $.ajax("ajax/login.php", {
-                data: {
-                    'login': document.getElementById("login").value,
-                    'password': document.getElementById("password").value
-                }
-            });
-        }
-    </script>
-
-<?php require(__DIR__ . '/footer.inc.php'); ?>

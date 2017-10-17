@@ -1,5 +1,3 @@
-<?php require(__DIR__ . '/header.inc.php'); ?>
-
 <main>
     <div class="cocktail_desc">
         <h1><?php echo $Recettes[$_GET['K']]['titre'] ?></h1>
@@ -33,5 +31,3 @@
         <p><?php echo $Recettes[$_GET['K']]['preparation'] ?></p>
     </div>
 </main>
-
-<?php require(__DIR__ . '/footer.inc.php'); ?>

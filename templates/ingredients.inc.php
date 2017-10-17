@@ -1,5 +1,3 @@
-<?php require(__DIR__ . '/header.inc.php'); ?>
-
 <main>
     <h1>Nos ingrédients</h1>
 
@@ -53,5 +51,3 @@
 
     </ul>
 </main>
-
-<?php require(__DIR__ . '/footer.inc.php'); ?>

@@ -1,5 +1,3 @@
-<?php require(__DIR__ . '/header.inc.php'); ?>
-
 <main>
     <h1>Bienvenue !</h1>
     <hr>
@@ -32,5 +30,3 @@
 	
 	<p style="font-style: italic; text-align: center;">Source : <a href="https://fr.wikipedia.org/wiki/Cocktail" target="_blank">fr.wikipedia.org</a></p>
 </main>
-
-<?php require(__DIR__ . '/footer.inc.php'); ?>

@@ -1,5 +1,6 @@
 <main>
     <h1>Nos ingrédients</h1>
+	<hr/>
 
     <?php
 	

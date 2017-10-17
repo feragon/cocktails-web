@@ -1,3 +1,4 @@
+
 <footer>
 	<h2>Cocktails</h2><p>&copy; ROMEO Florian <em>&amp;</em> WEBERT Chris</p>
 </footer>

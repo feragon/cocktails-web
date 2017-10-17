@@ -75,7 +75,7 @@ function submitLoginForm() {
         .done(function (json) {
             var data = JSON.parse(json);
             if(!showErrors(data)) {
-                alert("success");
+				window.location = window.location.href;
             }
         });
     }
@@ -94,7 +94,7 @@ function submitLoginForm() {
         .done(function (json) {
             var data = JSON.parse(json);
             if(!showErrors(data)) {
-                alert("success");
+				window.location = window.location.href;
             }
         });
     }

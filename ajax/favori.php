@@ -6,7 +6,7 @@ if(isset($_GET['remove'])) {
     echo json_encode(['success' => true]);
 }
 else if(isset($_GET['add'])) {
-    $_SESSION['Favoris'][$_GET['add']] = true;
+    $_SESSION['Favoris'][$_GET['add']] = time();
     echo json_encode(['success' => true]);
 }
 else if(isset($_GET['removeAll'])) {

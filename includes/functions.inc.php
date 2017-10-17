@@ -1,4 +1,15 @@
 <?php
+    function init() {
+		session_start();
+
+        if(!array_key_exists('Favoris', $_SESSION)) {
+            $_SESSION['Favoris'] = array();
+        }
+		if(isset($_POST['deconnexion'])) {
+			$_SESSION = array();
+			$_POST = array();
+		}
+    }
 
 	function normaliserCaracteres($s) {
 		$normalizeChars = array(
@@ -25,6 +36,21 @@
 			return file_exists($url_photo) ? $url_photo : "";
 	}
 	
+	function calculerTemps($t) {
+		$temps = time() - $t;
+		
+		if(floor($temps / 604800))
+			return floor($temps / 604800)." sem.";
+		else if(floor($temps / 86400))
+			return floor($temps / 86400)." jour";
+		else if(floor($temps / 3600))
+			return floor($temps / 3600)." h.";
+		else if(floor($temps / 60))
+			return floor($temps / 60)." min.";
+		else
+			return $temps." sec.";
+	}
+	
 	function afficherCocktails($tab, $isFavoris) {
 		
 		global $Recettes;
@@ -46,6 +72,7 @@
 								}
 						?></p>
 					</div>
+					<span class="time"><?php if(array_key_exists($key, $_SESSION['Favoris'])) {$t = calculerTemps($_SESSION['Favoris'][$key]); echo "il y a ".$t;} ?></span>
 				</div>
 			</a>
 <?php

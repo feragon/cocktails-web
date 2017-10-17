@@ -37,7 +37,7 @@
 		</li>
 		<li class="separator">│</li>
 		<li <?php if(isset($_GET["R"])) if($_GET["R"] == "MonEspace") echo " class='selected'"; ?>>
-			<a href="?R=MonEspace"><i class="fa fa-user-circle"></i> Mon espace</a>
+			<a href="?R=MonEspace"><?php if(isset($_SESSION['login'])) echo "<i class='fa fa-user-circle'></i> ".$_SESSION['login']; else echo "<i class='fa fa-sign-in'></i> Connexion"; ?></a>
 		</li>
 	</ul>
 </nav>

@@ -1,5 +1,4 @@
 <?php
-require(__DIR__ . '/../includes/functions.inc.php');
 require(__DIR__ . '/../includes/user_functions.php');
 session_start();
 

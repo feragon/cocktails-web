@@ -1,5 +1,6 @@
 <main>
     <h1>Nos cocktails</h1>
+	<hr/>
 	
 	<script type="text/javascript" src="js/recherche.js"></script>
 	

@@ -1,5 +1,11 @@
 <main>
+
+<?php
+
+	if(!isset($_SESSION['login'])) {
+?>
     <h1 id='connexion_title'>Connexion</h1>
+	<hr/>
 
     <form method="post" onsubmit="event.preventDefault(); submitLoginForm();">
         <label for="login" class="sr-only">Login</label>
@@ -63,4 +69,58 @@
             <a onclick="toggleLoginMode(true)">Se connecter</a>
         </div>
     </form>
+
+<?php 
+	}
+	else {
+		
+		require __DIR__ . '/../includes/user_functions.php';
+		
+		$db = getDB();
+		$query = $db->prepare("SELECT * FROM users WHERE login = ?");
+		$query->execute(array($_SESSION['login']));
+		
+		$user = $query->fetch(PDO::FETCH_ASSOC);
+?>
+		<h1>Bonjour @<?php echo $user['login'];?> !</h1>
+		<hr/>
+		
+		<div class="user_box">
+			<h2>Ma dernière recette préférée</h2>
+<?php
+	if(!empty($_SESSION['Favoris'])) {
+		$keyFavoriRecent = array_keys($_SESSION['Favoris'], max($_SESSION['Favoris']))[0];
+		$tabFavorisRecent = array($keyFavoriRecent => "");
+		
+		afficherCocktails($tabFavorisRecent, true);
+	}
+	else {
+?>
+			<p style="text-align: center;"><i class='fa fa-star-o'></i> Vous n'avez pas encore de favoris...</p>
+<?php
+	}
+?>
+		</div>
+		
+		<div class="user_box">
+			<h2>Mes informations personelles</h2>
+			<table>
+				<tr><th>Login :</th><td style="font-weight: bold; color: #009688;"><?php echo $user['login']; ?></td></tr>
+				<tr><th>Nom :</th><td><?php echo $user['lastname']; ?></td></tr>
+				<tr><th>Prénom :</th><td><?php echo $user['name']; ?></td></tr>
+				<tr><th>Genre :</th><td><?php echo $user['gender']; ?></td></tr>
+				<tr><th>Date de naissance :</th><td><?php echo $user['birthdate']; ?></td></tr>
+				<tr><th>Email :</th><td><?php echo $user['email']; ?></td></tr>
+				<tr><th>Adresse :</th><td><?php echo $user['address']; ?></td></tr>
+				<tr><th>Téléphone :</th><td><?php echo $user['phone']; ?></td></tr>
+			</table>
+			
+			<form method="POST" action=".?R=MonEspace">
+				<input type="submit" name="deconnexion" value="Déconnexion" class="boutonRondPlein"/>
+			</form>
+		</div>
+		
+<?php
+	}
+?>
 </main>

@@ -20,7 +20,7 @@
 	<div>
 		<a class="vider_favoris boutonRond" onclick="cleanFavori()"><i class='fa fa-trash'></i>&nbsp; Supprimer toutes mes recettes</a>
 	</div>
-	<br/><br/>
+	<br/>
 	
 <?php
             afficherCocktails($_SESSION["Favoris"], true);

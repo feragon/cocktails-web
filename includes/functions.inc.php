@@ -70,30 +70,4 @@
             return __DIR__ . '/../templates/404.inc.php';
         }
     }
-
-    /*function createInput($type, $name, $label, $error, $required = false, $additionalParams = array()) {
-		$additionalParams['type'] = $type;
-		$additionalParams['id'] = $name;
-		$additionalParams['name'] = $name;
-
-		if($required) {
-			$additionalParams['required'] = '';
-		}
-
-        $html = '<input ';
-
-        foreach($additionalParams as $name => $value) {
-			$html .= $name;
-
-            if(!empty($value)) {
-				$html .= '="' . $value . '"';
-            }
-
-			$html .= ' ';
-        }
-
-        $html .= '/>';
-
-        return $html;
-    }*/
 ?>

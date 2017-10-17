@@ -29,6 +29,8 @@
     Enfin, les derniers placent l'origine du mot dans un contexte de charme et de séduction. En effet, par tradition un cocktail ne se boit qu'à la paille, et est réservé à la gent féminine[réf. nécessaire], spectacle offrant tous leurs fantasmes à l'imagination des hommes. On appelle Virgin Cocktail (« cocktail vierge »), ou mocktail (mot-valise de mock, « faux », et « cocktail »), un cocktail sans alcool.
     <br/><br/>
     Selon le barman du Antoine's Restaurant, de La Nouvelle-Orléans, le mot cocktail viendrait du fait qu'un barman français servait une boisson, du Bitter, dans un coquetier à deux anses, et que les Anglais ne comprenant pas le mot « coquetier » (prononcé à peu près « coquetiel » à l'époque), auraient compris cocktail4.</p>
+	
+	<p style="font-style: italic; text-align: center;">Source : <a href="https://fr.wikipedia.org/wiki/Cocktail" target="_blank">fr.wikipedia.org</a></p>
 </main>
 
 <?php require(__DIR__ . '/footer.inc.php'); ?>

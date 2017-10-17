@@ -1,11 +1,4 @@
 <?php
-    function init() {
-		session_start();
-
-        if(!array_key_exists('Favoris', $_SESSION)) {
-            $_SESSION['Favoris'] = array();
-        }
-    }
 
 	function normaliserCaracteres($s) {
 		$normalizeChars = array(

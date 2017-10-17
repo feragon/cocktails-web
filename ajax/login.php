@@ -1,7 +1,7 @@
 <?php
 require(__DIR__ . '/../includes/functions.inc.php');
 require(__DIR__ . '/../includes/user_functions.php');
-init();
+session_start();
 
 $login_error = '';
 $password_error = '';

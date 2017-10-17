@@ -30,12 +30,52 @@ function toggleLoginMode(loginMode) {
 	}
 }
 
+function clearFormErrors() {
+    var errors = document.getElementsByClassName("input-error");
+    for(var i = 0; i < errors.length; i++) {
+        var item = errors.item(i);
+        item.innerText = "";
+        item.classList.add("hidden");
+    }
+}
+
+function showErrors(data) {
+    var error = false;
+
+    clearFormErrors();
+
+    for(var inputName in data) {
+        if(data[inputName] === '') {
+            continue;
+        }
+
+        error = true;
+
+        var errorContainer = document.getElementById(inputName + "-error");
+        if(errorContainer === null) {
+            alert(data[inputName]);
+        }
+        else {
+            errorContainer.classList.remove("hidden");
+            errorContainer.innerText = data[inputName];
+        }
+    }
+
+    return error;
+}
+
 function submitLoginForm() {
     if(isLogin) {
         $.ajax("ajax/login.php", {
             data: {
                 'login': document.getElementById("login").value,
                 'password': document.getElementById("password").value
+            }
+        })
+        .done(function (json) {
+            var data = JSON.parse(json);
+            if(!showErrors(data)) {
+                alert("success");
             }
         });
     }
@@ -50,6 +90,12 @@ function submitLoginForm() {
             'email': document.getElementById("email").value,
             'address': document.getElementById("address").value,
             'phone': document.getElementById("phone").value
+        })
+        .done(function (json) {
+            var data = JSON.parse(json);
+            if(!showErrors(data)) {
+                alert("success");
+            }
         });
     }
 }

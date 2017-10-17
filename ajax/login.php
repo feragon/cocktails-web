@@ -29,6 +29,6 @@ if($login_error == '' && $password_error == '') {
 }
 
 echo json_encode([
-	'login_error' => $login_error,
-	'password_error' => $password_error
+	'login' => $login_error,
+	'password' => $password_error
 ]);

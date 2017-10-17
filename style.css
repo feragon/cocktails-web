@@ -393,6 +393,7 @@ input {
 	border-bottom: solid 2px lightgray;
 	margin-bottom: 10px;
 	transition: border 0.2s ease-in-out;
+	color: #37474f;
 }
 input:hover {
 	border-color: #1de9b6;
@@ -403,7 +404,7 @@ input:focus {
 	transition: border 0.2s ease-in-out;
 }
 input::placeholder {
-	color: #AAAAAA;
+	color: #009688;
 	transition: color 0.2s ease-in-out;
 }
 input:hover::placeholder {
@@ -483,4 +484,11 @@ label:hover {
 	opacity: 0;
 	max-height: 0px;
 	transition: max-height 0.4s ease-in-out, opacity 0.3s ease-in-out;
+}
+.input-error {
+	color: #B71C1C;
+	width: 300px;
+	margin: 0 auto;
+	text-align: left;
+	font-size: 0.9em;
 }

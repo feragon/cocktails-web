@@ -8,7 +8,7 @@
 	}
 	nav ul {
 		overflow: hidden;
-		display: block;
+		flex-direction: column;
 	}
 	nav ul li.separator, nav ul li {
 		display: none;

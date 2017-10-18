@@ -71,7 +71,7 @@ function register($login, $password, $name, $lastname, $gender, $email, $birthda
 	$birthdate_parts = explode('-', $birthdate);
     if(!empty($birthdate) && (count($birthdate_parts) != 3 || !checkdate($birthdate_parts[1], $birthdate_parts[0], $birthdate_parts[2]))) {
         $error['birthdate'] = 'Date de naissance invalide';
-        //$continue = false;
+        $continue = false;
     }
 
     if(!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)) {

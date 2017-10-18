@@ -40,7 +40,7 @@
             <br/>
 
             <label for="birthdate" class="sr-only">Date de naissance</label>
-            <input type="date" name="birthdate" id="birthdate" placeholder="Date de naissance" disabled/>
+            <input type="text" name="birthdate" id="birthdate" placeholder="Date de naissance (jj-mm-aaaa)" disabled/>
             <div id="birthdate-error" class="input-error hidden"></div>
             <br/>
 

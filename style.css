@@ -470,6 +470,14 @@ label:hover {
 	color: #1de9b6;
 	transition: color 0.2s ease-in-out;
 }
+main input.postal {
+	width: 100px;
+	margin-right: 10px;
+}
+main input.town {
+	width: calc(95% - 100px);
+	max-width: 190px;
+}
 
 @keyframes arrivee_fondue {
 	0% {

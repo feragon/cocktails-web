@@ -55,11 +55,11 @@
             <br/>
 			
 			<label for="postal" class="sr-only">Code postal</label>
-            <input type="text" name="postal" id="postal" placeholder="Code postal" style="width: 100px; margin-right: 10px;" disabled/>
+            <input type="text" name="postal" id="postal" placeholder="Code postal" class="postal" disabled/>
             <div id="postal-error" class="input-error hidden"></div>
 			
 			<label for="town" class="sr-only">Ville</label>
-            <input type="text" name="town" id="town" placeholder="Ville" style="width: 190px" disabled/>
+            <input type="text" name="town" id="town" placeholder="Ville" class="town" disabled/>
             <div id="town-error" class="input-error hidden"></div>
             <br/>
 

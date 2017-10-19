@@ -141,7 +141,7 @@ function verifyPostal($postal) {
     return '';
 }
 
-function register($login, $password, $name, $lastname, $gender, $email, $birthdate, $address, $postal, $town, $phone) {
+function register($login, $password, $name, $lastname, $gender, $email, $birthdate, $address, $postal, $town, $phone, $update = false) {
     $error['login'] = verifyLogin($login);
     $error['password'] = verifyNewPassword($password);
     $error['name'] = verifyChampLettres($name);
@@ -160,23 +160,42 @@ function register($login, $password, $name, $lastname, $gender, $email, $birthda
     }
 
     $db = getDB();
-	$query = $db->prepare("
-		INSERT INTO users(login, password, name, lastname, gender, email, birthdate, address, postal, town, phone) 
-		VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-	");
+
+    if($update) {
+        $query = $db->prepare("
+            UPDATE users 
+            SET password = :password, 
+                name = :name,
+                lastname = :lastname,
+                gender = :gender,
+                email = :email,
+                birthdate = :birthdate,
+                address = :address,
+                postal = :postal,
+                town = :town,
+                phone = :phone
+            WHERE login = :login
+        ");
+    }
+    else {
+        $query = $db->prepare("
+            INSERT INTO users(login, password, name, lastname, gender, email, birthdate, address, postal, town, phone) 
+            VALUES(:login, :password, :name, :lastname, :gender, :email, :birthdate, :address, :postal, :town, :phone)
+        ");
+    }
 
 	$query->execute(array(
-		$login,
-		password_hash($password, PASSWORD_DEFAULT),
-		$name,
-		$lastname,
-		$gender,
-		$email,
-		$birthdate,
-		$address,
-		$postal,
-		$town,
-		$phone
+		':login' => $login,
+        ':password' => password_hash($password, PASSWORD_DEFAULT),
+		':name' => $name,
+		':lastname' => $lastname,
+		':gender' => $gender,
+		':email' => $email,
+		':birthdate' => $birthdate,
+		':address' => $address,
+		':postal' => $postal,
+		':town' => $town,
+		':phone' => $phone
 	));
 
 	return $error;

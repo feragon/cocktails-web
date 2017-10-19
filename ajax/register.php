@@ -20,6 +20,8 @@ init($_POST, 'lastname');
 init($_POST, 'birthdate');
 init($_POST, 'email');
 init($_POST, 'address');
+init($_POST, 'postal');
+init($_POST, 'town');
 init($_POST, 'phone');
 
 $error = register(
@@ -31,6 +33,8 @@ $error = register(
     trim($_POST['email']),
     trim($_POST['birthdate']),
     trim($_POST['address']),
+    trim($_POST['postal']),
+    trim($_POST['town']),
     trim($_POST['phone'])
 );
 echo json_encode($error);

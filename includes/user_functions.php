@@ -24,7 +24,7 @@ function verifyPassword($login, $password) {
 	return password_verify($password, $user['password']);
 }
 
-function register($login, $password, $name, $lastname, $gender, $email, $birthdate, $address, $phone) {
+function register($login, $password, $name, $lastname, $gender, $email, $birthdate, $address, $postal, $town, $phone) {
     $error['login'] = '';
     $error['password'] = '';
     $error['name'] = '';
@@ -32,6 +32,8 @@ function register($login, $password, $name, $lastname, $gender, $email, $birthda
     $error['birthdate'] = '';
     $error['email'] = '';
     $error['address'] = '';
+    $error['postal'] = '';
+    $error['town'] = '';
     $error['phone'] = '';
     $continue = true;
 
@@ -79,6 +81,11 @@ function register($login, $password, $name, $lastname, $gender, $email, $birthda
         $continue = false;
     }
 
+	if(!empty($postal) && !preg_match("#^[0-9]{5}$#", $postal)) {
+        $error['postal'] = 'Code postal invalide';
+        $continue = false;
+    }
+	
     if(!empty($phone) && !preg_match("#^[0-9]{10}$#", $phone)) {
         $error['phone'] = 'Numero de telephone invalide';
         $continue = false;
@@ -89,8 +96,8 @@ function register($login, $password, $name, $lastname, $gender, $email, $birthda
     }
 
 	$query = $db->prepare("
-		INSERT INTO users(login, password, name, lastname, gender, email, birthdate, address, phone) 
-		VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)
+		INSERT INTO users(login, password, name, lastname, gender, email, birthdate, address, postal, town, phone) 
+		VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 	");
 
 	$query->execute(array(
@@ -102,6 +109,8 @@ function register($login, $password, $name, $lastname, $gender, $email, $birthda
 		$email,
 		$birthdate,
 		$address,
+		$postal,
+		$town,
 		$phone
 	));
 

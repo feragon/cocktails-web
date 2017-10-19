@@ -380,13 +380,13 @@ main table {
 main table th {
 	width: 35vw;
 	text-align: right;
-	padding: 10px 15px;
+	padding: 8px 15px;
 	table-layout: fixed;
 }
 main table td {
 	width: 35vw;
 	text-align: left;
-	padding: 10px 15px;
+	padding: 8px 15px;
 }
 
 footer {

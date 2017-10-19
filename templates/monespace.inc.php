@@ -53,6 +53,15 @@
             <input type="text" name="address" id="address" placeholder="Adresse" disabled/>
             <div id="address-error" class="input-error hidden"></div>
             <br/>
+			
+			<label for="postal" class="sr-only">Code postal</label>
+            <input type="text" name="postal" id="postal" placeholder="Code postal" style="width: 100px; margin-right: 10px;" disabled/>
+            <div id="postal-error" class="input-error hidden"></div>
+			
+			<label for="town" class="sr-only">Ville</label>
+            <input type="text" name="town" id="town" placeholder="Ville" style="width: 190px" disabled/>
+            <div id="town-error" class="input-error hidden"></div>
+            <br/>
 
             <label for="phone" class="sr-only">Téléphone</label>
             <input type="text" name="phone" id="phone" placeholder="Téléphone" disabled/>
@@ -110,6 +119,8 @@
 				<tr><th>Date de naissance :</th><td><?php echo $user['birthdate']; ?></td></tr>
 				<tr><th>Email :</th><td><?php echo $user['email']; ?></td></tr>
 				<tr><th>Adresse :</th><td><?php echo $user['address']; ?></td></tr>
+				<tr><th>Code postal :</th><td><?php echo $user['postal']; ?></td></tr>
+				<tr><th>Ville :</th><td><?php echo $user['town']; ?></td></tr>
 				<tr><th>Téléphone :</th><td><?php echo $user['phone']; ?></td></tr>
 			</table>
 			

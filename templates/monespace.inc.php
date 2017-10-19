@@ -40,7 +40,7 @@
             <br/>
 
             <label for="birthdate" class="sr-only">Date de naissance</label>
-            <input type="date" name="birthdate" id="birthdate" placeholder="Date de naissance" disabled/>
+            <input type="text" name="birthdate" id="birthdate" placeholder="Date de naissance (jj-mm-aaaa)" disabled/>
             <div id="birthdate-error" class="input-error hidden"></div>
             <br/>
 
@@ -52,6 +52,15 @@
             <label for="address" class="sr-only">Adresse</label>
             <input type="text" name="address" id="address" placeholder="Adresse" disabled/>
             <div id="address-error" class="input-error hidden"></div>
+            <br/>
+			
+			<label for="postal" class="sr-only">Code postal</label>
+            <input type="text" name="postal" id="postal" placeholder="Code postal" class="postal" disabled/>
+            <div id="postal-error" class="input-error hidden"></div>
+			
+			<label for="town" class="sr-only">Ville</label>
+            <input type="text" name="town" id="town" placeholder="Ville" class="town" disabled/>
+            <div id="town-error" class="input-error hidden"></div>
             <br/>
 
             <label for="phone" class="sr-only">Téléphone</label>
@@ -110,6 +119,8 @@
 				<tr><th>Date de naissance :</th><td><?php echo $user['birthdate']; ?></td></tr>
 				<tr><th>Email :</th><td><?php echo $user['email']; ?></td></tr>
 				<tr><th>Adresse :</th><td><?php echo $user['address']; ?></td></tr>
+				<tr><th>Code postal :</th><td><?php echo $user['postal']; ?></td></tr>
+				<tr><th>Ville :</th><td><?php echo $user['town']; ?></td></tr>
 				<tr><th>Téléphone :</th><td><?php echo $user['phone']; ?></td></tr>
 			</table>
 			

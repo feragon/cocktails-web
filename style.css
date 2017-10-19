@@ -380,13 +380,13 @@ main table {
 main table th {
 	width: 35vw;
 	text-align: right;
-	padding: 10px 15px;
+	padding: 8px 15px;
 	table-layout: fixed;
 }
 main table td {
 	width: 35vw;
 	text-align: left;
-	padding: 10px 15px;
+	padding: 8px 15px;
 }
 
 footer {
@@ -469,6 +469,14 @@ label {
 label:hover {
 	color: #1de9b6;
 	transition: color 0.2s ease-in-out;
+}
+main input.postal {
+	width: 100px;
+	margin-right: 10px;
+}
+main input.town {
+	width: calc(95% - 100px);
+	max-width: 190px;
 }
 
 @keyframes arrivee_fondue {

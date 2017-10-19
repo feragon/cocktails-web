@@ -21,6 +21,8 @@ initCleTableau($_POST, 'lastname');
 initCleTableau($_POST, 'birthdate');
 initCleTableau($_POST, 'email');
 initCleTableau($_POST, 'address');
+initCleTableau($_POST, 'postal');
+initCleTableau($_POST, 'town');
 initCleTableau($_POST, 'phone');
 
 $error = register(
@@ -32,6 +34,8 @@ $error = register(
     trim($_POST['email']),
     trim($_POST['birthdate']),
     trim($_POST['address']),
+    trim($_POST['postal']),
+    trim($_POST['town']),
     trim($_POST['phone'])
 );
 echo json_encode($error);

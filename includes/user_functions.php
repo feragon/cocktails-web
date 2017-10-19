@@ -90,6 +90,7 @@ function verifyBirthdate(&$birthdate) {
     }
 
     $birthdate = strtr($birthdate, '/', '-');
+
     $time = strtotime($birthdate);
 
     if($time === false) {
@@ -127,7 +128,20 @@ function verifyPhone($phone) {
     return '';
 }
 
-function register($login, $password, $name, $lastname, $gender, $email, $birthdate, $address, $phone) {
+/**
+ * Vérifie le code postal
+ * @param $postal string code postal à vérifier
+ * @return string Erreur ou '' si le champ est valide
+ */
+function verifyPostal($postal) {
+    if(!empty($postal) && !preg_match("#^[0-9]{5}$#", $postal)) {
+        return 'Code postal invalide';
+    }
+
+    return '';
+}
+
+function register($login, $password, $name, $lastname, $gender, $email, $birthdate, $address, $postal, $town, $phone) {
     $error['login'] = verifyLogin($login);
     $error['password'] = verifyNewPassword($password);
     $error['name'] = verifyChampLettres($name);
@@ -136,6 +150,8 @@ function register($login, $password, $name, $lastname, $gender, $email, $birthda
     $error['email'] = verifyEmail($email);
     $error['address'] = verifyChampLettres($address);
     $error['phone'] = verifyPhone($phone);
+    $error['postal'] = verifyPostal($postal);
+    $error['town'] = verifyChampLettres($town);
 
     foreach ($error as $message) {
         if(!empty($message)) {
@@ -145,8 +161,8 @@ function register($login, $password, $name, $lastname, $gender, $email, $birthda
 
     $db = getDB();
 	$query = $db->prepare("
-		INSERT INTO users(login, password, name, lastname, gender, email, birthdate, address, phone) 
-		VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)
+		INSERT INTO users(login, password, name, lastname, gender, email, birthdate, address, postal, town, phone) 
+		VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 	");
 
 	$query->execute(array(
@@ -158,6 +174,8 @@ function register($login, $password, $name, $lastname, $gender, $email, $birthda
 		$email,
 		$birthdate,
 		$address,
+		$postal,
+		$town,
 		$phone
 	));
 

@@ -89,6 +89,8 @@ function submitLoginForm() {
             'birthdate': document.getElementById("birthdate").value,
             'email': document.getElementById("email").value,
             'address': document.getElementById("address").value,
+            'postal': document.getElementById("postal").value,
+            'town': document.getElementById("town").value,
             'phone': document.getElementById("phone").value
         })
         .done(function (json) {

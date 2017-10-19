@@ -1,4 +1,5 @@
 <?php
+require __DIR__ . '/../includes/functions.inc.php';
 require __DIR__ . '/../includes/user_functions.php';
 
 /**
@@ -6,21 +7,21 @@ require __DIR__ . '/../includes/user_functions.php';
  * @param $tableau array Tableau à traiter
  * @param $clef string Indice de la valeur
  */
-function init(&$tableau, $clef) {
+function initCleTableau(&$tableau, $clef) {
     if(!array_key_exists($clef, $tableau)) {
         $tableau[$clef] = '';
     }
 }
 
-init($_POST, 'login');
-init($_POST, 'password');
-init($_POST, 'gender');
-init($_POST, 'name');
-init($_POST, 'lastname');
-init($_POST, 'birthdate');
-init($_POST, 'email');
-init($_POST, 'address');
-init($_POST, 'phone');
+initCleTableau($_POST, 'login');
+initCleTableau($_POST, 'password');
+initCleTableau($_POST, 'gender');
+initCleTableau($_POST, 'name');
+initCleTableau($_POST, 'lastname');
+initCleTableau($_POST, 'birthdate');
+initCleTableau($_POST, 'email');
+initCleTableau($_POST, 'address');
+initCleTableau($_POST, 'phone');
 
 $error = register(
     trim($_POST['login']),

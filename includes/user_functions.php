@@ -24,70 +24,126 @@ function verifyPassword($login, $password) {
 	return password_verify($password, $user['password']);
 }
 
-function register($login, $password, $name, $lastname, $gender, $email, $birthdate, $address, $phone) {
-    $error['login'] = '';
-    $error['password'] = '';
-    $error['name'] = '';
-    $error['lastname'] = '';
-    $error['birthdate'] = '';
-    $error['email'] = '';
-    $error['address'] = '';
-    $error['phone'] = '';
-    $continue = true;
-
+/**
+ * Vérifie un login
+ * @param $login string à vérifier
+ * @return string Erreur ou '' s'il y en a pas
+ */
+function verifyLogin($login) {
     if(empty($login)) {
-        $error['login'] = 'Login non présent.';
-        $continue = false;
+        return 'Login non présent.';
     }
+
+    if(!preg_match("#^[a-zA-Z0-9]{3,30}$#", $login)) {
+        return 'Le login doit contenir entre 3 et 30 lettres minuscules, majuscules ou chiffres';
+    }
+
+    $db = getDB();
+    $query = $db->prepare("SELECT login FROM users WHERE login = ?");
+    $query->execute(array($login));
+
+    if($query->fetch(PDO::FETCH_ASSOC) !== false) {
+        return 'Login déjà utilisé';
+    }
+
+    return '';
+}
+
+/**
+ * Vérifie le mot de passe
+ * @param $password string Mot de passe à vérifier
+ * @return string Erreur ou '' s'il n'y en a pas
+ */
+function verifyNewPassword($password) {
     if(empty($password)) {
-        $error['password'] = 'Mot de passe non présent.';
-        $continue = false;
+        return 'Mot de passe non présent.';
     }
 
-    if(!$continue) {
-        return $error;
+    if(strlen($password) < 6 || strlen($password) > 64) {
+        return 'Le mot de passe doit être compris entre 6 et 64 caractères';
     }
 
-	$db = getDB();
-	$query = $db->prepare("SELECT login FROM users WHERE login = ?");
-	$query->execute(array($login));
+    return '';
+}
 
-	if($query->fetch(PDO::FETCH_ASSOC) !== false) {
-		$error['login'] = 'Login déjà utilisé';
-		$continue = false;
-	}
-
-    if(!empty($name) && !preg_match("#^[a-zA-Z]+$#", $name)) {
-        $error['name'] = 'Prenom invalide';
-        $continue = false;
+/**
+ * Vérifie un champ qui ne doit contenir que des lettres
+ * @param $name string Nom du champ
+ * @return string Erreur ou '' s'il n'y en a pas
+ */
+function verifyChampLettres($name) {
+    if(!empty($name) && !preg_match("#^[a-zA-Z]+$#", normaliserCaracteres($name))) {
+        return 'Le champ ne doit contenir que des lettres';
     }
 
-    if(!empty($lastname) && !preg_match("#^[a-zA-Z]+$#", $lastname)) {
-        $error['lastname'] = 'Nom invalide';
-        $continue = false;
+    return '';
+}
+
+/**
+ * Vérifie la date de naissance
+ * @param $birthdate string Date de naissance, elle sera modifiée pour respecter le bon format
+ * @return string Erreur ou '' s'il n'y en a pas
+ */
+function verifyBirthdate(&$birthdate) {
+    if(empty($birthdate)) {
+        return '';
     }
 
     $birthdate = strtr($birthdate, '/', '-');
-	$birthdate_parts = explode('-', $birthdate);
-    if(!empty($birthdate) && (count($birthdate_parts) != 3 || !checkdate($birthdate_parts[1], $birthdate_parts[0], $birthdate_parts[2]))) {
-        $error['birthdate'] = 'Date de naissance invalide';
-        //$continue = false;
+    $time = strtotime($birthdate);
+
+    if($time === false) {
+        return 'Date de naissance invalide';
     }
 
+    $birthdate = date("d/m/Y", $time);
+
+    return '';
+}
+
+/**
+ * Vérifie une adresse email
+ * @param $email string Email à vérifier
+ * @return string Erreur ou '' si le champ est valide
+ */
+function verifyEmail($email) {
     if(!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $error['email'] = 'Email invalide';
-        $continue = false;
+        return 'Email invalide';
     }
 
+    return '';
+}
+
+/**
+ * Vérifie le numéro de téléphone
+ * @param $phone string numéro de téléphone
+ * @return string Erreur ou '' si le champ est valide
+ */
+function verifyPhone($phone) {
     if(!empty($phone) && !preg_match("#^[0-9]{10}$#", $phone)) {
-        $error['phone'] = 'Numero de telephone invalide';
-        $continue = false;
+        return 'Numero de telephone invalide';
     }
 
-    if(!$continue) {
-        return $error;
+    return '';
+}
+
+function register($login, $password, $name, $lastname, $gender, $email, $birthdate, $address, $phone) {
+    $error['login'] = verifyLogin($login);
+    $error['password'] = verifyNewPassword($password);
+    $error['name'] = verifyChampLettres($name);
+    $error['lastname'] = verifyChampLettres($lastname);
+    $error['birthdate'] = verifyBirthdate($birthdate);
+    $error['email'] = verifyEmail($email);
+    $error['address'] = verifyChampLettres($address);
+    $error['phone'] = verifyPhone($phone);
+
+    foreach ($error as $message) {
+        if(!empty($message)) {
+            return $error;
+        }
     }
 
+    $db = getDB();
 	$query = $db->prepare("
 		INSERT INTO users(login, password, name, lastname, gender, email, birthdate, address, phone) 
 		VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)

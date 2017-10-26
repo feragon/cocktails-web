@@ -2,34 +2,22 @@
 require(__DIR__ . '/../includes/user_functions.php');
 session_start();
 
-$login_error = '';
-$password_error = '';
+$error = array();
+if(!isset($_GET['login'])) $error['login'] = "Login non défini";
+if(!isset($_GET['password'])) $error['password'] = "Mot de passe non défini";
 
-if(!isset($_GET['login'])) {
-	$login_error = "Login non défini";
-}
-
-if(!isset($_GET['password'])) {
-	$password_error = "Mot de passe non défini";
-}
-
-if($login_error == '' && $password_error == '') {
+if(!$error) {
 	try {
 		if(verifyPassword($_GET['login'], $_GET['password'])) {
 			$_SESSION['login'] = $_GET['login'];
 			DBToSession();
 			sessionToDB();
 		}
-		else {
-			$password_error = 'Mauvais mot de passe';
-		}
+		else $error['password'] = 'Mauvais mot de passe';
 	}
 	catch(Exception $e) {
-		$login_error = $e->getMessage();
+		$error['login'] = $e->getMessage();
 	}
 }
 
-echo json_encode([
-	'login' => $login_error,
-	'password' => $password_error
-]);
+echo json_encode($error);

@@ -6,6 +6,7 @@
 
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/favoris.js"></script>
+<script type="text/javascript" src="js/editInfos.js"></script>
 <script type="text/javascript" src="js/login_mode.js"></script>
 <script type="text/javascript" src="js/bubbles.js"></script>
 </html>

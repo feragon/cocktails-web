@@ -374,8 +374,9 @@ main table {
 	display: inline-block;
 	border: dashed 2px #E0E0E0;
 	border-collapse: collapse;
-	max-width: 500px;
+	max-width: 480px;
 	margin-top: 10px;
+	padding: 10px;
 }
 main table th {
 	width: 35vw;
@@ -387,6 +388,31 @@ main table td {
 	width: 35vw;
 	text-align: left;
 	padding: 8px 15px;
+}
+main table .info_colored {
+	font-weight: bold; 
+	color: #009688;
+}
+#editer, #valider_edit, #annuler_edit {
+	display: inline-block;
+	margin: 15px 0 10px 0;
+}
+main table .info_input {
+	padding: 0 15px;
+	width: 38.5vw;
+}
+main table .info_input input {
+	width: calc(100%);
+	height: 34px;
+	padding: 0;
+	background: none;
+	margin: 0;
+	border: none;
+	border-bottom: solid 1px lightgray;
+	transition: border 0.2s ease-in-out;
+}
+main table .info_input input:hover {
+	border-color: #1de9b6;
 }
 
 footer {
@@ -451,7 +477,7 @@ input:focus::placeholder {
 }
 input[type="submit"] {
 	width: 150px;
-	margin-top: 20px;
+	margin-top: 15px;
 }
 input[type="radio"] {
 	display: inline-block;

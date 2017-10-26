@@ -80,6 +80,19 @@ function verifyChampLettres($name) {
 }
 
 /**
+ * Vérifie un champ qui ne doit contenir que des lettres
+ * @param $name string Nom du champ
+ * @return string Erreur ou '' s'il n'y en a pas
+ */
+function verifyGender($gender) {
+    if(!empty($gender) && $gender != "Homme" && $gender != "Femme") {
+        return 'Le genre doit être Homme ou Femme';
+    }
+
+    return '';
+}
+
+/**
  * Vérifie la date de naissance
  * @param $birthdate string Date de naissance, elle sera modifiée pour respecter le bon format
  * @return string Erreur ou '' s'il n'y en a pas
@@ -142,13 +155,16 @@ function verifyPostal($postal) {
 }
 
 function register($login, $password, $name, $lastname, $gender, $email, $birthdate, $address, $postal, $town, $phone, $update = false) {
-    $error['login'] = verifyLogin($login);
-    $error['password'] = verifyNewPassword($password);
+    
+	if(!$update) {
+		$error['login'] = verifyLogin($login);
+		$error['password'] = verifyNewPassword($password);
+	}
     $error['name'] = verifyChampLettres($name);
     $error['lastname'] = verifyChampLettres($lastname);
+	$error['gender'] = verifyGender($gender);
     $error['birthdate'] = verifyBirthdate($birthdate);
     $error['email'] = verifyEmail($email);
-    $error['address'] = verifyChampLettres($address);
     $error['phone'] = verifyPhone($phone);
     $error['postal'] = verifyPostal($postal);
     $error['town'] = verifyChampLettres($town);
@@ -161,11 +177,12 @@ function register($login, $password, $name, $lastname, $gender, $email, $birthda
 
     $db = getDB();
 
+	
     if($update) {
-        $query = $db->prepare("
+		
+		$query = $db->prepare("
             UPDATE users 
-            SET password = :password, 
-                name = :name,
+            SET name = :name,
                 lastname = :lastname,
                 gender = :gender,
                 email = :email,
@@ -176,27 +193,39 @@ function register($login, $password, $name, $lastname, $gender, $email, $birthda
                 phone = :phone
             WHERE login = :login
         ");
+		$query->execute(array(
+			'name' => $name,
+			'lastname' => $lastname,
+			'gender' => $gender,
+			'email' => $email,
+			'birthdate' => $birthdate,
+			'address' => $address,
+			'postal' => $postal,
+			'town' => $town,
+			'phone' => $phone,
+			'login' => $login
+		));
     }
     else {
+		
         $query = $db->prepare("
             INSERT INTO users(login, password, name, lastname, gender, email, birthdate, address, postal, town, phone) 
             VALUES(:login, :password, :name, :lastname, :gender, :email, :birthdate, :address, :postal, :town, :phone)
         ");
+		$query->execute(array(
+			'login' => $login,
+			'password' => password_hash($password, PASSWORD_DEFAULT),
+			'name' => $name,
+			'lastname' => $lastname,
+			'gender' => $gender,
+			'email' => $email,
+			'birthdate' => $birthdate,
+			'address' => $address,
+			'postal' => $postal,
+			'town' => $town,
+			'phone' => $phone
+		));
     }
-
-	$query->execute(array(
-		':login' => $login,
-        ':password' => password_hash($password, PASSWORD_DEFAULT),
-		':name' => $name,
-		':lastname' => $lastname,
-		':gender' => $gender,
-		':email' => $email,
-		':birthdate' => $birthdate,
-		':address' => $address,
-		':postal' => $postal,
-		':town' => $town,
-		':phone' => $phone
-	));
 
 	return $error;
 }

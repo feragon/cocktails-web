@@ -24,13 +24,7 @@ initCleTableau($_POST, 'address');
 initCleTableau($_POST, 'postal');
 initCleTableau($_POST, 'town');
 initCleTableau($_POST, 'phone');
-
-if(isset($_POST['update'])) {
-    $update = false;
-}
-else {
-    $update = true;
-}
+$update = isset($_POST['update']);
 
 $error = register(
     trim($_POST['login']),
@@ -46,4 +40,5 @@ $error = register(
     trim($_POST['phone']),
     $update
 );
+
 echo json_encode($error);

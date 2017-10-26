@@ -6,8 +6,8 @@
             $_SESSION['Favoris'] = array();
         }
 		if(isset($_POST['deconnexion'])) {
-			sessionToDB();
 			$_SESSION = array();
+			$_SESSION['Favoris'] = array();
 			$_POST = array();
 		}
     }

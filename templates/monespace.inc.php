@@ -40,7 +40,7 @@
             <br/>
 
             <label for="birthdate" class="sr-only">Date de naissance</label>
-            <input type="text" name="birthdate" id="birthdate" placeholder="Date de naissance (jj-mm-aaaa)" disabled/>
+            <input type="text" name="birthdate" id="birthdate" placeholder="Date de naissance (jj/mm/aaaa)" disabled/>
             <div id="birthdate-error" class="input-error hidden"></div>
             <br/>
 
@@ -71,11 +71,11 @@
 
         <input class="boutonRond" type="submit" value="Envoyer"/>
 
-        <div id="register_button" class="boutonRondPlein" style="width: 117px;">
+        <div id="register_button" class="boutonRondPlein" style="width: 106px;">
             <a onclick="toggleLoginMode(false)">S'inscrire</a>
         </div>
-        <div id="login_button" class="boutonRondPlein hidden" style="width: 117px;">
-            <a onclick="toggleLoginMode(true)">Se connecter ?</a>
+        <div id="login_button" class="boutonRondPlein hidden" style="width: 106px;">
+            <a onclick="toggleLoginMode(true)">Se connecter</a>
         </div>
     </form>
 
@@ -185,14 +185,14 @@
 			</table>
 			
 			<form method="POST" action=".?R=MonEspace">
-				<div id="editer" class="">
-					<a class="boutonRond" onclick="editInfos()"><i class='fa fa-pencil'></i> Editer mes infos</a>
+				<div id="editer" class="boutonRond ">
+					<a onclick="editInfos()"><i class='fa fa-pencil'></i> Editer mes infos</a>
 				</div>
-				<div id="valider_edit" class="hidden">
-					<a class="boutonRond" onclick="submitInfos(1)"><i class='fa fa-check'></i> Valider</a>
+				<div id="valider_edit" class="boutonRond hidden">
+					<a onclick="submitInfos(1)"><i class='fa fa-check'></i> Valider</a>
 				</div>
-				<div id="annuler_edit" class="hidden">
-					<a class="boutonRondPlein" onclick="submitInfos(0)"><i class='fa fa-times'></i> Annuler</a>
+				<div id="annuler_edit" class="boutonRondPlein hidden">
+					<a onclick="submitInfos(0)"><i class='fa fa-times'></i> Annuler</a>
 				</div>
 				<input type="submit" id="deconnexion" name="deconnexion" value="Déconnexion" class="boutonRondPlein"/>
 			</form>

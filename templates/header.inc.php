@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
 	<title>Cocktails</title>
 	<meta charset='utf-8'>
@@ -29,7 +29,7 @@
 		<li <?php if(isset($_GET["R"])) if($_GET["R"] == "Ingredients") echo " class='selected'"; ?>>
 			<a href="?R=Ingredients"><i class="fa fa-tint"></i> Ingrédients</a>
 		</li>
-		<li <?php if(isset($_GET["R"])) if($_GET["R"] == "Cocktails") echo " class='selected'"; ?>>
+		<li <?php if(isset($_GET["R"])) if(preg_match("/^Cocktail[s]?$/", $_GET["R"])) echo " class='selected'"; ?>>
 			<a href="?R=Cocktails"><i class="fa fa-glass"></i> Cocktails</a>
 		</li>
 		<li <?php if(isset($_GET["R"])) if($_GET["R"] == "MesRecettes") echo " class='selected'"; ?>>

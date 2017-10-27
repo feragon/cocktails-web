@@ -23,7 +23,7 @@
 	
 ?><br/><br/>
 
-    <ul><?php
+    <ul class="liste_ingr"><?php
 			
 	$categorie = "Aliment";
 	if(isset($_GET['C'])) $categorie = $_GET['C'];
@@ -33,7 +33,7 @@
 		
 			foreach($Hierarchie[$categorie]['sous-categorie'] as $key => $value) {
 				echo "
-		<li><a href=\"?R=Ingredients&C=".$value."\"><i class='fa fa-tint'></i> ".$value."</a></li>";
+		<li><a href=\"?R=Ingredients&C=".str_replace(" ", "%20", $value)."\"><i class='fa fa-tint'></i> ".$value."</a></li>";
 			}
 			
 			echo "<br/><br/>";

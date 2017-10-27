@@ -55,15 +55,16 @@
 	function afficherCocktails($tab, $isFavoris) {
 		
 		global $Recettes;
+		$i = 0;
 		
 		foreach($tab as $key => $value) {
 			$recette = ($isFavoris ? $Recettes[$key] : $value);
 ?>
 			<a href='<?php echo "?R=Cocktail&K=".$key; ?>'>
-				<div class="item"><?php if(array_key_exists($key, $_SESSION['Favoris'])) echo "
+				<div class="item" style="animation-delay: <?php echo $i < 0.5 ? $i+=0.06 : $i; ?>s"><?php if(array_key_exists($key, $_SESSION['Favoris'])) echo "
 					<i class='fa fa-star-o'></i>"; ?>
 					
-					<img src="<?php echo getImageURL($recette["titre"], true); ?>" />
+					<div class="image" style="background-image: url('<?php echo getImageURL($recette["titre"], true); ?>')"></div>
 					<h4><?php echo $recette["titre"]; ?></h4>
 					<div>
 						<i class='fa fa-tint'></i>

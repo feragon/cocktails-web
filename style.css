@@ -143,7 +143,10 @@ main {
 	position: relative;
 	text-align: justify;
 }
-.cocktail_desc li {
+.cocktail_desc ul {
+	padding-left: 5px;
+}
+.cocktail_desc ul li {
 	margin: 10px 0;
 }
 .cocktail_desc i {
@@ -156,71 +159,26 @@ main {
 	position: absolute;
 	top: 0px;
 	right: 0px;
-	max-width: 300px;
-	max-height: 250px;
+	max-width: 100%;
+	height: 250px;
 }
-#ajouter, #retirer {
-	display: inline-block;
-	margin: 15px 0;
-}
-.cocktail_desc .favoris, .cocktail_desc .retirer_favoris, .vider_favoris {
-	color: #37474f;
-	border: solid 1.5px #37474f;
-	border-radius: 50px;
-	padding: 10px 15px;
-	cursor: pointer;
-	transition: color 0.2s ease-in-out, border 0.2s ease-in-out;
-}
-.cocktail_desc .favoris:hover, .vider_favoris:hover {
-	color: #FFAA20;
-	border-color: #FFAA20;
-	transition: color 0.15s ease-in-out, border 0.15s ease-in-out;
-}
-.cocktail_desc .retirer_favoris {
-	color: #37474f;
-	background: #FFAA20;
-	border-color: #FFAA20;
-}
-.cocktail_desc .retirer_favoris:hover {
-	color: #FCFCFC;
-	transition: color 0.15s ease-in-out;
-}
-.cocktail_desc .favoris i, .cocktail_desc .retirer_favoris i {
-	margin: 0 5px 0 0;
-}
-.cocktail_desc .arrow {
-	color: #37474f;
-	margin: 15px 7px 0 0;
-}
-.cocktail_desc .arrow i {
-	margin: 0;
-	vertical-align: -10%;
-	font-size: 30px;
-	transition: color 0.2s ease-in-out;
-}
-.cocktail_desc .arrow i:hover {
-	color: #009688;
-	transition: color 0.1s ease-in-out;
-}
+
 .boutonRond, .boutonRondPlein {
+	height: 40px;
 	color: #37474f;
-	border: solid 1.5px #37474f;
-	border-radius: 50px;
-	padding: 10px 15px;
+	border: solid 2px #37474f;
+	border-radius: 25px;
+	padding: 0 15px;
+	margin: 10px 0;
 	cursor: pointer;
-	transition: color 0.2s ease-in-out, border 0.2s ease-in-out;
+	transition: color 0.2s ease-in-out, border 0.2s ease-in-out, background 0.2s ease-in-out;
 	display: inline-block;
-}
-.boutonRondPlein a {
-	display: inline-block;
-	width: 100%;
-	margin: -10px -15px;
-	padding: 10px 15px;
+	overflow: hidden;
+	vertical-align: middle;
 }
 .boutonRondPlein {
 	color: white;
 	background: #37474f;
-	transition: background 0.2s ease-in-out, border 0.2s ease-in-out;
 }
 .boutonRond:hover {
 	color: #009688;
@@ -232,6 +190,49 @@ main {
 	border-color: #009688;
 	transition: background 0.2s ease-in-out, border 0.2s ease-in-out;
 }
+.boutonRond a, .boutonRondPlein a {
+	display: inline-block;
+	width: 100%;
+	height: calc(100% - 20px);
+	margin: 0 -15px;
+	padding: 10px 15px;
+	vertical-align: middle;
+}
+.boutonRond a i, .boutonRondPlein a i {
+	margin: 0 5px 0 0;
+}
+
+#ajouter, #retirer {
+	display: inline-block;
+	margin: 15px 0;
+}
+#ajouter:hover, #retirer:hover {
+	color: #FFAA20;
+	border-color: #FFAA20;
+}
+#retirer {
+	color: #37474f;
+	background: #FFAA20;
+	border-color: #FFAA20;
+}
+#retirer:hover {
+	color: #FCFCFC;
+}
+.cocktail_desc .arrow {
+	color: #37474f;
+	margin: 15px 7px 0 0;
+}
+.cocktail_desc .arrow i {
+	margin: 0;
+	vertical-align: -20%;
+	font-size: 30px;
+	transition: color 0.2s ease-in-out;
+}
+.cocktail_desc .arrow i:hover {
+	color: #009688;
+	transition: color 0.1s ease-in-out;
+}
+
 main p {
 	width: 100%;
 	text-align: justify;
@@ -250,13 +251,13 @@ main hr {
 	border: none;
 	margin-bottom: 30px;
 }
-main ul {
+main ul.liste_ingr {
 	display: inline-block;
 	max-width: 820px;
 	text-align: left;
 	margin: 0;
 }
-main ul li {
+main ul.liste_ingr li {
 	width: 250px;
 	background: #FFAA20;
 	display: inline-block;
@@ -264,11 +265,11 @@ main ul li {
 	transition: background 0.2s ease-in-out;
 	text-align: left;
 }
-main ul li:hover {
+main ul.liste_ingr li:hover {
 	background: #FFCD7C;
 	transition: background 0.2s ease-in-out;
 }
-main ul li a {
+main ul.liste_ingr li a {
 	display: block;
 	padding: 20px;
 	width: calc(100% - 40px);
@@ -276,19 +277,19 @@ main ul li a {
 	white-space: nowrap;
     text-overflow: ellipsis;
 }
-main ul li * {
+main ul.liste_ingr li * {
 	margin-right: 10px;
 	color: #37474f;
 	transition: color 0.2s ease-in-out;
 }
-main ul li:hover * {
+main ul.liste_ingr li:hover * {
 	color: #455a64;
 	transition: color 0.2s ease-in-out;
 }
-main ul .li_cocktail {
+main ul.liste_ingr .li_cocktail {
 	background: #FF7320;
 }
-main ul .li_cocktail:hover {
+main ul.liste_ingr .li_cocktail:hover {
 	background: #FFAC7C;
 }
 .ingrds_path {
@@ -312,18 +313,28 @@ main ul .li_cocktail:hover {
 	box-shadow: 0px 5px 15px #E0E0E0;
 	display: inline-block;
 	overflow: hidden;
-	animation: arrivee_fondue 0.5s ease-in-out;
+	animation: arrivee_fondue 0.5s ease-out;
+	-webkit-animation-fill-mode: forwards;
+	-moz-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+	opacity: 0;
 	margin: 10px 8px;
 	text-align: center;
-	transition: transform 0.15s ease-in-out, border 0.4s ease-in-out;
+	transition: background-color 0.3s ease-in-out, border 0.3s ease-in-out;
 }
 .item:hover {
-	transform: scale(1.05);
 	border-color: #1de9b6;
-	transition: transform 0.15s ease-in-out, border 0.15s ease-in-out;
+	background-color: rgba(29, 233, 182, 0.35);
+	transition: background-color 0.2s ease-in-out, border 0.2s ease-in-out;
 }
-.item img {
+.item .image {
+	background-size: auto 100%;
+	background-repeat: no-repeat;
+	background-color: white;
+	background-position: center;
 	height: 200px;
+	width: 244px;
+	margin: 3px 0 0 3px;
 }
 .item h4 {
 	color: #009688;
@@ -359,7 +370,7 @@ main ul .li_cocktail:hover {
 	left: 10px;
 	font-size: 14px;
 	font-style: italic;
-	color: #AAAAAA;
+	color: #888888;
 }
 .item .time i {
 	color: #AAAAAA;
@@ -369,13 +380,14 @@ main .user_box {
 	display: inline-block;
 	width: 45%;
 	vertical-align: top;
+	margin-bottom: 15px;
 }
 main table {
 	display: inline-block;
 	border: dashed 2px #E0E0E0;
 	border-collapse: collapse;
 	max-width: 480px;
-	margin-top: 10px;
+	margin: 10px 0;
 	padding: 10px;
 }
 main table th {
@@ -395,7 +407,6 @@ main table .info_colored {
 }
 #editer, #valider_edit, #annuler_edit {
 	display: inline-block;
-	margin: 15px 0 10px 0;
 }
 main table .info_input {
 	padding: 0 15px;
@@ -476,8 +487,9 @@ input:focus::placeholder {
 	color: #009688;
 }
 input[type="submit"] {
-	width: 150px;
-	margin-top: 15px;
+	height: 44px;
+	width: 140px;
+	margin: 0;
 }
 input[type="radio"] {
 	display: inline-block;
@@ -509,6 +521,9 @@ main input.town {
 	0% {
 		opacity: 0;
 		transform: translateY(50px);
+	}
+	50% {
+		opacity: 1;
 	}
 	100% {
 		opacity: 1;

@@ -80,8 +80,8 @@ function verifyChampLettres($name) {
 }
 
 /**
- * Vérifie un champ qui ne doit contenir que des lettres
- * @param $name string Nom du champ
+ * Vérifie que le genre soit 'Homme' ou 'Femme'
+ * @param $gender string Genre
  * @return string Erreur ou '' s'il n'y en a pas
  */
 function verifyGender($gender) {

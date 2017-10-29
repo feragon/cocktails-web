@@ -164,7 +164,7 @@
 				</div>
 				<div>
 					<label for="postal" class="info_label">Code postal :</label>
-					<span class="info_txt"><?php echo $user['postal']; ?></span>
+					<span class="info_txt"><?php echo str_pad($user['postal'], 5, "0", STR_PAD_LEFT); ?></span>
 					<div class="info_input hidden">
 						<input type="text" name="postal" id="postal" />
 					</div>
@@ -178,7 +178,7 @@
 				</div>
 				<div>
 					<label for="phone" class="info_label">Téléphone :</label>
-					<span class="info_txt"><?php echo $user['phone']; ?></span>
+					<span class="info_txt"><?php echo str_pad($user['phone'], 10, "0", STR_PAD_LEFT); ?></span>
 					<div class="info_input hidden">
 						<input type="text" name="phone" id="phone" />
 					</div>

@@ -382,38 +382,58 @@ main .user_box {
 	vertical-align: top;
 	margin-bottom: 15px;
 }
-main table {
-	display: inline-block;
-	border: dashed 2px #E0E0E0;
-	border-collapse: collapse;
-	max-width: 480px;
-	margin: 10px 0;
-	padding: 10px;
+
+#user_infos {
+    border: dashed 2px #E0E0E0;
 }
-main table th {
-	width: 35vw;
-	text-align: right;
-	padding: 8px 15px;
-	table-layout: fixed;
+
+#user_edit {
+    display: flex;
+    flex-direction: column;
 }
-main table td {
-	width: 35vw;
-	text-align: left;
-	padding: 8px 15px;
+
+#user_edit div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
-main table .info_colored {
+
+.info_input, .info_label, .info_txt {
+    flex: 1;
+}
+
+.info_label {
+    font-weight: bold;
+    justify-content: flex-end;
+}
+
+.info_txt {
+    justify-content: flex-start;
+}
+
+.info_label, .info_txt {
+    display: flex;
+    align-items: center;
+
+    height: 35px;
+}
+
+.info_colored {
 	font-weight: bold; 
 	color: #009688;
 }
+
 #editer, #valider_edit, #annuler_edit {
 	display: inline-block;
 }
-main table .info_input {
+
+.info_input, .info_txt {
+    text-align: left;
 	padding: 0 15px;
-	width: 38.5vw;
 }
-main table .info_input input {
-	width: calc(100%);
+
+.info_input input {
+	width: 100%;
 	height: 34px;
 	padding: 0;
 	background: none;
@@ -422,7 +442,8 @@ main table .info_input input {
 	border-bottom: solid 1px lightgray;
 	transition: border 0.2s ease-in-out;
 }
-main table .info_input input:hover {
+
+.info_input input:hover {
 	border-color: #1de9b6;
 }
 
@@ -495,19 +516,9 @@ input[type="radio"] {
 	display: inline-block;
 	width: 20px;
 	height: 20px;
-	margin: 15px 5px 15px 20px;
+	margin: 15px 5px 15px 0;
 }
-label {
-	display: inline-block;
-	color: #AAAAAA;
-	vertical-align: 20%;
-	transition: color 0.2s ease-in-out;
-	margin-right: 20px;
-}
-label:hover {
-	color: #1de9b6;
-	transition: color 0.2s ease-in-out;
-}
+
 main input.postal {
 	width: 100px;
 	margin-right: 10px;

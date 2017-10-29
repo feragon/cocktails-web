@@ -109,80 +109,81 @@
 ?>
 		</div>
 		
-		<div class="user_box">
+		<div id="user_infos" class="user_box">
 			<h2>Mes informations personelles</h2>
-			<table>
-				<tr>
-					<th>Login :</th>
-					<td class="info_txt info_colored"><?php echo $user['login']; ?></td>
-					<td class="info_input hidden">
-						<input type="text" name="login" id="login" />
-					</td>
-				</tr>
-				<tr>
-					<th>Nom :</th>
-					<td class="info_txt"><?php echo $user['lastname']; ?></td>
-					<td class="info_input hidden">
+			<form id="user_edit">
+				<div>
+					<span class="info_label">Login :</span>
+					<span class="info_txt info_colored"><?php echo $user['login']; ?></span>
+				</div>
+				<div>
+					<label for="lastname" class="info_label">Nom :</label>
+					<span class="info_txt"><?php echo $user['lastname']; ?></span>
+					<div class="info_input hidden">
 						<input type="text" name="lastname" id="lastname" />
-					</td>
-				</tr>
-				<tr>
-					<th>Prénom :</th>
-					<td class="info_txt"><?php echo $user['name']; ?></td>
-					<td class="info_input hidden">
+					</div>
+				</div>
+				<div>
+					<label for="name" class="info_label">Prénom :</label>
+					<span class="info_txt"><?php echo $user['name']; ?></span>
+					<div class="info_input hidden">
 						<input type="text" name="name" id="name" />
-					</td>
-				</tr>
-				<tr>
-					<th>Genre :</th>
-					<td class="info_txt"><?php echo $user['gender']; ?></td>
-					<td class="info_input hidden">
-						<input type="text" name="gender" id="gender" />
-					</td>
-				</tr>
-				<tr>
-					<th>Date de naissance :</th>
-					<td class="info_txt"><?php echo $user['birthdate']; ?></td>
-					<td class="info_input hidden">
-						<input type="text" name="birthdate" id="birthdate" placeholder="jj/mm/aaaa"/>
-					</td>
-				</tr>
-				<tr>
-					<th>Email :</th>
-					<td class="info_txt"><?php echo $user['email']; ?></td>
-					<td class="info_input hidden">
+					</div>
+				</div>
+				<div>
+					<span class="info_label">Genre :</span>
+					<span class="info_txt"><?php echo $user['gender']; ?></span>
+					<div class="info_input hidden">
+                        <input type="radio" name="gender" id="homme" value="Homme" />
+                        <label for="homme">Homme</label>
+
+                        <input type="radio" name="gender" id="femme" value="Femme" />
+                        <label for="femme">Femme</label>
+					</div>
+				</div>
+				<div>
+					<label for="birthdate" class="info_label">Date de naissance :</label>
+					<span class="info_txt"><?php echo $user['birthdate']; ?></span>
+					<div class="info_input hidden">
+						<input type="date" name="birthdate" id="birthdate" placeholder="jj/mm/aaaa"/>
+					</div>
+				</div>
+				<div>
+					<label for="email" class="info_label">Email :</label>
+					<span class="info_txt"><?php echo $user['email']; ?></span>
+					<div class="info_input hidden">
 						<input type="text" name="email" id="email" />
-					</td>
-				</tr>
-				<tr>
-					<th>Adresse :</th>
-					<td class="info_txt"><?php echo $user['address']; ?></td>
-					<td class="info_input hidden">
+					</div>
+				</div>
+				<div>
+					<label for="address" class="info_label">Adresse :</label>
+					<span class="info_txt"><?php echo $user['address']; ?></span>
+					<div class="info_input hidden">
 						<input type="text" name="address" id="address" />
-					</td>
-				</tr>
-				<tr>
-					<th>Code postal :</th>
-					<td class="info_txt"><?php echo $user['postal']; ?></td>
-					<td class="info_input hidden">
+					</div>
+				</div>
+				<div>
+					<label for="postal" class="info_label">Code postal :</label>
+					<span class="info_txt"><?php echo $user['postal']; ?></span>
+					<div class="info_input hidden">
 						<input type="text" name="postal" id="postal" />
-					</td>
-				</tr>
-				<tr>
-					<th>Ville :</th>
-					<td class="info_txt"><?php echo $user['town']; ?></td>
-					<td class="info_input hidden">
+					</div>
+				</div>
+				<div>
+					<label for="town" class="info_label">Ville :</label>
+					<span class="info_txt"><?php echo $user['town']; ?></span>
+					<div class="info_input hidden">
 						<input type="text" name="town" id="town" />
-					</td>
-				</tr>
-				<tr>
-					<th>Téléphone :</th>
-					<td class="info_txt"><?php echo $user['phone']; ?></td>
-					<td class="info_input hidden">
+					</div>
+				</div>
+				<div>
+					<label for="phone" class="info_label">Téléphone :</label>
+					<span class="info_txt"><?php echo $user['phone']; ?></span>
+					<div class="info_input hidden">
 						<input type="text" name="phone" id="phone" />
-					</td>
-				</tr>
-			</table>
+					</div>
+				</div>
+			</form>
 			
 			<form method="POST" action=".?R=MonEspace">
 				<div id="editer" class="boutonRond ">

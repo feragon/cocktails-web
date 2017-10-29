@@ -3,11 +3,21 @@ function editInfos() {
 	var txtsList = document.getElementsByClassName("info_txt");
 	var inputsList = document.getElementsByClassName("info_input");
 	
-	for(var i = 1; i < inputsList.length; i++) {
+	for(var i = 0; i < inputsList.length; i++) {
 		inputsList[i].classList.remove("hidden");
-		txtsList[i].classList.add("hidden");
-		
-		inputsList[i].getElementsByTagName("input")[0].value = txtsList[i].innerText;
+		txtsList[i+1].classList.add("hidden");
+
+		if(txtsList[i+1].innerText === "Homme") {
+			$('#homme').attr("checked", true);
+			$('#femme').attr("checked", false);
+		}
+		else if(txtsList[i+1].innerText === "Femme") {
+            $('#femme').attr("checked", true);
+            $('#homme').attr("checked", false);
+		}
+		else {
+            inputsList[i].getElementsByTagName("input")[0].value = txtsList[i + 1].innerText; //TODO: pour le genre il se passe quoi ?
+        }
 	}
 	
 	document.getElementById("editer").classList.add("hidden");
@@ -24,7 +34,7 @@ function submitInfos(soumettre) {
 	if(soumettre) {
 		$.post("ajax/register.php", {
 				'login': txtsList[0].innerText,
-				'gender': document.getElementById("gender").value,
+				'gender': $('input[name="gender"]:checked').val(),
 				'name': document.getElementById("name").value,
 				'lastname': document.getElementById("lastname").value,
 				'birthdate': document.getElementById("birthdate").value,
@@ -43,14 +53,14 @@ function submitInfos(soumettre) {
 			});
 	}
 	else {
-		for(var i = 1; i < inputsList.length; i++) {
+		for(var i = 0; i < inputsList.length; i++) {
 			inputsList[i].classList.add("hidden");
-			txtsList[i].classList.remove("hidden");
+			txtsList[i+1].classList.remove("hidden");
 		}
 		
 		document.getElementById("editer").classList.remove("hidden");
-	document.getElementById("deconnexion").classList.remove("hidden");
+		document.getElementById("deconnexion").classList.remove("hidden");
 		document.getElementById("valider_edit").classList.add("hidden");
-	document.getElementById("annuler_edit").classList.add("hidden");
+		document.getElementById("annuler_edit").classList.add("hidden");
 	}
 }

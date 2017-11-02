@@ -20,7 +20,6 @@
 
         <div id='register_fields' class="hidden">
             <br/>
-
             <div class="button-group">
                 <input type="radio" class="hidden" name="gender" id="homme" value="Homme" disabled/>
                 <label for="homme">Homme</label>
@@ -111,7 +110,7 @@
 ?>
 		</div>
 		
-		<div id="user_infos" class="user_box">
+		<div class="user_box">
 			<h2>Mes informations personelles</h2>
 			<form id="user_edit">
 				<div>
@@ -147,14 +146,14 @@
 					<label for="birthdate" class="info_label">Date de naissance :</label>
 					<span class="info_txt"><?php echo $user['birthdate']; ?></span>
 					<div class="info_input hidden">
-						<input type="date" name="birthdate" id="birthdate" placeholder="jj/mm/aaaa"/>
+						<input type="text" name="birthdate" id="birthdate" placeholder="jj/mm/aaaa"/>
 					</div>
 				</div>
 				<div>
 					<label for="email" class="info_label">Email :</label>
 					<span class="info_txt"><?php echo $user['email']; ?></span>
 					<div class="info_input hidden">
-						<input type="text" name="email" id="email" />
+						<input type="email" name="email" id="email" />
 					</div>
 				</div>
 				<div>
@@ -166,7 +165,7 @@
 				</div>
 				<div>
 					<label for="postal" class="info_label">Code postal :</label>
-					<span class="info_txt"><?php echo str_pad($user['postal'], 5, "0", STR_PAD_LEFT); ?></span>
+					<span class="info_txt"><?php if(!empty($user['postal'])) echo str_pad($user['postal'], 5, "0", STR_PAD_LEFT); ?></span>
 					<div class="info_input hidden">
 						<input type="text" name="postal" id="postal" />
 					</div>
@@ -180,7 +179,7 @@
 				</div>
 				<div>
 					<label for="phone" class="info_label">Téléphone :</label>
-					<span class="info_txt"><?php echo str_pad($user['phone'], 10, "0", STR_PAD_LEFT); ?></span>
+					<span class="info_txt"><?php if(!empty($user['phone'])) echo str_pad($user['phone'], 10, "0", STR_PAD_LEFT); ?></span>
 					<div class="info_input hidden">
 						<input type="text" name="phone" id="phone" />
 					</div>
@@ -191,10 +190,10 @@
 				<div id="editer" class="boutonRond ">
 					<a onclick="editInfos()"><i class='fa fa-pencil'></i> Editer mes infos</a>
 				</div>
-				<div id="valider_edit" class="boutonRond hidden">
+				<div id="valider_edit" class="boutonRondPlein hidden">
 					<a onclick="submitInfos(1)"><i class='fa fa-check'></i> Valider</a>
 				</div>
-				<div id="annuler_edit" class="boutonRondPlein hidden">
+				<div id="annuler_edit" class="boutonRond hidden">
 					<a onclick="submitInfos(0)"><i class='fa fa-times'></i> Annuler</a>
 				</div>
 				<input type="submit" id="deconnexion" name="deconnexion" value="Déconnexion" class="boutonRondPlein"/>

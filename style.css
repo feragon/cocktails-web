@@ -383,13 +383,12 @@ main .user_box {
 	margin-bottom: 15px;
 }
 
-#user_infos {
-    border: dashed 2px #E0E0E0;
-}
-
 #user_edit {
     display: flex;
     flex-direction: column;
+    border: dashed 2px #E0E0E0;
+	margin: 30px 0 10px 0;
+	padding: 10px 0;
 }
 
 #user_edit div {
@@ -590,25 +589,51 @@ main input.town {
 
 .button-group {
 	display: flex;
-    justify-content: center;
+	margin: 0;
 }
-
+#register_fields .button-group {
+	margin-left: calc(50% - 125px);
+	max-width: 250px;
+}
 .button-group label {
-    background-color: #009688;
+    background-color: lightgray;
+	color: #666666;
     margin: 0;
-    padding: 15px;
+	width: 50%;
+	cursor: pointer;
 }
 
 .button-group label:first-of-type {
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
+	padding: 4px 0 4px 10px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	text-align: left;
 }
 
 .button-group label:last-of-type {
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
+	padding: 4px 10px 4px 0;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	text-align: right;
 }
 
-input[type="radio"]:checked + label {
-    background-color: #1de9b6;
+input[type="radio"]:first-of-type:checked + label {
+	background: linear-gradient(
+	  -70deg,
+	  lightgray 0px,
+	  lightgray 10px,
+	  #009688 11px,
+	  #009688 20px
+	);
+	color: white;
+}
+input[type="radio"]:last-of-type:checked + label {
+    background: linear-gradient(
+	  -70deg,
+	  #009688 calc(100% - 20px),
+	  #009688 calc(100% - 11px),
+	  lightgray calc(100% - 10px),
+	  lightgray 100%
+	);
+	color: white;
 }

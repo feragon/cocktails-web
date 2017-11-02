@@ -21,11 +21,13 @@
         <div id='register_fields' class="hidden">
             <br/>
 
-            <input type="radio" name="gender" id="homme" value="Homme" disabled/>
-            <label for="homme">Homme</label>
+            <div class="button-group">
+                <input type="radio" class="hidden" name="gender" id="homme" value="Homme" disabled/>
+                <label for="homme">Homme</label>
 
-            <input type="radio" name="gender" id="femme" value="Femme" disabled/>
-            <label for="femme">Femme</label>
+                <input type="radio" class="hidden" name="gender" id="femme" value="Femme" disabled/>
+                <label for="femme">Femme</label>
+            </div>
             <div id="gender-error" class="input-error hidden"></div>
             <br/>
 
@@ -133,13 +135,13 @@
 				<div>
 					<span class="info_label">Genre :</span>
 					<span class="info_txt"><?php echo $user['gender']; ?></span>
-					<div class="info_input hidden">
-                        <input type="radio" name="gender" id="homme" value="Homme" />
+                    <div class="info_input hidden button-group">
+                        <input type="radio" class="hidden" name="gender" id="homme" value="Homme"/>
                         <label for="homme">Homme</label>
 
-                        <input type="radio" name="gender" id="femme" value="Femme" />
+                        <input type="radio" class="hidden" name="gender" id="femme" value="Femme"/>
                         <label for="femme">Femme</label>
-					</div>
+                    </div>
 				</div>
 				<div>
 					<label for="birthdate" class="info_label">Date de naissance :</label>

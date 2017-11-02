@@ -587,3 +587,28 @@ main input.town {
 	text-align: left;
 	font-size: 0.9em;
 }
+
+.button-group {
+	display: flex;
+    justify-content: center;
+}
+
+.button-group label {
+    background-color: #009688;
+    margin: 0;
+    padding: 15px;
+}
+
+.button-group label:first-of-type {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.button-group label:last-of-type {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+input[type="radio"]:checked + label {
+    background-color: #1de9b6;
+}

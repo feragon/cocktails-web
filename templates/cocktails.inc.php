@@ -11,4 +11,7 @@
 <?php
 	afficherCocktails($Recettes, false);
 ?>
+	
+	<p id="noResults" class="hidden"><i class="fa fa-search"></i> Oups, aucun résultat ne correspond à votre recherche...</p>
+	
 </main>

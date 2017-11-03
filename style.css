@@ -589,9 +589,10 @@ main input.town {
 
 .button-group {
 	display: flex;
-	margin: 0;
+	margin: 3px 0 -3px 0;
 }
 #register_fields .button-group {
+	margin: 0;
 	margin-left: calc(50% - 125px);
 	max-width: 250px;
 }
@@ -636,4 +637,8 @@ input[type="radio"]:last-of-type:checked + label {
 	  lightgray 100%
 	);
 	color: white;
+}
+#noResults {
+	text-align: center;
+	color: #888888;
 }

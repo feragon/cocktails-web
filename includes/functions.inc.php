@@ -43,7 +43,7 @@
 		if(floor($temps / 604800))
 			return floor($temps / 604800)." sem.";
 		else if(floor($temps / 86400))
-			return floor($temps / 86400)." jour";
+			return floor($temps / 86400)." jours";
 		else if(floor($temps / 3600))
 			return floor($temps / 3600)." h.";
 		else if(floor($temps / 60))

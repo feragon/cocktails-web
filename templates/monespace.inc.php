@@ -22,10 +22,10 @@
             <br/>
             <div class="button-group">
                 <input type="radio" class="hidden" name="gender" id="homme" value="Homme" disabled/>
-                <label for="homme">Homme</label>
+                <label for="homme"><div class="radio_check_color"></div><p>Homme</p></label>
 
                 <input type="radio" class="hidden" name="gender" id="femme" value="Femme" disabled/>
-                <label for="femme">Femme</label>
+                <label for="femme"><div class="radio_check_color"></div><p>Femme</p></label>
             </div>
             <div id="gender-error" class="input-error hidden"></div>
             <br/>
@@ -136,10 +136,10 @@
 					<span class="info_txt"><?php echo $user['gender']; ?></span>
                     <div class="info_input hidden button-group">
                         <input type="radio" class="hidden" name="gender" id="homme" value="Homme"/>
-                        <label for="homme">Homme</label>
+                        <label for="homme"><div class="radio_check_color"></div><p>Homme</p></label>
 
                         <input type="radio" class="hidden" name="gender" id="femme" value="Femme"/>
-                        <label for="femme">Femme</label>
+                        <label for="femme"><div class="radio_check_color"></div><p>Femme</p></label>
                     </div>
 				</div>
 				<div>

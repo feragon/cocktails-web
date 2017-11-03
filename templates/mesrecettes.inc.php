@@ -11,7 +11,7 @@
 
         if(empty($_SESSION["Favoris"])) {
 ?>
-	<p style="text-align: center;"><i class='fa fa-star-o'></i> Vous n'avez pas encore de favoris...</p>
+	<p id="noResults"><i class='fa fa-star-o'></i> Vous n'avez pas encore de favoris...</p>
 <?php
         }
         else {

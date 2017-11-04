@@ -29,6 +29,10 @@ li {
 	list-style: none;
 }
 
+/* ============== */
+/* === HEADER === */
+/* ============== */
+
 header {
 	width: 100%;
 	height: 160px;
@@ -62,7 +66,7 @@ header h1 a:hover {
 	color: #009688;
 	transition: color 0.15s ease-in-out;
 }
-header div#bubbles_box {
+header #bubbles_box {
 	max-width: 600px;
 	height: 100%;
 	position: absolute;
@@ -71,12 +75,16 @@ header div#bubbles_box {
 	top: 0;
 	opacity: 0.8;
 }
-header div#bubbles_box span {
+header #bubbles_box span {
 	position: absolute;
 	display: block;
 	border-radius: 50%;
 	opacity: 0;
 }
+
+/* ================== */
+/* === NAVIGATION === */
+/* ================== */
 
 nav {
 	width: 100%;
@@ -84,9 +92,6 @@ nav {
 	background: #455a64;
 	color: white;
 	text-align: center;
-}
-nav div.menu {
-	display: none;
 }
 nav ul {
 	display: flex;
@@ -127,41 +132,17 @@ nav ul li:hover a {
 	color: #1de9b6;
 	transition: color 0.2s ease-in-out;
 }
-nav i {
-	margin-right: 8px;
+nav ul li a i {
+	margin-right: 5px;
+	font-family: FontAwesome;
+}
+nav .menu {
+	display: none;
 }
 
-main {
-	display: inline-block;
-	margin: auto;
-	width: calc(100% - 30px);
-	max-width: 1100px;
-	color: #37474f;
-	flex: 1;
-}
-.cocktail_desc {
-	position: relative;
-	text-align: justify;
-}
-.cocktail_desc ul {
-	padding-left: 5px;
-}
-.cocktail_desc ul li {
-	margin: 10px 0;
-}
-.cocktail_desc i {
-	margin: 0 8px 0 15px;
-}
-.cocktail_desc p {
-	margin-left: 15px;
-}
-.cocktail_desc img {
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	max-width: 100%;
-	height: 250px;
-}
+/* =============================== */
+/* === STYLISATION DES BOUTONS === */
+/* =============================== */
 
 .boutonRond, .boutonRondPlein {
 	height: 40px;
@@ -233,6 +214,42 @@ main {
 	transition: color 0.1s ease-in-out;
 }
 
+/* ====================== */
+/* === MILIEU DE PAGE === */
+/* ====================== */
+
+main {
+	display: inline-block;
+	margin: auto;
+	width: calc(100% - 30px);
+	max-width: 1100px;
+	color: #37474f;
+	flex: 1;
+}
+.cocktail_desc {
+	position: relative;
+	text-align: justify;
+}
+.cocktail_desc ul {
+	padding-left: 5px;
+}
+.cocktail_desc ul li {
+	margin: 10px 0;
+}
+.cocktail_desc i {
+	margin: 0 8px 0 15px;
+}
+.cocktail_desc p {
+	margin-left: 15px;
+}
+.cocktail_desc img {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	max-width: 100%;
+	height: 250px;
+}
+
 main p {
 	width: 100%;
 	text-align: justify;
@@ -272,13 +289,16 @@ main ul.liste_ingr li:hover {
 main ul.liste_ingr li a {
 	display: block;
 	padding: 20px;
+	padding-left: 15px;
 	width: calc(100% - 40px);
     overflow: hidden!important;
 	white-space: nowrap;
     text-overflow: ellipsis;
+	color: #37474f;
+	transition: color 0.2s ease-in-out;
 }
-main ul.liste_ingr li * {
-	margin-right: 10px;
+main ul.liste_ingr li a i {
+	margin: 0 5px 0 0;
 	color: #37474f;
 	transition: color 0.2s ease-in-out;
 }
@@ -298,7 +318,7 @@ main ul.liste_ingr .li_cocktail:hover {
 	padding: 5px 7px;
 	border-radius: 5px;
 	color: #37474f;
-	margin-bottom: 5px;
+	margin-bottom: 8px;
 }
 .ingrds_path_selected {
 	background: #37474f;
@@ -446,11 +466,15 @@ main .user_box {
 	border-color: #1de9b6;
 }
 
+/* ============== */
+/* === FOOTER === */
+/* ============== */
+
 footer {
 	position: relative;
 	width: 80%;
 	height: 100px;
-	background: #009688;
+	background: #37474f;
 	text-align: justify;
 	margin-top: 20px;
 	padding: 0 10%;
@@ -476,6 +500,11 @@ footer p {
 footer em {
 	color: #1de9b6;
 }
+
+/* ============================ */
+/* === INPUTS DU FORMULAIRE === */
+/* ============================ */
+
 input {
 	width: 300px;
 	height: 40px;
@@ -511,6 +540,10 @@ input[type="submit"] {
 	width: 140px;
 	margin: 0;
 }
+input[type="submit"]:focus {
+	color: #009688;
+	transition: color 0.2s ease-in-out, border 0.2s ease-in-out;
+}
 input[type="radio"] {
 	display: inline-block;
 	width: 20px;
@@ -525,30 +558,6 @@ main input.postal {
 main input.town {
 	width: calc(95% - 100px);
 	max-width: 190px;
-}
-
-@keyframes arrivee_fondue {
-	0% {
-		opacity: 0;
-		transform: translateY(50px);
-	}
-	50% {
-		opacity: 1;
-	}
-	100% {
-		opacity: 1;
-		transform: translateY(0px);
-	}
-}
-@keyframes bubbles {
-	0% {
-		opacity: 0.5;
-		transform: translateY(200px);
-	}
-	100% {
-		opacity: 0.1;
-		transform: translateY(-35px);
-	}
 }
 
 .hidden {
@@ -597,9 +606,9 @@ main input.town {
 	max-width: 250px;
 }
 .button-group label {
-    background: #E8E8E8;
+	background: #E8E8E8;
 	color: #37474f;
-    margin: 0;
+	margin: 0;
 	width: 50%;
 	height: 28px;
 	cursor: pointer;
@@ -654,4 +663,73 @@ input[type="radio"]:last-of-type:checked + label .radio_check_color {
 #noResults {
 	text-align: center;
 	color: #888888;
+}
+
+/* ================== */
+/* === ANIMATIONS === */
+/* ================== */
+
+@keyframes arrivee_fondue {
+	0% {
+		opacity: 0;
+		transform: translateY(50px);
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0px);
+	}
+}
+@keyframes bubbles {
+	0% {
+		opacity: 0.5;
+		transform: translateY(200px);
+	}
+	100% {
+		opacity: 0.1;
+		transform: translateY(-35px);
+	}
+}
+
+/* ================== */
+/* === EASTER EGG === */
+/* ================== */
+
+body.drunk {
+	animation: drunk 5s ease-in-out infinite;
+}
+footer h2 {
+	cursor: help;
+}
+footer h2:active {
+	transform: scale(1.1);
+	user-select: none;
+}
+@keyframes drunk {
+	0% {
+		filter: blur(1px) sepia(80%);
+		transform: scale(1);
+	}
+	20% {
+		filter: blur(3px) sepia(100%);
+		transform: scale(0.992);
+	}
+	60% {
+		filter: blur(2px) sepia(90%);
+		transform: scale(0.995);
+	}
+	70% {
+		filter: blur(6px) sepia(100%);
+		transform: scale(0.99);
+	}
+	80% {
+		filter: blur(2px) sepia(90%);
+		transform: scale(0.995);
+	}
+	100% {
+		filter: blur(1px) sepia(80%);
+		transform: scale(1);
+	}
 }

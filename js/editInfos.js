@@ -15,7 +15,7 @@ function editInfos() {
             $('#femme').attr("checked", true);
             $('#homme').attr("checked", false);
 		}
-		else {
+		if(i != 2) {
             inputsList[i].getElementsByTagName("input")[0].value = txtsList[i + 1].innerText; //TODO: pour le genre il se passe quoi ?
         }
 	}

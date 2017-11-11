@@ -1,3 +1,6 @@
+/**
+ * Change l'affichage des informations de l'utilisateur en un formulaire pour les éditer
+ */
 function editInfos() {
 	
 	var txtsList = document.getElementsByClassName("info_txt");
@@ -26,6 +29,10 @@ function editInfos() {
 	document.getElementById("annuler_edit").classList.remove("hidden");
 }
 
+/**
+ * Enlève le formulaire et le soumet s'il faut
+ * @param soumettre Vrai si le formulaire doit être traité
+ */
 function submitInfos(soumettre) {
 	
 	var txtsList = document.getElementsByClassName("info_txt");

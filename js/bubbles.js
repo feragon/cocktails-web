@@ -1,3 +1,6 @@
+/**
+ * Ajoute les bulles à la page HTML
+ */
 function bubbles() {
 	
 	for(var i = 0; i < 30; i++) {

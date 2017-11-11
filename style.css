@@ -269,10 +269,12 @@ main hr {
 	margin-bottom: 30px;
 }
 main ul.liste_ingr {
-	display: inline-block;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
 	max-width: 820px;
+    margin: auto;
 	text-align: left;
-	margin: 0;
 }
 main ul.liste_ingr li {
 	width: 250px;

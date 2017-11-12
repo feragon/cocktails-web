@@ -1,23 +1,29 @@
 <?php
-session_start();
+require_once(__DIR__ . '/../includes/functions.inc.php');
+require_once(__DIR__ . '/../includes/user_functions.php');
+require_once(__DIR__ . '/../includes/Donnees.inc.php');
 
-require(__DIR__ . '/../includes/user_functions.php');
+init();
 $db = getDB();
+$success = true;
 
-if(isset($_GET['remove'])) {
-    unset($_SESSION['Favoris'][$_GET['remove']]);
-    echo json_encode(['success' => true]);
+if(isset($_POST['remove'])) {
+    unset($_SESSION['Favoris'][$_POST['remove']]);
 }
-else if(isset($_GET['add'])) {
-    $_SESSION['Favoris'][$_GET['add']] = time();
-    echo json_encode(['success' => true]);
+else if(isset($_POST['add']) && array_key_exists($_POST['add'], $Recettes)) {
+    $_SESSION['Favoris'][$_POST['add']] = time();
 }
-else if(isset($_GET['removeAll'])) {
+else if(isset($_POST['removeAll'])) {
 	$_SESSION['Favoris'] = array();
 }
 else {
-    echo json_encode(['success' => false]);
+    $success = false;
 }
 
-if(isset($_SESSION['login']))
+if(isset($_SESSION['login'])) {
 	sessionToDB();
+}
+
+if(isset($_POST['ajax'])) {
+	echo json_encode(['success' => true]);
+}

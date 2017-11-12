@@ -1,14 +1,20 @@
 <?php
+    $sessionStarted = false;
     /**
      * Initialise les variables nécessaires pour faire fonctionner le site
      */
     function init() {
-		session_start();
+        global $sessionStarted;
+
+        if(!$sessionStarted) {
+			session_start();
+			$sessionStarted = true;
+		}
 
         if(!array_key_exists('Favoris', $_SESSION)) {
             $_SESSION['Favoris'] = array();
         }
-		if(isset($_POST['deconnexion'])) {
+		if(isset($_POST['deconnexion'])) { //TODO: mettre ça dans user_functions.php
 			$_SESSION = array();
 			$_SESSION['Favoris'] = array();
 			$_POST = array();
@@ -79,7 +85,7 @@
 	function afficherCocktails($tab, $isFavoris) {
 		global $Recettes;
 		$i = 0;
-		
+
 		foreach($tab as $key => $value) {
 			$recette = ($isFavoris ? $Recettes[$key] : $value);
 ?>

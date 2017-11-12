@@ -1,13 +1,12 @@
+<?php
+require(__DIR__ . '/../ajax/favori.php');
+?>
 <main>
     <h1>Mes recettes préférées</h1>
 	<hr/>
 	
 <?php
         global $Recettes;
-
-        if(!isset($_SESSION['Favoris'])) {
-            $_SESSION['Favoris'] = array();
-        }
 
         if(empty($_SESSION["Favoris"])) {
 ?>
@@ -16,9 +15,10 @@
         }
         else {
 ?>
-	<div class="boutonRond">
-		<a onclick="cleanFavori()"><i class='fa fa-trash'></i> Supprimer toutes mes recettes</a>
-	</div>
+    <form method="POST" onsubmit="event.preventDefault();">
+        <input type="hidden" name="removeAll"/>
+        <button type="submit" class="boutonRond" onclick="cleanFavori()"><i class='fa fa-trash'></i> Supprimer toutes mes recettes</button>
+    </form>
 	<br/>
 	
 <?php

@@ -15,10 +15,9 @@ function favorisResponse(json) {
  * @param i Identifiant du cocktail
  */
 function removeFavori(i) {
-	$.ajax("ajax/favori.php", {
-		data: {
-			remove: i
-		}
+	$.post("ajax/favori.php", {
+        remove: i,
+        ajax: true
 	})
 	.done(favorisResponse);
 }
@@ -28,10 +27,9 @@ function removeFavori(i) {
  * @param i Identifiant du favori
  */
 function addFavori(i) {
-	$.ajax("ajax/favori.php", {
-		data: {
-			add: i
-		}
+	$.post("ajax/favori.php", {
+        add: i,
+        ajax: true
 	})
 	.done(favorisResponse);
 }
@@ -40,10 +38,9 @@ function addFavori(i) {
  * Supprime tous les favoris
  */
 function cleanFavori() {
-	$.ajax("ajax/favori.php", {
-		data: {
-			removeAll: null
-		}
+	$.post("ajax/favori.php", {
+        removeAll: null,
+        ajax: true
 	})
 	.done(function () {
         window.location.reload();

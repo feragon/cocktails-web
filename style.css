@@ -156,6 +156,7 @@ nav .menu {
 	display: inline-block;
 	overflow: hidden;
 	vertical-align: middle;
+	background-color: transparent;
 }
 .boutonRondPlein {
 	color: white;
@@ -171,16 +172,13 @@ nav .menu {
 	border-color: #009688;
 	transition: background 0.2s ease-in-out, border 0.2s ease-in-out;
 }
-.boutonRond a, .boutonRondPlein a {
-	display: inline-block;
-	width: 100%;
-	height: calc(100% - 20px);
-	margin: 0 -15px;
-	padding: 10px 15px;
-	vertical-align: middle;
+
+#formFavori {
+    display: inline-block;
 }
-.boutonRond a i, .boutonRondPlein a i {
-	margin: 0 5px 0 0;
+
+.boutonRond span, .boutonRondPlein span {
+    margin: 0 5px 0 0;
 }
 
 #ajouter, #retirer {

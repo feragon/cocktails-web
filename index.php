@@ -1,7 +1,7 @@
 <?php
 	require("includes/Donnees.inc.php");
-	require("includes/functions.inc.php");
-	require ('includes/user_functions.php');
+	require_once("includes/functions.inc.php");
+	require_once('includes/user_functions.php');
 
 	init();
 

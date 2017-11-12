@@ -1,17 +1,36 @@
+<?php
+require(__DIR__ . '/../ajax/favori.php');
+$retirer = array_key_exists($_GET['K'], $_SESSION['Favoris']);
+//TODO: si la recette n'existe pas ?
+?>
 <main>
     <div class="cocktail_desc">
         <h1><?php echo $Recettes[$_GET['K']]['titre'] ?></h1>
 
         <a class="arrow" href="?R=Cocktail&K=<?php echo ($_GET['K'] > 0) ? $_GET['K']-1 : $_GET['K']; ?>"><i class='fa fa-arrow-circle-o-left'></i></a>
         <a class="arrow" href="?R=Cocktail&K=<?php echo ($_GET['K'] < count($Recettes)-1) ? $_GET['K']+1 : $_GET['K']; ?>"><i class='fa fa-arrow-circle-o-right'></i></a>
-<?php $retirer = array_key_exists($_GET['K'], $_SESSION['Favoris']); ?>
 
-        <div id="retirer" class="boutonRondPlein <?php echo $retirer ? '' : 'hidden'; ?>">
-            <a onclick="removeFavori(<?php echo $_GET['K']; ?>)"><i class='fa fa-star'></i> Retirer de mes recettes</a>
-        </div>
-        <div id="ajouter" class="boutonRond <?php echo $retirer ? 'hidden' : ''; ?>">
-            <a onclick="addFavori(<?php echo $_GET['K']; ?>)"><i class='fa fa-star'></i> Ajouter à mes recettes</a>
-        </div>
+        <form id="formFavori" method="POST" onsubmit="event.preventDefault();">
+            <?php
+            if($retirer) {
+            ?>
+                <input type="hidden" name="remove" value="<?=$_GET['K']?>">
+            <?php
+            }
+            else {
+            ?>
+                <input type="hidden" name="add" value="<?=$_GET['K']?>">
+            <?php
+            }
+            ?>
+            <input type="hidden">
+            <button id="retirer" class="boutonRondPlein <?php echo $retirer ? '' : 'hidden'; ?>" type="submit" onclick="removeFavori(<?=$_GET['K']; ?>)">
+                <span class='fa fa-star'></span> Retirer de mes recettes
+            </button>
+            <button id="ajouter" class="boutonRond <?php echo $retirer ? 'hidden' : ''; ?>" type="submit" onclick="addFavori(<?=$_GET['K']; ?>)">
+                <span class='fa fa-star'></span> Ajouter à mes recettes
+            </button>
+        </form>
 		
 <?php 
 			$url = getImageURL($Recettes[$_GET['K']]["titre"], false);

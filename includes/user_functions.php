@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Retourne l'instance de PDO utilisée pour gérer la base de données
+ * @return PDO instance
+ */
 function getDB() {
 	global $db;
 
@@ -10,6 +14,13 @@ function getDB() {
 	return $db;
 }
 
+/**
+ * Vérifie si le mot de passe correspond
+ * @param $login string Login de l'utilisateur
+ * @param $password string Mot de passe à vérifier
+ * @return bool Vrai si le mot de passe correspond
+ * @throws Exception Si l'utilisateur n'existe pas
+ */
 function verifyPassword($login, $password) {
 	$db = getDB();
 	$query = $db->prepare("SELECT password FROM users WHERE login = ?");
@@ -154,6 +165,22 @@ function verifyPostal($postal) {
     return '';
 }
 
+/**
+ * Crée un nouvel utilsateur
+ * @param $login string Login
+ * @param $password string Mot de passe
+ * @param $name string Prénom
+ * @param $lastname string Nom
+ * @param $gender string Genre
+ * @param $email string Adresse e-mail
+ * @param $birthdate string Date de naissance
+ * @param $address string Adresse postale
+ * @param $postal int Code postal
+ * @param $town string Ville
+ * @param $phone int Numéro de téléphone
+ * @param bool $update Vrai si un met à jour un utilisateur existant
+ * @return array Tableau contenant les erreurs (ou que des '' s'il y en a pas)
+ */
 function register($login, $password, $name, $lastname, $gender, $email, $birthdate, $address, $postal, $town, $phone, $update = false) {
     
 	if(!$update) {
@@ -230,6 +257,9 @@ function register($login, $password, $name, $lastname, $gender, $email, $birthda
 	return $error;
 }
 
+/**
+ * Stocke les favoris dans la base de données
+ */
 function sessionToDB() {
 	
 	$text = "";
@@ -245,6 +275,9 @@ function sessionToDB() {
 	$query->execute(array($text, $_SESSION['login']));
 }
 
+/**
+ * Stocke les favoris dans la session
+ */
 function DBToSession() {
 	
 	$db = getDB();

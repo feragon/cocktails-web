@@ -1,7 +1,10 @@
 var isLogin = true;
 
+/**
+ * Bascule entre le mode Connexion et Enregistrement
+ * @param loginMode Vrai si on doit afficher le mode Connexion
+ */
 function toggleLoginMode(loginMode) {
-	
 	var listOfInputs = document.getElementById('register_fields').getElementsByTagName('input');
 
 	isLogin = loginMode;
@@ -30,6 +33,9 @@ function toggleLoginMode(loginMode) {
 	}
 }
 
+/**
+ * Supprime toutes les erreurs affichés sur le formulaire
+ */
 function clearFormErrors() {
     var errors = document.getElementsByClassName("input-error");
     for(var i = 0; i < errors.length; i++) {
@@ -39,6 +45,11 @@ function clearFormErrors() {
     }
 }
 
+/**
+ * Traite les erreurs renvoyées par le serveur
+ * @param data Erreurs du serveur
+ * @returns {boolean} Vrai si une erreur est survenue
+ */
 function showErrors(data) {
     var error = false;
 
@@ -64,6 +75,9 @@ function showErrors(data) {
     return error;
 }
 
+/**
+ * Soumet le formulaire de connexion ou d'enregistrement au serveur
+ */
 function submitLoginForm() {
     if(isLogin) {
         $.ajax("ajax/login.php", {

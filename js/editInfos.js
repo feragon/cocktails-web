@@ -39,6 +39,7 @@ function submitInfos(soumettre) {
 	var inputsList = document.getElementsByClassName("info_input");
 	
 	if(soumettre) {
+		
 		$.post("ajax/register.php", {
 				'login': txtsList[0].innerText,
 				'gender': $('input[name="gender"]:checked').val(),
@@ -55,6 +56,10 @@ function submitInfos(soumettre) {
 			.done(function (json) {
 				var data = JSON.parse(json);
 				if(!showErrors(data)) {
+					
+					document.getElementById("valider_edit").classList.add("hidden");
+					document.getElementById("annuler_edit").classList.add("hidden");
+					document.getElementById("spinner").classList.remove("hidden");
 					window.location = window.location.href;
 				}
 			});

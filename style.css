@@ -145,20 +145,24 @@ nav .menu {
 /* =============================== */
 
 .boutonRond, .boutonRondPlein {
-	height: 40px;
+	display: inline-block;
+	min-width: 140px;
+	height: 44px;
 	color: #37474f;
-	border: solid 2px #37474f;
-	border-radius: 25px;
+	font-size: 16px;
 	padding: 0 15px;
 	margin: 10px 0;
-	cursor: pointer;
-	transition: color 0.2s ease-in-out, border 0.2s ease-in-out, background 0.2s ease-in-out;
-	display: inline-block;
-	overflow: hidden;
-	vertical-align: middle;
+	border: solid 2px #37474f;
+	border-radius: 25px;
 	background-color: transparent;
+	vertical-align: middle;
+	cursor: pointer;
+	overflow: hidden;
+    outline: 0;
+    box-shadow: none;
+	transition: color 0.2s ease-in-out, border 0.2s ease-in-out, background 0.2s ease-in-out;
 }
-.boutonRondPlein {
+.boutonRond.plein {
 	color: white;
 	background: #37474f;
 }
@@ -167,7 +171,8 @@ nav .menu {
 	border-color: #009688;
 	transition: color 0.2s ease-in-out, border 0.2s ease-in-out;
 }
-.boutonRondPlein:hover {
+.boutonRond.plein:hover {
+	color: white;
 	background: #009688;
 	border-color: #009688;
 	transition: background 0.2s ease-in-out, border 0.2s ease-in-out;
@@ -177,7 +182,7 @@ nav .menu {
     display: inline-block;
 }
 
-.boutonRond span, .boutonRondPlein span {
+.boutonRond span {
     margin: 0 5px 0 0;
 }
 
@@ -312,6 +317,10 @@ main ul.liste_ingr .li_cocktail {
 main ul.liste_ingr .li_cocktail:hover {
 	background: #FFAC7C;
 }
+main ul.liste_ingr .flex-line-breaker {
+	width: 100%;
+	height: 0;
+}
 .ingrds_path {
 	display: inline-block;
 	background: #1de9b6;
@@ -409,6 +418,11 @@ main .user_box {
     border: dashed 2px #E0E0E0;
 	margin: 30px 0 10px 0;
 	padding: 10px 0;
+	animation: arrivee_fondue 0.5s ease-out 0.15s;
+	-webkit-animation-fill-mode: forwards;
+	-moz-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+	opacity: 0;
 }
 
 #user_edit div {
@@ -558,6 +572,9 @@ main input.postal {
 main input.town {
 	width: calc(95% - 100px);
 	max-width: 190px;
+}
+.inline_form {
+	display: inline-block;
 }
 
 .hidden {

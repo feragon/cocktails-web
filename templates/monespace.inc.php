@@ -71,14 +71,16 @@
         </div>
 
         <input class="boutonRond" type="submit" value="Envoyer"/>
+		
+		<button id="register_button" class="boutonRond plein" type="button" onclick="toggleLoginMode(false)">
+			S'inscrire
+		</button>
+		<button id="login_button" class="boutonRond plein hidden" type="button" onclick="toggleLoginMode(true)">
+			Se connecter
+		</button>
 
-        <div id="register_button" class="boutonRondPlein" style="width: 106px;">
-            <a onclick="toggleLoginMode(false)">S'inscrire</a>
-        </div>
-        <div id="login_button" class="boutonRondPlein hidden" style="width: 106px;">
-            <a onclick="toggleLoginMode(true)">Se connecter</a>
-        </div>
     </form>
+	
 
 <?php 
 	}
@@ -112,91 +114,96 @@
 		
 		<div class="user_box">
 			<h2>Mes informations personelles</h2>
-			<form id="user_edit">
-				<div>
-					<span class="info_label">Login :</span>
-					<span class="info_txt info_colored"><?php echo $user['login']; ?></span>
-				</div>
-				<div>
-					<label for="lastname" class="info_label">Nom :</label>
-					<span class="info_txt"><?php echo $user['lastname']; ?></span>
-					<div class="info_input hidden">
-						<input type="text" name="lastname" id="lastname" />
-					</div>
-				</div>
-				<div>
-					<label for="name" class="info_label">Prénom :</label>
-					<span class="info_txt"><?php echo $user['name']; ?></span>
-					<div class="info_input hidden">
-						<input type="text" name="name" id="name" />
-					</div>
-				</div>
-				<div>
-					<span class="info_label">Genre :</span>
-					<span class="info_txt"><?php echo $user['gender']; ?></span>
-                    <div class="info_input hidden button-group">
-                        <input type="radio" class="hidden" name="gender" id="homme" value="Homme"/>
-                        <label for="homme"><div class="radio_check_color"></div><p>Homme</p></label>
-
-                        <input type="radio" class="hidden" name="gender" id="femme" value="Femme"/>
-                        <label for="femme"><div class="radio_check_color"></div><p>Femme</p></label>
-                    </div>
-				</div>
-				<div>
-					<label for="birthdate" class="info_label">Date de naissance :</label>
-					<span class="info_txt"><?php echo $user['birthdate']; ?></span>
-					<div class="info_input hidden">
-						<input type="text" name="birthdate" id="birthdate" placeholder="jj/mm/aaaa"/>
-					</div>
-				</div>
-				<div>
-					<label for="email" class="info_label">Email :</label>
-					<span class="info_txt"><?php echo $user['email']; ?></span>
-					<div class="info_input hidden">
-						<input type="email" name="email" id="email" />
-					</div>
-				</div>
-				<div>
-					<label for="address" class="info_label">Adresse :</label>
-					<span class="info_txt"><?php echo $user['address']; ?></span>
-					<div class="info_input hidden">
-						<input type="text" name="address" id="address" />
-					</div>
-				</div>
-				<div>
-					<label for="postal" class="info_label">Code postal :</label>
-					<span class="info_txt"><?php if(!empty($user['postal'])) echo str_pad($user['postal'], 5, "0", STR_PAD_LEFT); ?></span>
-					<div class="info_input hidden">
-						<input type="text" name="postal" id="postal" />
-					</div>
-				</div>
-				<div>
-					<label for="town" class="info_label">Ville :</label>
-					<span class="info_txt"><?php echo $user['town']; ?></span>
-					<div class="info_input hidden">
-						<input type="text" name="town" id="town" />
-					</div>
-				</div>
-				<div>
-					<label for="phone" class="info_label">Téléphone :</label>
-					<span class="info_txt"><?php if(!empty($user['phone'])) echo str_pad($user['phone'], 10, "0", STR_PAD_LEFT); ?></span>
-					<div class="info_input hidden">
-						<input type="text" name="phone" id="phone" />
-					</div>
-				</div>
-			</form>
-			
 			<form method="POST" action=".?R=MonEspace">
-				<div id="editer" class="boutonRond ">
-					<a onclick="editInfos()"><i class='fa fa-pencil'></i> Editer mes infos</a>
+				<div id="user_edit">
+					<div>
+						<span class="info_label">Login :</span>
+						<span class="info_txt info_colored"><?php echo $user['login']; ?></span>
+					</div>
+					<div>
+						<label for="lastname" class="info_label">Nom :</label>
+						<span class="info_txt"><?php echo $user['lastname']; ?></span>
+						<div class="info_input hidden">
+							<input type="text" name="lastname" id="lastname" />
+						</div>
+					</div>
+					<div>
+						<label for="name" class="info_label">Prénom :</label>
+						<span class="info_txt"><?php echo $user['name']; ?></span>
+						<div class="info_input hidden">
+							<input type="text" name="name" id="name" />
+						</div>
+					</div>
+					<div>
+						<span class="info_label">Genre :</span>
+						<span class="info_txt"><?php echo $user['gender']; ?></span>
+						<div class="info_input hidden button-group">
+							<input type="radio" class="hidden" name="gender" id="homme" value="Homme"/>
+							<label for="homme"><div class="radio_check_color"></div><p>Homme</p></label>
+
+							<input type="radio" class="hidden" name="gender" id="femme" value="Femme"/>
+							<label for="femme"><div class="radio_check_color"></div><p>Femme</p></label>
+						</div>
+					</div>
+					<div>
+						<label for="birthdate" class="info_label">Date de naissance :</label>
+						<span class="info_txt"><?php echo $user['birthdate']; ?></span>
+						<div class="info_input hidden">
+							<input type="text" name="birthdate" id="birthdate" placeholder="jj/mm/aaaa"/>
+						</div>
+					</div>
+					<div>
+						<label for="email" class="info_label">Email :</label>
+						<span class="info_txt"><?php echo $user['email']; ?></span>
+						<div class="info_input hidden">
+							<input type="email" name="email" id="email" />
+						</div>
+					</div>
+					<div>
+						<label for="address" class="info_label">Adresse :</label>
+						<span class="info_txt"><?php echo $user['address']; ?></span>
+						<div class="info_input hidden">
+							<input type="text" name="address" id="address" />
+						</div>
+					</div>
+					<div>
+						<label for="postal" class="info_label">Code postal :</label>
+						<span class="info_txt"><?php if(!empty($user['postal'])) echo str_pad($user['postal'], 5, "0", STR_PAD_LEFT); ?></span>
+						<div class="info_input hidden">
+							<input type="text" name="postal" id="postal" />
+						</div>
+					</div>
+					<div>
+						<label for="town" class="info_label">Ville :</label>
+						<span class="info_txt"><?php echo $user['town']; ?></span>
+						<div class="info_input hidden">
+							<input type="text" name="town" id="town" />
+						</div>
+					</div>
+					<div>
+						<label for="phone" class="info_label">Téléphone :</label>
+						<span class="info_txt"><?php if(!empty($user['phone'])) echo str_pad($user['phone'], 10, "0", STR_PAD_LEFT); ?></span>
+						<div class="info_input hidden">
+							<input type="text" name="phone" id="phone" />
+						</div>
+					</div>
 				</div>
-				<div id="valider_edit" class="boutonRondPlein hidden">
-					<a onclick="submitInfos(1)"><i class='fa fa-check'></i> Valider</a>
-				</div>
-				<div id="annuler_edit" class="boutonRond hidden">
-					<a onclick="submitInfos(0)"><i class='fa fa-times'></i> Annuler</a>
-				</div>
-				<input type="submit" id="deconnexion" name="deconnexion" value="Déconnexion" class="boutonRondPlein"/>
+				
+				<button id="editer" class="boutonRond" type="button" onclick="editInfos()">
+					<span class='fa fa-pencil'></span> Editer mes infos
+				</button>
+				<button id="valider_edit" class="boutonRond plein hidden" type="button" onclick="submitInfos(1)">
+					<span class='fa fa-check'></span> Valider
+				</button>
+				<button id="annuler_edit" class="boutonRond hidden" type="button" onclick="submitInfos(0)">
+					<span class='fa fa-times'></span> Annuler
+				</button>
+			
+				<span id="spinner" class="fa fa-spinner fa-spin fa-2x hidden"></span>
+			
+				<button id="deconnexion" class="boutonRond plein" type="submit" name="deconnexion">
+					<span class='fa fa-sign-out'></span> Déconnexion
+				</button>
 			</form>
 		</div>
 		

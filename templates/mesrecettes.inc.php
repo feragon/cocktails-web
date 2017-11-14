@@ -17,7 +17,9 @@ require(__DIR__ . '/../ajax/favori.php');
 ?>
     <form method="POST" onsubmit="event.preventDefault();">
         <input type="hidden" name="removeAll"/>
-        <button type="submit" class="boutonRond" onclick="cleanFavori()"><i class='fa fa-trash'></i> Supprimer toutes mes recettes</button>
+        <button type="submit" class="boutonRond" onclick="cleanFavori()">
+			<span class='fa fa-trash'></span> Supprimer toutes mes recettes
+		</button>
     </form>
 	<br/>
 	

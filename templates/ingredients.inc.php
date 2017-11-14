@@ -17,11 +17,16 @@
 	array_push($path, $step);
 	
 	for($i = count($path)-1; $i > 0; $i--) {
-		echo "<a class='ingrds_path' href=\"?R=Ingredients&C=".$path[$i]."\">".$path[$i]."</a> <i class='fa fa-arrow-right'></i> ";
+		echo "<a class='ingrds_path' href=\"?R=Ingredients&C=".$path[$i]."\">".$path[$i]."</a>
+	<i class='fa fa-arrow-right'></i>
+	";
 	}
-	echo "<a class='ingrds_path ingrds_path_selected' href=\"?R=Ingredients&C=".$path[0]."\">".$path[0]."</a>";
+	echo "<a class='ingrds_path ingrds_path_selected' href=\"?R=Ingredients&C=".$path[0]."\">".$path[0]."</a>
+	";
 	
-?><br/><br/>
+?>
+
+	<br/><br/>
 
     <ul class="liste_ingr"><?php
 			
@@ -36,7 +41,8 @@
 		<li><a href=\"?R=Ingredients&C=".str_replace(" ", "%20", $value)."\"><i class='fa fa-tint fa-fw'></i> ".$value."</a></li>";
 			}
 			
-			echo "<br/><br/>";
+			echo "
+			<li class='flex-line-breaker'></li>";
 		}
 		
 		foreach($Recettes as $key => $recette) {

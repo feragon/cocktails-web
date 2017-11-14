@@ -1,4 +1,5 @@
 
+
 <footer>
 	<h2><a onclick="drunk()">Cocktails</a></h2><p>&copy; 2017 - <em>ROMEO Florian</em> &amp; <em>WEBERT Chris</em></p>
 </footer>

@@ -1,5 +1,3 @@
-var isLogin = true;
-
 /**
  * Bascule entre le mode Connexion et Enregistrement
  * @param loginMode Vrai si on doit afficher le mode Connexion
@@ -80,11 +78,9 @@ function showErrors(data) {
  */
 function submitLoginForm() {
     if(isLogin) {
-        $.ajax("ajax/login.php", {
-            data: {
-                'login': document.getElementById("login").value,
-                'password': document.getElementById("password").value
-            }
+        $.post("ajax/login.php", {
+            'login': document.getElementById("login").value,
+            'password': document.getElementById("password").value
         })
         .done(function (json) {
             var data = JSON.parse(json);

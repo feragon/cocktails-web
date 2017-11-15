@@ -1,6 +1,12 @@
 <?php
-require __DIR__ . '/../includes/functions.inc.php';
-require __DIR__ . '/../includes/user_functions.php';
+require_once(__DIR__ . '/../includes/functions.inc.php');
+require_once(__DIR__ . '/../includes/user_functions.php');
+
+$included = !(__FILE__ == get_included_files()[0]);
+
+if(!$included) {
+	init();
+}
 
 /**
  * Initialise une valeur à une chaine vide dans le tableau
@@ -41,4 +47,6 @@ $error = register(
     $update
 );
 
-echo json_encode($error);
+if(!$included) {
+	echo json_encode($error);
+}

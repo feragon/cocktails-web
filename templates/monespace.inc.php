@@ -1,8 +1,36 @@
 <main>
-
 <?php
 
 	if(!isset($_SESSION['login'])) {
+	    global $error;
+	    $error = array();
+		/**
+		 * Ajoute un champ contenant l'erreur
+         * @param $nomChamp string ID HTML du champ
+         * @param $erreurs array Tableau contenant les erreurs
+		 */
+	    function addErrorField($nomChamp, $erreurs) {
+	        echo '<div id="login-', $nomChamp, '" class="input-error';
+
+	        if(array_key_exists($nomChamp, $erreurs)) {
+	            echo '">', $erreurs[$nomChamp];
+            }
+            else {
+	            echo ' hidden">';
+            }
+
+	        echo '</div>';
+        }
+
+		$isRegister = isset($_GET['register']);
+		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if($isRegister) {
+                require(__DIR__ . '/../ajax/register.php');
+            }
+            else {
+				require(__DIR__ . '/../ajax/login.php');
+            }
+        }
 ?>
     <h1 id='connexion_title'>Connexion</h1>
 	<hr/>
@@ -10,15 +38,19 @@
     <form method="post" onsubmit="event.preventDefault(); submitLoginForm();">
         <label for="login" class="sr-only">Login</label>
         <input type="text" name="login" id="login" placeholder="Login" required/>
-        <div id="login-error" class="input-error hidden"></div>
+        <?php
+        addErrorField('login', $error);
+        ?>
         <br/>
 
         <label for="password" class="sr-only">Mot de passe</label>
         <input type="password" name="password" id="password" placeholder="Mot de passe" required/>
-        <div id="password-error" class="input-error hidden"></div>
+		<?php
+		addErrorField('password', $error);
+		?>
         <br/>
 
-        <div id='register_fields' class="hidden">
+        <div id='register_fields' <?=($isRegister) ? '' : 'class="hidden"'?>>
             <br/>
             <div class="button-group">
                 <input type="radio" class="hidden" name="gender" id="homme" value="Homme" disabled/>
@@ -27,61 +59,82 @@
                 <input type="radio" class="hidden" name="gender" id="femme" value="Femme" disabled/>
                 <label for="femme"><div class="radio_check_color"></div><p>Femme</p></label>
             </div>
-            <div id="gender-error" class="input-error hidden"></div>
+			<?php
+			addErrorField('gender', $error);
+			?>
             <br/>
 
             <label for="name" class="sr-only">Prénom</label>
             <input type="text" name="name" id="name" placeholder="Prénom" disabled/>
-            <div id="name-error" class="input-error hidden"></div>
+			<?php
+			addErrorField('name', $error);
+			?>
             <br/>
 
             <label for="lastname" class="sr-only">Nom</label>
             <input type="text" name="lastname" id="lastname" placeholder="Nom" disabled/>
-            <div id="lastname-error" class="input-error hidden"></div>
+			<?php
+			addErrorField('lastname', $error);
+			?>
             <br/>
 
             <label for="birthdate" class="sr-only">Date de naissance</label>
             <input type="text" name="birthdate" id="birthdate" placeholder="Date de naissance (jj/mm/aaaa)" disabled/>
-            <div id="birthdate-error" class="input-error hidden"></div>
+			<?php
+			addErrorField('birthdate', $error);
+			?>
             <br/>
 
             <label for="email" class="sr-only">Email</label>
             <input type="email" name="email" id="email" placeholder="Email" disabled/>
-            <div id="email-error" class="input-error hidden"></div>
+			<?php
+			addErrorField('email', $error);
+			?>
             <br/>
 
             <label for="address" class="sr-only">Adresse</label>
             <input type="text" name="address" id="address" placeholder="Adresse" disabled/>
-            <div id="address-error" class="input-error hidden"></div>
+			<?php
+			addErrorField('address', $error);
+			?>
             <br/>
 			
 			<label for="postal" class="sr-only">Code postal</label>
             <input type="text" name="postal" id="postal" placeholder="Code postal" class="postal" disabled/>
-            <div id="postal-error" class="input-error hidden"></div>
+			<?php
+			addErrorField('postal', $error);
+			?>
 			
 			<label for="town" class="sr-only">Ville</label>
             <input type="text" name="town" id="town" placeholder="Ville" class="town" disabled/>
-            <div id="town-error" class="input-error hidden"></div>
+			<?php
+			addErrorField('town', $error);
+			?>
             <br/>
 
             <label for="phone" class="sr-only">Téléphone</label>
             <input type="text" name="phone" id="phone" placeholder="Téléphone" disabled/>
-            <div id="phone-error" class="input-error hidden"></div>
+			<?php
+			addErrorField('phone', $error);
+			?>
             <br/>
         </div>
 
-        <input class="boutonRond" type="submit" value="Envoyer"/>
-		
-		<button id="register_button" class="boutonRond plein" type="button" onclick="toggleLoginMode(false)">
-			S'inscrire
-		</button>
-		<button id="login_button" class="boutonRond plein hidden" type="button" onclick="toggleLoginMode(true)">
-			Se connecter
-		</button>
+        <input class="boutonRond" name="submit" type="submit" value="Envoyer"/>
 
+        <a href="?R=MonEspace&register" id="register_button" <?=($isRegister) ? 'class="hidden"' : ''?>
+           onclick="event.preventDefault(); toggleLoginMode(false)">
+            <button type="button" class="boutonRond plein">S'inscrire</button>
+        </a>
+        <a href="?R=MonEspace" id="login_button" <?=($isRegister) ? '' : 'class="hidden"'?>
+           onclick="event.preventDefault(); toggleLoginMode(true)">
+            <button type="button" class="boutonRond plein">Se connecter</button>
+        </a>
     </form>
-	
 
+    <script type="text/javascript">
+        var isLogin = <?=($isRegister) ? 'true' : 'false'?>;
+    </script>
 <?php 
 	}
 	else {

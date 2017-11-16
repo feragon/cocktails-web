@@ -1,9 +1,20 @@
 <main>
 <?php
+    global $error;
+    $error = array();
+
+    $isRegister = isset($_GET['register']);
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if($isRegister) {
+            require(__DIR__ . '/../ajax/register.php');
+        }
+        else {
+            require(__DIR__ . '/../ajax/login.php');
+        }
+    }
+
 
 	if(!isset($_SESSION['login'])) {
-	    global $error;
-	    $error = array();
 		/**
 		 * Ajoute un champ contenant l'erreur
          * @param $nomChamp string ID HTML du champ
@@ -20,16 +31,6 @@
             }
 
 	        echo '</div>';
-        }
-
-		$isRegister = isset($_GET['register']);
-		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            if($isRegister) {
-                require(__DIR__ . '/../ajax/register.php');
-            }
-            else {
-				require(__DIR__ . '/../ajax/login.php');
-            }
         }
 ?>
     <h1 id='connexion_title'>Connexion</h1>
@@ -48,76 +49,65 @@
 		<?php
 		addErrorField('password', $error);
 		?>
-        <br/>
 
         <div id='register_fields' <?=($isRegister) ? '' : 'class="hidden"'?>>
-            <br/>
             <div class="button-group">
-                <input type="radio" class="hidden" name="gender" id="homme" value="Homme" disabled/>
+                <input type="radio" class="hidden" name="gender" id="homme" value="Homme"/>
                 <label for="homme"><div class="radio_check_color"></div><p>Homme</p></label>
 
-                <input type="radio" class="hidden" name="gender" id="femme" value="Femme" disabled/>
+                <input type="radio" class="hidden" name="gender" id="femme" value="Femme"/>
                 <label for="femme"><div class="radio_check_color"></div><p>Femme</p></label>
             </div>
 			<?php
 			addErrorField('gender', $error);
 			?>
-            <br/>
 
             <label for="name" class="sr-only">Prénom</label>
-            <input type="text" name="name" id="name" placeholder="Prénom" disabled/>
+            <input type="text" name="name" id="name" placeholder="Prénom"/>
 			<?php
 			addErrorField('name', $error);
 			?>
-            <br/>
 
             <label for="lastname" class="sr-only">Nom</label>
-            <input type="text" name="lastname" id="lastname" placeholder="Nom" disabled/>
+            <input type="text" name="lastname" id="lastname" placeholder="Nom"/>
 			<?php
 			addErrorField('lastname', $error);
 			?>
-            <br/>
 
             <label for="birthdate" class="sr-only">Date de naissance</label>
-            <input type="text" name="birthdate" id="birthdate" placeholder="Date de naissance (jj/mm/aaaa)" disabled/>
+            <input type="text" name="birthdate" id="birthdate" placeholder="Date de naissance (jj/mm/aaaa)"/>
 			<?php
 			addErrorField('birthdate', $error);
 			?>
-            <br/>
 
             <label for="email" class="sr-only">Email</label>
-            <input type="email" name="email" id="email" placeholder="Email" disabled/>
+            <input type="email" name="email" id="email" placeholder="Email"/>
 			<?php
 			addErrorField('email', $error);
 			?>
-            <br/>
 
             <label for="address" class="sr-only">Adresse</label>
-            <input type="text" name="address" id="address" placeholder="Adresse" disabled/>
+            <input type="text" name="address" id="address" placeholder="Adresse"/>
 			<?php
 			addErrorField('address', $error);
 			?>
             <br/>
 			
 			<label for="postal" class="sr-only">Code postal</label>
-            <input type="text" name="postal" id="postal" placeholder="Code postal" class="postal" disabled/>
-			<?php
-			addErrorField('postal', $error);
-			?>
-			
+            <input type="text" name="postal" id="postal" placeholder="Code postal" class="postal"/>
+
 			<label for="town" class="sr-only">Ville</label>
-            <input type="text" name="town" id="town" placeholder="Ville" class="town" disabled/>
+            <input type="text" name="town" id="town" placeholder="Ville" class="town"/>
 			<?php
+            addErrorField('postal', $error);
 			addErrorField('town', $error);
 			?>
-            <br/>
 
             <label for="phone" class="sr-only">Téléphone</label>
-            <input type="text" name="phone" id="phone" placeholder="Téléphone" disabled/>
+            <input type="text" name="phone" id="phone" placeholder="Téléphone"/>
 			<?php
 			addErrorField('phone', $error);
 			?>
-            <br/>
         </div>
 
         <input class="boutonRond" name="submit" type="submit" value="Envoyer"/>

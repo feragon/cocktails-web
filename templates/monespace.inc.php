@@ -2,9 +2,13 @@
 <?php
     global $error;
     $error = array();
-
     $isRegister = isset($_GET['register']);
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    if(isset($_GET['logout'])) {
+        session_destroy();
+		$_SESSION = array();
+    }
+    else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if($isRegister) {
             require(__DIR__ . '/../ajax/register.php');
         }
@@ -123,7 +127,7 @@
     </form>
 
     <script type="text/javascript">
-        var isLogin = <?=($isRegister) ? 'true' : 'false'?>;
+        var isLogin = <?=($isRegister) ? 'false' : 'true'?>;
     </script>
 <?php 
 	}
@@ -243,11 +247,13 @@
 				</button>
 			
 				<span id="spinner" class="fa fa-spinner fa-spin fa-2x hidden"></span>
-			
-				<button id="deconnexion" class="boutonRond plein" type="submit" name="deconnexion">
-					<span class='fa fa-sign-out'></span> Déconnexion
-				</button>
+                <a href="?R=MonEspace&logout">
+                    <button type="button" id="deconnexion" class="boutonRond plein">
+                        <span class='fa fa-sign-out'></span> Déconnexion
+                    </button>
+                </a>
 			</form>
+
 		</div>
 		
 <?php

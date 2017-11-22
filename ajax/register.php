@@ -33,7 +33,7 @@ initCleTableau($_POST, 'phone');
 $update = isset($_POST['update']);
 
 $error = register(
-    trim($_POST['login']),
+	($update) ? $_SESSION['login'] : trim($_POST['login']),
     trim($_POST['password']),
     trim($_POST['name']),
     trim($_POST['lastname']),

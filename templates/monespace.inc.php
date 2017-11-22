@@ -137,6 +137,9 @@
 <?php 
 	}
 	else {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            require(__DIR__ . '/../ajax/register.php');
+		}
         /**
          * Ajoute un champ
          * @param $name string Nom du champ
@@ -221,6 +224,8 @@
 					?>
 				</div>
 
+                <input type="hidden" name="update" value="1"/>
+
                 <a href="?R=MonEspace&edit" onclick="event.preventDefault(); editInfos()">
                     <button id="editer" class="boutonRond <?=(isset($_GET['edit'])) ? 'hidden' : '' ?>" type="button" >
                         <span class='fa fa-pencil'></span> Editer mes infos
@@ -230,9 +235,12 @@
 				<button id="valider_edit" class="boutonRond plein <?=(isset($_GET['edit'])) ? '' : 'hidden'?>" type="submit">
 					<span class='fa fa-check'></span> Valider
 				</button>
-				<button id="annuler_edit" class="boutonRond <?=(isset($_GET['edit'])) ? '' : 'hidden'?>" type="button" onclick="submitInfos(0)">
-					<span class='fa fa-times'></span> Annuler
-				</button>
+
+                <a href="?R=MonEspace" onclick="event.preventDefault(); submitInfos(0)">
+                    <button id="annuler_edit" class="boutonRond <?=(isset($_GET['edit'])) ? '' : 'hidden'?>" type="button">
+                        <span class='fa fa-times'></span> Annuler
+                    </button>
+                </a>
 			
 				<span id="spinner" class="fa fa-spinner fa-spin fa-2x hidden"></span>
                 <a href="?R=MonEspace&logout">

@@ -47,7 +47,7 @@
     <h1 id='connexion_title'>Connexion</h1>
 	<hr/>
 
-    <form method="post" onsubmit="event.preventDefault(); submitLoginForm();">
+    <form method="post" action="?R=MonEspace" onsubmit="event.preventDefault(); submitLoginForm();">
         <label for="login" class="sr-only">Login</label>
         <input type="text" name="login" id="login" placeholder="Login" <?php addValue("login"); ?> required/>
         <?php

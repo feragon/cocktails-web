@@ -137,6 +137,23 @@
 <?php 
 	}
 	else {
+        /**
+         * Ajoute un champ
+         * @param $name string Nom du champ
+         * @param $label string Label du champ
+         * @param $value string Valeur du champ
+         */
+        function addTextField($name, $label, $value) {
+        ?>
+            <div>
+                <label for="<?=$name?>" class="info_label"><?=$label?> :</label>
+                <span class="info_txt <?=(isset($_GET['edit'])) ? 'hidden' : '' ?>"><?php echo $value; ?></span>
+                <div class="info_input <?=(isset($_GET['edit'])) ? '' : 'hidden'?>">
+                    <input type="text" name="<?=$name?>" id="<?=$name?>" value="<?php echo $value; ?>" />
+                </div>
+            </div>
+        <?php
+        }
 		
 		$db = getDB();
 		$query = $db->prepare("SELECT * FROM users WHERE login = ?");
@@ -166,94 +183,60 @@
 		
 		<div class="user_box">
 			<h2>Mes informations personelles</h2>
-			<form method="POST" action=".?R=MonEspace">
+			<form method="POST" action="?R=MonEspace" onsubmit="event.preventDefault(); submitInfos(1);">
 				<div id="user_edit">
 					<div>
 						<span class="info_label">Login :</span>
 						<span class="info_txt info_colored"><?php echo $user['login']; ?></span>
 					</div>
-					<div>
-						<label for="lastname" class="info_label">Nom :</label>
-						<span class="info_txt"><?php echo $user['lastname']; ?></span>
-						<div class="info_input hidden">
-							<input type="text" name="lastname" id="lastname" />
-						</div>
-					</div>
-					<div>
-						<label for="name" class="info_label">Prénom :</label>
-						<span class="info_txt"><?php echo $user['name']; ?></span>
-						<div class="info_input hidden">
-							<input type="text" name="name" id="name" />
-						</div>
-					</div>
+                    <?php
+                    addTextField('lastname', 'Nom', $user['lastname']);
+                    addTextField('name', 'Prénom', $user['name']);
+                    ?>
 					<div>
 						<span class="info_label">Genre :</span>
-						<span class="info_txt"><?php echo $user['gender']; ?></span>
-						<div class="info_input hidden button-group">
-							<input type="radio" class="hidden" name="gender" id="homme" value="Homme"/>
+						<span class="info_txt <?=(isset($_GET['edit'])) ? 'hidden' : '' ?>"><?php echo $user['gender']; ?></span>
+						<div class="info_input button-group <?=(isset($_GET['edit'])) ? '' : 'hidden'?>">
+							<input type="radio" class="hidden" name="gender" id="homme" value="Homme" <?=($user['gender'] == 'Homme') ? 'checked' : ''?>/>
 							<label for="homme"><div class="radio_check_color"></div><p>Homme</p></label>
 
-							<input type="radio" class="hidden" name="gender" id="femme" value="Femme"/>
+							<input type="radio" class="hidden" name="gender" id="femme" value="Femme" <?=($user['gender'] == 'Femme') ? 'checked' : ''?>/>
 							<label for="femme"><div class="radio_check_color"></div><p>Femme</p></label>
 						</div>
 					</div>
-					<div>
-						<label for="birthdate" class="info_label">Date de naissance :</label>
-						<span class="info_txt"><?php echo $user['birthdate']; ?></span>
-						<div class="info_input hidden">
-							<input type="text" name="birthdate" id="birthdate" placeholder="jj/mm/aaaa"/>
-						</div>
-					</div>
-					<div>
-						<label for="email" class="info_label">Email :</label>
-						<span class="info_txt"><?php echo $user['email']; ?></span>
-						<div class="info_input hidden">
-							<input type="email" name="email" id="email" />
-						</div>
-					</div>
-					<div>
-						<label for="address" class="info_label">Adresse :</label>
-						<span class="info_txt"><?php echo $user['address']; ?></span>
-						<div class="info_input hidden">
-							<input type="text" name="address" id="address" />
-						</div>
-					</div>
-					<div>
-						<label for="postal" class="info_label">Code postal :</label>
-						<span class="info_txt"><?php if(!empty($user['postal'])) echo str_pad($user['postal'], 5, "0", STR_PAD_LEFT); ?></span>
-						<div class="info_input hidden">
-							<input type="text" name="postal" id="postal" />
-						</div>
-					</div>
-					<div>
-						<label for="town" class="info_label">Ville :</label>
-						<span class="info_txt"><?php echo $user['town']; ?></span>
-						<div class="info_input hidden">
-							<input type="text" name="town" id="town" />
-						</div>
-					</div>
-					<div>
-						<label for="phone" class="info_label">Téléphone :</label>
-						<span class="info_txt"><?php if(!empty($user['phone'])) echo str_pad($user['phone'], 10, "0", STR_PAD_LEFT); ?></span>
-						<div class="info_input hidden">
-							<input type="text" name="phone" id="phone" />
-						</div>
-					</div>
+					<?php
+                        addTextField('birthdate', 'Date de naissance', $user['birthdate']);
+                        addTextField('email', 'Email', $user['email']);
+                        addTextField('address', 'Adresse', $user['address']);
+                        addTextField('postal', 'Code postal',
+                            (!empty($user['postal'])) ?
+                                str_pad($user['postal'], 5, "0", STR_PAD_LEFT) :
+                                '');
+                        addTextField('town', 'Ville', $user['town']);
+                        addTextField('phone', 'Téléphone',
+                            (!empty($user['phone'])) ?
+                                str_pad($user['phone'], 10, "0", STR_PAD_LEFT) :
+                                ''
+                        );
+					?>
 				</div>
-				
-				<button id="editer" class="boutonRond" type="button" onclick="editInfos()">
-					<span class='fa fa-pencil'></span> Editer mes infos
-				</button>
-				<button id="valider_edit" class="boutonRond plein hidden" type="button" onclick="submitInfos(1)">
+
+                <a href="?R=MonEspace&edit" onclick="event.preventDefault(); editInfos()">
+                    <button id="editer" class="boutonRond <?=(isset($_GET['edit'])) ? 'hidden' : '' ?>" type="button" >
+                        <span class='fa fa-pencil'></span> Editer mes infos
+                    </button>
+                </a>
+
+				<button id="valider_edit" class="boutonRond plein <?=(isset($_GET['edit'])) ? '' : 'hidden'?>" type="submit">
 					<span class='fa fa-check'></span> Valider
 				</button>
-				<button id="annuler_edit" class="boutonRond hidden" type="button" onclick="submitInfos(0)">
+				<button id="annuler_edit" class="boutonRond <?=(isset($_GET['edit'])) ? '' : 'hidden'?>" type="button" onclick="submitInfos(0)">
 					<span class='fa fa-times'></span> Annuler
 				</button>
 			
 				<span id="spinner" class="fa fa-spinner fa-spin fa-2x hidden"></span>
                 <a href="?R=MonEspace&logout">
-                    <button type="button" id="deconnexion" class="boutonRond plein">
+                    <button type="button" id="deconnexion" class="boutonRond plein <?=(isset($_GET['edit'])) ? 'hidden' : '' ?>">
                         <span class='fa fa-sign-out'></span> Déconnexion
                     </button>
                 </a>

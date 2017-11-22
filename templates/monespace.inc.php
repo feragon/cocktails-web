@@ -25,16 +25,23 @@
          * @param $erreurs array Tableau contenant les erreurs
 		 */
 	    function addErrorField($nomChamp, $erreurs) {
-	        echo '<div id="login-', $nomChamp, '" class="input-error';
+	        echo '<div id="login-', $nomChamp, '" class="input-error">';
 
 	        if(array_key_exists($nomChamp, $erreurs)) {
-	            echo '">', $erreurs[$nomChamp];
-            }
-            else {
-	            echo ' hidden">';
+	            echo $erreurs[$nomChamp];
             }
 
 	        echo '</div>';
+        }
+
+		/**
+         * Affiche le placeholder s'il existe
+		 * @param $post_index string Indice de l'élement dans le tableau $_POST
+		 */
+        function addValue($post_index) {
+	        if(isset($_POST[$post_index])) {
+	            echo 'value="', htmlspecialchars($_POST[$post_index]), '"';
+            }
         }
 ?>
     <h1 id='connexion_title'>Connexion</h1>
@@ -42,11 +49,10 @@
 
     <form method="post" onsubmit="event.preventDefault(); submitLoginForm();">
         <label for="login" class="sr-only">Login</label>
-        <input type="text" name="login" id="login" placeholder="Login" required/>
+        <input type="text" name="login" id="login" placeholder="Login" <?php addValue("login"); ?> required/>
         <?php
         addErrorField('login', $error);
         ?>
-        <br/>
 
         <label for="password" class="sr-only">Mot de passe</label>
         <input type="password" name="password" id="password" placeholder="Mot de passe" required/>
@@ -67,48 +73,47 @@
 			?>
 
             <label for="name" class="sr-only">Prénom</label>
-            <input type="text" name="name" id="name" placeholder="Prénom"/>
+            <input type="text" name="name" id="name" placeholder="Prénom" <?php addValue("name"); ?>/>
 			<?php
 			addErrorField('name', $error);
 			?>
 
             <label for="lastname" class="sr-only">Nom</label>
-            <input type="text" name="lastname" id="lastname" placeholder="Nom"/>
+            <input type="text" name="lastname" id="lastname" placeholder="Nom" <?php addValue("lastname"); ?>/>
 			<?php
 			addErrorField('lastname', $error);
 			?>
 
             <label for="birthdate" class="sr-only">Date de naissance</label>
-            <input type="text" name="birthdate" id="birthdate" placeholder="Date de naissance (jj/mm/aaaa)"/>
+            <input type="text" name="birthdate" id="birthdate" placeholder="Date de naissance (jj/mm/aaaa)" <?php addValue("birthdate"); ?>/>
 			<?php
 			addErrorField('birthdate', $error);
 			?>
 
             <label for="email" class="sr-only">Email</label>
-            <input type="email" name="email" id="email" placeholder="Email"/>
+            <input type="email" name="email" id="email" placeholder="Email" <?php addValue("email"); ?>/>
 			<?php
 			addErrorField('email', $error);
 			?>
 
             <label for="address" class="sr-only">Adresse</label>
-            <input type="text" name="address" id="address" placeholder="Adresse"/>
+            <input type="text" name="address" id="address" placeholder="Adresse" <?php addValue("address"); ?>/>
 			<?php
 			addErrorField('address', $error);
 			?>
-            <br/>
 			
 			<label for="postal" class="sr-only">Code postal</label>
-            <input type="text" name="postal" id="postal" placeholder="Code postal" class="postal"/>
+            <input type="text" name="postal" id="postal" placeholder="Code postal" class="postal" <?php addValue("postal"); ?>/>
 
 			<label for="town" class="sr-only">Ville</label>
-            <input type="text" name="town" id="town" placeholder="Ville" class="town"/>
+            <input type="text" name="town" id="town" placeholder="Ville" class="town" <?php addValue("town"); ?>/>
 			<?php
             addErrorField('postal', $error);
 			addErrorField('town', $error);
 			?>
 
             <label for="phone" class="sr-only">Téléphone</label>
-            <input type="text" name="phone" id="phone" placeholder="Téléphone"/>
+            <input type="text" name="phone" id="phone" placeholder="Téléphone" <?php addValue("phone"); ?>/>
 			<?php
 			addErrorField('phone', $error);
 			?>

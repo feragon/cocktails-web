@@ -254,6 +254,8 @@ function register($login, $password, $name, $lastname, $gender, $email, $birthda
 		));
     }
 
+    $_SESSION['login'] = $login;
+
 	return $error;
 }
 

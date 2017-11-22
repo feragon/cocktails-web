@@ -405,6 +405,15 @@ main ul.liste_ingr .flex-line-breaker {
 	color: #AAAAAA;
 	font-size: 15px;
 }
+
+.item a {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
 main .user_box {
 	display: inline-block;
 	width: 45%;

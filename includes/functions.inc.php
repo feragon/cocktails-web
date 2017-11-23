@@ -117,6 +117,7 @@
      * Donne le chemin d'un fichier de templates
      * @param $nom string Nom de la template
      * @return string Chemin de la template
+     * @throws Exception si la template n'existe pas
      */
     function getFichierTemplate($nom) {
         $chemin = __DIR__ . '/../templates/' . strtolower($nom) . '.inc.php';
@@ -125,8 +126,7 @@
             return $chemin;
         }
         else {
-            http_response_code(404); //TODO: retourner plutôt une exception
-            return __DIR__ . '/../templates/404.inc.php';
+            throw new Exception("Fichier non trouvé");
         }
     }
 ?>

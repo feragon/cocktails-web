@@ -158,8 +158,8 @@ nav .menu {
 	vertical-align: middle;
 	cursor: pointer;
 	overflow: hidden;
-    outline: 0;
-    box-shadow: none;
+	outline: 0;
+	box-shadow: none;
 	transition: color 0.2s ease-in-out, border 0.2s ease-in-out, background 0.2s ease-in-out;
 }
 .boutonRond.plein {
@@ -180,6 +180,7 @@ nav .menu {
 
 #formFavori {
     display: inline-block;
+	margin-top: -5px;
 }
 
 .boutonRond span {
@@ -201,10 +202,22 @@ nav .menu {
 }
 #retirer:hover {
 	color: #FCFCFC;
+	background: #37474f;
+	border-color: #37474f;
+}
+#retirer #fav_recette_pref, #retirer:hover #fav_retirer_recette {
+	opacity: 1;
+	transition: opacity 0.3s ease-in-out;
+	display: block;
+}
+#retirer #fav_retirer_recette, #retirer:hover #fav_recette_pref {
+	opacity: 0;
+	transition: opacity 0.3s ease-in-out;
+	display: none;
 }
 .cocktail_desc .arrow {
 	color: #37474f;
-	margin: 15px 7px 0 0;
+	margin-right: 8px;
 }
 .cocktail_desc .arrow i {
 	margin: 0;
@@ -262,6 +275,7 @@ main p a {
 }
 main h1 {
 	color: #009688;
+	margin: 20px 0 5px 0;
 }
 main hr {
 	width: 95%;
@@ -617,13 +631,19 @@ main input.town {
 .input-error {
 	color: #B71C1C;
 	width: 300px;
-	margin: 0 auto;
+	margin: -5px auto 10px auto;
 	text-align: left;
 	font-size: 0.9em;
 }
-
 .input-error:empty {
     height: 0;
+}
+.red_input, .red_input:hover, .red_input:focus {
+	border-color: #B71C1C;
+	background: rgba(255,0,0,0.1);
+}
+.red_input::placeholder, .red_input:hover::placeholder, .red_input:focus::placeholder {
+	color: #C74949;
 }
 
 .button-group {
@@ -631,7 +651,7 @@ main input.town {
 	margin: 3px 0 -3px 0;
 }
 #register_fields .button-group {
-	margin: 0;
+	margin: 10px 0 15px 0;
 	margin-left: calc(50% - 125px);
 	max-width: 250px;
 }
@@ -675,17 +695,17 @@ input[type="radio"]:first-of-type:checked + label .radio_check_color {
 input[type="radio"]:last-of-type:checked + label .radio_check_color {
 	right: -12px;
 }
-.button-group label p {
+.button-group label .radio_p {
 	position: absolute;
 	top: 4px;
 	margin: 0;
 	z-index: 10;
 }
-.button-group label:first-of-type p {
+.button-group label:first-of-type .radio_p {
 	left: calc(3px + (100vw / 150));
 	text-align: left;
 }
-.button-group label:last-of-type p {
+.button-group label:last-of-type .radio_p {
 	right: calc(3px + (100vw / 150));
 	text-align: right;
 }

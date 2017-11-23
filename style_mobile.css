@@ -3,6 +3,11 @@
 		display: block;
 		width: auto;
 	}
+	
+	.cocktail_desc img {
+		display: block;
+		margin: auto;
+	}
 }
 
 @media only screen and (max-width: 767px) {
@@ -75,11 +80,6 @@
 	.cocktail_desc img {
 		position: static;
 		margin-top: 10px;
-	}
-	#ajouter, #retirer {
-		display: block;
-		margin-left: calc(50% - 120px);
-		max-width: 200px;
 	}
 	.cocktail_desc p {
 		margin: 0;

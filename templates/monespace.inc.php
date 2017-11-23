@@ -25,7 +25,7 @@
          * @param $erreurs array Tableau contenant les erreurs
 		 */
 	    function addErrorField($nomChamp, $erreurs) {
-	        echo '<div id="login-', $nomChamp, '" class="input-error">';
+	        echo '<div id="', $nomChamp, '-error" class="input-error">';
 
 	        if(array_key_exists($nomChamp, $erreurs)) {
 	            echo $erreurs[$nomChamp];
@@ -63,10 +63,10 @@
         <div id='register_fields' <?=($isRegister) ? '' : 'class="hidden"'?>>
             <div class="button-group">
                 <input type="radio" class="hidden" name="gender" id="homme" value="Homme"/>
-                <label for="homme"><div class="radio_check_color"></div><p>Homme</p></label>
+                <label for="homme"><span class="radio_check_color"></span><span class="radio_p">Homme</span></label>
 
                 <input type="radio" class="hidden" name="gender" id="femme" value="Femme"/>
-                <label for="femme"><div class="radio_check_color"></div><p>Femme</p></label>
+                <label for="femme"><span class="radio_check_color"></span><span class="radio_p">Femme</span></label>
             </div>
 			<?php
 			addErrorField('gender', $error);
@@ -201,10 +201,10 @@
 						<span class="info_txt <?=(isset($_GET['edit'])) ? 'hidden' : '' ?>"><?php echo $user['gender']; ?></span>
 						<div class="info_input button-group <?=(isset($_GET['edit'])) ? '' : 'hidden'?>">
 							<input type="radio" class="hidden" name="gender" id="homme" value="Homme" <?=($user['gender'] == 'Homme') ? 'checked' : ''?>/>
-							<label for="homme"><div class="radio_check_color"></div><p>Homme</p></label>
+							<label for="homme"><span class="radio_check_color"></span><span class="radio_p">Homme</span></label>
 
 							<input type="radio" class="hidden" name="gender" id="femme" value="Femme" <?=($user['gender'] == 'Femme') ? 'checked' : ''?>/>
-							<label for="femme"><div class="radio_check_color"></div><p>Femme</p></label>
+							<label for="femme"><span class="radio_check_color"></span><span class="radio_p">Femme</span></label>
 						</div>
 					</div>
 					<?php

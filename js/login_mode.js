@@ -39,8 +39,12 @@ function clearFormErrors() {
     for(var i = 0; i < errors.length; i++) {
         var item = errors.item(i);
         item.innerText = "";
-        item.classList.add("hidden");
     }
+	var errorInputs = document.getElementsByTagName("input");
+    for(var i = 0; i < errorInputs.length; i++) {
+        errorInputs[i].classList.remove("red_input");
+    }
+	
 }
 
 /**
@@ -61,12 +65,13 @@ function showErrors(data) {
         error = true;
 
         var errorContainer = document.getElementById(inputName + "-error");
+		var errorInput = document.getElementById(inputName);
         if(errorContainer === null) {
-            alert(data[inputName]);
+            //alert(data[inputName]);
         }
         else {
-            errorContainer.classList.remove("hidden");
             errorContainer.innerText = data[inputName];
+			errorInput.classList.add("red_input");
         }
     }
 

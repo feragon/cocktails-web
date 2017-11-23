@@ -4,11 +4,7 @@
     $error = array();
     $isRegister = isset($_GET['register']);
 
-    if(isset($_GET['logout'])) {
-        session_destroy();
-		$_SESSION = array();
-    }
-    else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (!isset($_GET['logout']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
         if($isRegister) {
             require(__DIR__ . '/../ajax/register.php');
         }
@@ -121,14 +117,13 @@
 
         <input class="boutonRond" name="submit" type="submit" value="Envoyer"/>
 
-        <a href="?R=MonEspace&register" id="register_button" <?=($isRegister) ? 'class="hidden"' : ''?>
-           onclick="event.preventDefault(); toggleLoginMode(false)">
-            <button type="button" class="boutonRond plein">S'inscrire</button>
-        </a>
-        <a href="?R=MonEspace" id="login_button" <?=($isRegister) ? '' : 'class="hidden"'?>
-           onclick="event.preventDefault(); toggleLoginMode(true)">
-            <button type="button" class="boutonRond plein">Se connecter</button>
-        </a>
+		<button type="button" id="register_button" class="boutonRond plein <?=($isRegister) ? 'hidden' : ''?>" onclick="event.preventDefault(); toggleLoginMode(false)">
+			S'inscrire
+		</button>
+       
+		<button type="button" id="login_button" class="boutonRond plein <?=($isRegister) ? '' : 'hidden'?>" onclick="event.preventDefault(); toggleLoginMode(true)">
+			 Se connecter
+		</button>
     </form>
 
     <script type="text/javascript">
@@ -243,7 +238,7 @@
                 </a>
 			
 				<span id="spinner" class="fa fa-spinner fa-spin fa-2x hidden"></span>
-                <a href="?R=MonEspace&logout">
+                <a href="?logout">
                     <button type="button" id="deconnexion" class="boutonRond plein <?=(isset($_GET['edit'])) ? 'hidden' : '' ?>">
                         <span class='fa fa-sign-out'></span> Déconnexion
                     </button>

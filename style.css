@@ -177,6 +177,12 @@ nav .menu {
 	border-color: #009688;
 	transition: background 0.2s ease-in-out, border 0.2s ease-in-out;
 }
+#register_button a, #login_button a {
+	color: white;
+	background: red;
+	width: 100%;
+	height: 100%;
+}
 
 #formFavori {
     display: inline-block;

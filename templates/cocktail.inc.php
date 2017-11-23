@@ -24,7 +24,12 @@ $retirer = array_key_exists($_GET['K'], $_SESSION['Favoris']);
             }
             ?>
             <button id="retirer" class="boutonRondPlein <?php echo $retirer ? '' : 'hidden'; ?>" type="submit" onclick="removeFavori(<?=$_GET['K']; ?>)">
-                <span id="fav_recette_pref"><span class='fa fa-star'></span> Ma recette préférée !</span><span id="fav_retirer_recette"><span class='fa fa-star-o'></span> Retirer de mes recettes</span>
+                <span id="fav_recette_pref">
+					<span class='fa fa-star'></span> Dans mes favoris !
+				</span>
+				<span id="fav_retirer_recette">
+					<span class='fa fa-star-o'></span> Retirer de mes recettes
+				</span>
             </button>
             <button id="ajouter" class="boutonRond <?php echo $retirer ? 'hidden' : ''; ?>" type="submit" onclick="addFavori(<?=$_GET['K']; ?>)">
                 <span class='fa fa-star'></span> Ajouter à mes recettes

@@ -4,7 +4,7 @@
     $error = array();
     $isRegister = isset($_GET['register']);
 
-    if (!isset($_GET['logout']) && $_SERVER['REQUEST_METHOD'] == 'POST') {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if($isRegister) {
             require(__DIR__ . '/../ajax/register.php');
         }

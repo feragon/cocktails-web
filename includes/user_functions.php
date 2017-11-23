@@ -8,7 +8,12 @@ function getDB() {
 	global $db;
 
 	if($db == null) {
-		$db = new PDO('sqlite:' . __DIR__ . '/../db.sqlite'); //TODO: exception
+		try {
+			$db = new PDO('sqlite:' . __DIR__ . '/../db.sqlite');
+		}
+		catch(PDOException $e) {
+			die("Erreur de base de données : " . $e->getMessage());
+		}
 	}
 
 	return $db;
@@ -295,4 +300,12 @@ function DBToSession() {
 		$fav = explode(":", $value);
 		$_SESSION['Favoris'] += array($fav[0] => $fav[1]);
 	}
+}
+
+/**
+ * Déconnecte l'utilisateur
+ */
+function disconnect() {
+	session_destroy();
+	$_SESSION = array();
 }

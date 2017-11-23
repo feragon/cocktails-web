@@ -10,16 +10,18 @@ function editInfos() {
 		inputsList[i].classList.remove("hidden");
 		txtsList[i+1].classList.add("hidden");
 
-		if(txtsList[i+1].innerText === "Homme") {
-			$('#homme').attr("checked", true);
-			$('#femme').attr("checked", false);
-		}
-		else if(txtsList[i+1].innerText === "Femme") {
-            $('#femme').attr("checked", true);
-            $('#homme').attr("checked", false);
-		}
-		if(i != 2) {
-            inputsList[i].getElementsByTagName("input")[0].value = txtsList[i + 1].innerText; //TODO: pour le genre il se passe quoi ?
+		if(i === 2) {
+            if (txtsList[i + 1].innerText === "Homme") {
+                $('#homme').attr("checked", true);
+                $('#femme').attr("checked", false);
+            }
+            else if (txtsList[i + 1].innerText === "Femme") {
+                $('#femme').attr("checked", true);
+                $('#homme').attr("checked", false);
+            }
+        }
+		else {
+            inputsList[i].getElementsByTagName("input")[0].value = txtsList[i + 1].innerText;
         }
 	}
 	

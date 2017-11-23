@@ -14,11 +14,8 @@
         if(!array_key_exists('Favoris', $_SESSION)) {
             $_SESSION['Favoris'] = array();
         }
-		if(isset($_GET['logout'])) { //TODO: mettre ça dans user_functions.php
-			session_destroy();
-			$_SESSION = array();
-			$_SESSION['Favoris'] = array();
-			$_POST = array();
+		if(isset($_GET['logout'])) {
+			disconnect();
 		}
     }
 

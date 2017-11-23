@@ -1,7 +1,12 @@
 <?php
+if(!isset($_GET['K']) || !array_key_exists($_GET['K'], $Recettes)) {
+    require(__DIR__ . '/404.inc.php');
+    return;
+}
+
 require(__DIR__ . '/../ajax/favori.php');
 $retirer = array_key_exists($_GET['K'], $_SESSION['Favoris']);
-//TODO: si la recette n'existe pas ?
+
 ?>
 <main>
     <div class="cocktail_desc">

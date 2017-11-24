@@ -1,10 +1,10 @@
 @font-face {
     font-family: "Lobster";
-    src: url("resources/fonts/Lobster-Regular.ttf");
+    src: url("../resources/fonts/Lobster-Regular.ttf");
 }
 @font-face {
     font-family: "Roboto";
-    src: url("resources/fonts/Roboto-Regular.ttf");
+    src: url("../resources/fonts/Roboto-Regular.ttf");
 }
 body {
 	background: #FCFCFC;

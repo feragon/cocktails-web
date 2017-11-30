@@ -16,8 +16,12 @@ document.addEventListener('keyup', (event) => {
 			items[i].classList.add("hidden");
 	}
 	
-	if(noResults)
+	if(noResults) {
 		document.getElementById("noResults").classList.remove("hidden");
-	else
+		document.getElementById("recherche").classList.add("red_input");
+	}
+	else {
 		document.getElementById("noResults").classList.add("hidden");
+		document.getElementById("recherche").classList.remove("red_input");
+	}
 });

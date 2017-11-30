@@ -7,6 +7,7 @@
 	<form method="post" onsubmit="event.preventDefault();">
 		<input type="text" id="recherche" placeholder="Rechercher..." autocomplete="off"/>
 	</form>
+	<br/>
 	
 <?php
 	afficherCocktails($Recettes, false);

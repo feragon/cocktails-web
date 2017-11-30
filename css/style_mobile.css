@@ -114,6 +114,9 @@
 	}
 }
 @media only screen and (max-width: 480px) {
+	main {
+		width: calc(100% - 16px);
+	}
 	.item {
 		display: flex;
 		flex-direction: row;
@@ -121,8 +124,9 @@
 		align-items: center;
 		width: 100%;
 		min-height: 70px;
-		margin: 0;
+		margin: 0 0 4px -1px;
 		text-align: left;
+		box-shadow: none;
 	}
 	.item h4 {
 		flex: 1;
@@ -136,12 +140,12 @@
 		height: 60px;
 		width: 60px;
 		margin: 5px;
-		border-radius: 8px;
 	}
 	.item .listeIngr, .item .fa-star-o {
 		display: none;
 	}
-	input#recherche {
-		margin-bottom: 25px;
+	#formFavori {
+		display: block;
+		margin-bottom: -10px;
 	}
 }

@@ -1,7 +1,7 @@
 <main>
     <h1>Bienvenue !</h1>
     <hr>
-
+	
     <h2>Cocktail</h2>
     <p>Un cocktail, pouvant être orthographié coquetel au Québec, est un mélange de boissons et d’éléments aromatiques et décoratifs en quantité variable. Ils contiennent souvent de l'alcool, mais de très nombreuses recettes en sont dépourvues.
     <br/><br/>
@@ -29,4 +29,10 @@
     Selon le barman du Antoine's Restaurant, de La Nouvelle-Orléans, le mot cocktail viendrait du fait qu'un barman français servait une boisson, du Bitter, dans un coquetier à deux anses, et que les Anglais ne comprenant pas le mot « coquetier » (prononcé à peu près « coquetiel » à l'époque), auraient compris cocktail.</p>
 	
 	<p style="font-style: italic; text-align: center;">Source : <a href="https://fr.wikipedia.org/wiki/Cocktail" target="_blank">fr.wikipedia.org</a></p>
+	
+	<a href="?R=Cocktail&K=<?php echo rand(0,count($Recettes)-1); ?>">
+		<button type="button" class="boutonRond">
+			<span class="fa fa-random"></span> Cocktail aléatoire
+		</button>
+	</a>
 </main>

@@ -27,7 +27,7 @@ function toggleLoginMode(loginMode) {
 			listOfInputs[i].removeAttribute("disabled");
 		}
 		
-		$('html, body').animate({scrollTop:360},'0');
+		$('html, body').animate({scrollTop:340},'0');
 	}
 }
 

@@ -30,10 +30,10 @@ $retirer = array_key_exists($_GET['K'], $_SESSION['Favoris']);
             ?>
             <button id="retirer" class="boutonRondPlein <?php echo $retirer ? '' : 'hidden'; ?>" type="submit" onclick="removeFavori(<?=$_GET['K']; ?>)">
                 <span id="fav_recette_pref">
-					<span class='fa fa-star'></span> Dans mes favoris !
+					<span class='fa fa-thumbs-up'></span> J'aime cette recette
 				</span>
 				<span id="fav_retirer_recette">
-					<span class='fa fa-star-o'></span> Retirer de mes recettes
+					<span class='fa fa-thumbs-down'></span> Je n'aime plus cette recette
 				</span>
             </button>
             <button id="ajouter" class="boutonRond <?php echo $retirer ? 'hidden' : ''; ?>" type="submit" onclick="addFavori(<?=$_GET['K']; ?>)">
@@ -56,7 +56,7 @@ $retirer = array_key_exists($_GET['K'], $_SESSION['Favoris']);
 
             foreach($ingrs as $ing) {
                 echo "
-			<li><i class='fa fa-tint'></i> ".$ing."</li>";
+			<li><i class='fa fa-tint'></i><span>".$ing."</span></li>";
             }
 ?>
 		</ul>

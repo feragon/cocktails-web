@@ -337,7 +337,7 @@ main ul.liste_ingr .li_cocktail {
 main ul.liste_ingr .li_cocktail:hover {
 	background: #FFAC7C;
 }
-main ul.liste_ingr .flex-line-breaker {
+.flex-line-breaker {
 	width: 100%;
 	height: 0;
 }

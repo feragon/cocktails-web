@@ -12,7 +12,7 @@
 
 <body>
 <header>
-	<h1><a href=".">Cocktails™</a></h1>
+	<h1><a href=".">Cocktails</a></h1>
 	<h3>Une sélection de cocktails pour vos soirées arrosées.</h3>
 	<div id="bubbles_box"></div>
 </header>

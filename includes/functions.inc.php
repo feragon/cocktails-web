@@ -87,7 +87,7 @@
 		foreach($tab as $key => $value) {
 			$recette = ($isFavoris ? $Recettes[$key] : $value);
 ?>
-            <div class="item" style="animation-delay: <?php echo $i < 0.5 ? $i+=0.06 : $i; ?>s">
+            <div class="item <?php if(array_key_exists($key, $_SESSION['Favoris'])) echo 'infav';?>" style="animation-delay: <?php echo $i < 0.5 ? $i+=0.06 : $i; ?>s">
                 <a href='<?php echo "?R=Cocktail&K=".$key; ?>'></a>
                 <?php if(array_key_exists($key, $_SESSION['Favoris'])) echo "
 					<i class='fa fa-star-o'></i>";
@@ -95,7 +95,8 @@
 
                 <div class="image" style="background-image: url('<?php echo getImageURL($recette["titre"], true); ?>')"></div>
                 <h4><?php echo $recette["titre"]; ?></h4>
-                <div>
+				<div class="flex-line-breaker"></div>
+                <div class="listeIngr">
                     <i class='fa fa-tint'></i>
                     <p><?php
 						foreach($recette['index'] as $ing) {

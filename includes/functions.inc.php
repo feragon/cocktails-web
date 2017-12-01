@@ -33,7 +33,7 @@
             'ä'=>'a', 'å'=>'a', 'æ'=>'a', 'ç'=>'c', 'è'=>'e', 'é'=>'e', 'ê'=>'e', 'ë'=>'e', 'ì'=>'i', 'í'=>'i',
             'î'=>'i', 'ï'=>'i', 'ð'=>'o', 'ñ'=>'n', 'ń'=>'n', 'ò'=>'o', 'ó'=>'o', 'ô'=>'o', 'õ'=>'o', 'ö'=>'o',
             'ø'=>'o', 'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ü'=>'u', 'ý'=>'y', 'þ'=>'b', 'ÿ'=>'y', 'ƒ'=>'f', 'ă'=>'a',
-            'ș'=>'s', 'ț'=>'t', 'Ă'=>'A', 'Ș'=>'S', 'Ț'=>'T', ':'=>'', '.'=>''
+            'ș'=>'s', 'ț'=>'t', 'Ă'=>'A', 'Ș'=>'S', 'Ț'=>'T', ':'=>'', '.'=>'', '\''=>''
 		);
 		return strtr($s, $normalizeChars);
 	}
@@ -88,7 +88,7 @@
 			$recette = ($isFavoris ? $Recettes[$key] : $value);
 ?>
             <div class="item <?php if(array_key_exists($key, $_SESSION['Favoris'])) echo 'infav';?>" style="animation-delay: <?php echo $i < 0.5 ? $i+=0.06 : $i; ?>s">
-                <a href='<?php echo "?R=Cocktail&K=".$key; ?>'></a>
+                <a href='<?php echo "?R=Cocktail&K=".$key; ?>'><i class="fa fa-eye fa-fw"></i><p> Voir la recette</p></a>
                 <?php if(array_key_exists($key, $_SESSION['Favoris'])) echo "
 					<i class='fa fa-star-o'></i>";
                 ?>
@@ -97,7 +97,7 @@
                 <h4><?php echo $recette["titre"]; ?></h4>
 				<div class="flex-line-breaker"></div>
                 <div class="listeIngr">
-                    <i class='fa fa-tint'></i>
+                    <i class='fa fa-tint fa-fw'></i>
                     <p><?php
 						foreach($recette['index'] as $ing) {
 							echo $ing." <br/>";

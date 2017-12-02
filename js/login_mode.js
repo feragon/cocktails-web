@@ -95,7 +95,7 @@ function submitLoginForm() {
         });
     }
     else {
-        $.post("ajax/register.php", {
+        $.post("ajax/user.php", {
             'login': document.getElementById("login").value,
             'password': document.getElementById("password").value,
             'gender': $('input[name="gender"]:checked').val(),

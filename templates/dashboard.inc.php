@@ -1,6 +1,6 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    require(__DIR__ . '/../ajax/register.php');
+    require(__DIR__ . '/../ajax/user.php');
 }
 /**
  * Ajoute un champ

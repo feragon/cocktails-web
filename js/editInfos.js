@@ -42,7 +42,7 @@ function submitInfos(soumettre) {
 	
 	if(soumettre) {
 		
-		$.post("ajax/register.php", {
+		$.post("ajax/user.php", {
 				'login': txtsList[0].innerText,
 				'gender': $('input[name="gender"]:checked').val(),
 				'name': document.getElementById("name").value,

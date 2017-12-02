@@ -32,20 +32,35 @@ initCleTableau($_POST, 'town');
 initCleTableau($_POST, 'phone');
 $update = isset($_POST['update']);
 
-$error = register(
-	($update) ? $_SESSION['login'] : trim($_POST['login']),
-    trim($_POST['password']),
-    trim($_POST['name']),
-    trim($_POST['lastname']),
-    trim($_POST['gender']),
-    trim($_POST['email']),
-    trim($_POST['birthdate']),
-    trim($_POST['address']),
-    trim($_POST['postal']),
-    trim($_POST['town']),
-    trim($_POST['phone']),
-    $update
-);
+if($update) {
+	$error = update(
+		$_SESSION['login'],
+		trim($_POST['name']),
+		trim($_POST['lastname']),
+		trim($_POST['gender']),
+		trim($_POST['email']),
+		trim($_POST['birthdate']),
+		trim($_POST['address']),
+		trim($_POST['postal']),
+		trim($_POST['town']),
+		trim($_POST['phone'])
+	);
+}
+else {
+	$error = register(
+		trim($_POST['login']),
+		trim($_POST['password']),
+		trim($_POST['name']),
+		trim($_POST['lastname']),
+		trim($_POST['gender']),
+		trim($_POST['email']),
+		trim($_POST['birthdate']),
+		trim($_POST['address']),
+		trim($_POST['postal']),
+		trim($_POST['town']),
+		trim($_POST['phone'])
+	);
+}
 
 if(!$included) {
 	echo json_encode($error);

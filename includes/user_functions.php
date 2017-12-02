@@ -171,6 +171,31 @@ function verifyPostal($postal) {
 }
 
 /**
+ * Vérifie les entrées d'un utilisateur
+ * @param $name string Prénom
+ * @param $lastname string Nom
+ * @param $gender string Genre
+ * @param $email string Adresse e-mail
+ * @param $birthdate string Date de naissance
+ * @param $postal int Code postal
+ * @param $town string Ville
+ * @param $phone int Numéro de téléphone
+ * @return array Tableau contenant les erreurs (ou que des '' s'il y en a pas)
+ */
+function verifyUserFields($name, $lastname, $gender, $email, $birthdate, $postal, $town, $phone) {
+	$error = array();
+	$error['name'] = verifyChampLettres($name);
+	$error['lastname'] = verifyChampLettres($lastname);
+	$error['gender'] = verifyGender($gender);
+	$error['birthdate'] = verifyBirthdate($birthdate);
+	$error['email'] = verifyEmail($email);
+	$error['phone'] = verifyPhone($phone);
+	$error['postal'] = verifyPostal($postal);
+	$error['town'] = verifyChampLettres($town);
+	return $error;
+}
+
+/**
  * Crée un nouvel utilsateur
  * @param $login string Login
  * @param $password string Mot de passe
@@ -183,23 +208,12 @@ function verifyPostal($postal) {
  * @param $postal int Code postal
  * @param $town string Ville
  * @param $phone int Numéro de téléphone
- * @param bool $update Vrai si un met à jour un utilisateur existant
  * @return array Tableau contenant les erreurs (ou que des '' s'il y en a pas)
  */
-function register($login, $password, $name, $lastname, $gender, $email, $birthdate, $address, $postal, $town, $phone, $update = false) {
-    
-	if(!$update) {
-		$error['login'] = verifyLogin($login);
-		$error['password'] = verifyNewPassword($password);
-	}
-    $error['name'] = verifyChampLettres($name);
-    $error['lastname'] = verifyChampLettres($lastname);
-	$error['gender'] = verifyGender($gender);
-    $error['birthdate'] = verifyBirthdate($birthdate);
-    $error['email'] = verifyEmail($email);
-    $error['phone'] = verifyPhone($phone);
-    $error['postal'] = verifyPostal($postal);
-    $error['town'] = verifyChampLettres($town);
+function register($login, $password, $name, $lastname, $gender, $email, $birthdate, $address, $postal, $town, $phone) {
+	$error = verifyUserFields($name, $lastname, $gender, $email, $birthdate, $postal, $town, $phone);
+	$error['login'] = verifyLogin($login);
+	$error['password'] = verifyNewPassword($password);
 
     foreach ($error as $message) {
         if(!empty($message)) {
@@ -209,59 +223,79 @@ function register($login, $password, $name, $lastname, $gender, $email, $birthda
 
     $db = getDB();
 
-	
-    if($update) {
-		
-		$query = $db->prepare("
-            UPDATE users 
-            SET name = :name,
-                lastname = :lastname,
-                gender = :gender,
-                email = :email,
-                birthdate = :birthdate,
-                address = :address,
-                postal = :postal,
-                town = :town,
-                phone = :phone
-            WHERE login = :login
-        ");
-		$query->execute(array(
-			'name' => $name,
-			'lastname' => $lastname,
-			'gender' => $gender,
-			'email' => $email,
-			'birthdate' => $birthdate,
-			'address' => $address,
-			'postal' => $postal,
-			'town' => $town,
-			'phone' => $phone,
-			'login' => $login
-		));
-    }
-    else {
-		
-        $query = $db->prepare("
-            INSERT INTO users(login, password, name, lastname, gender, email, birthdate, address, postal, town, phone) 
-            VALUES(:login, :password, :name, :lastname, :gender, :email, :birthdate, :address, :postal, :town, :phone)
-        ");
-		$query->execute(array(
-			'login' => $login,
-			'password' => password_hash($password, PASSWORD_DEFAULT),
-			'name' => $name,
-			'lastname' => $lastname,
-			'gender' => $gender,
-			'email' => $email,
-			'birthdate' => $birthdate,
-			'address' => $address,
-			'postal' => $postal,
-			'town' => $town,
-			'phone' => $phone
-		));
-    }
+	$query = $db->prepare("
+		INSERT INTO users(login, password, name, lastname, gender, email, birthdate, address, postal, town, phone) 
+		VALUES(:login, :password, :name, :lastname, :gender, :email, :birthdate, :address, :postal, :town, :phone)
+	");
+	$query->execute(array(
+		'login' => $login,
+		'password' => password_hash($password, PASSWORD_DEFAULT),
+		'name' => $name,
+		'lastname' => $lastname,
+		'gender' => $gender,
+		'email' => $email,
+		'birthdate' => $birthdate,
+		'address' => $address,
+		'postal' => $postal,
+		'town' => $town,
+		'phone' => $phone
+	));
 
     $_SESSION['login'] = $login;
 
 	return $error;
+}
+
+/**
+ * Modifie un utilisateur
+ * @param $login string Login
+ * @param $name string Prénom
+ * @param $lastname string Nom
+ * @param $gender string Genre
+ * @param $email string Adresse e-mail
+ * @param $birthdate string Date de naissance
+ * @param $address string Adresse postale
+ * @param $postal int Code postal
+ * @param $town string Ville
+ * @param $phone int Numéro de téléphone
+ * @return array Tableau contenant les erreurs (ou que des '' s'il y en a pas)
+ */
+function update($login, $name, $lastname, $gender, $email, $birthdate, $address, $postal, $town, $phone) {
+	$error = verifyUserFields($name, $lastname, $gender, $email, $birthdate, $postal, $town, $phone);
+
+	foreach ($error as $message) {
+		if(!empty($message)) {
+			return $error;
+		}
+	}
+
+	$db = getDB();
+
+	$query = $db->prepare("
+		UPDATE users 
+		SET name = :name,
+			lastname = :lastname,
+			gender = :gender,
+			email = :email,
+			birthdate = :birthdate,
+			address = :address,
+			postal = :postal,
+			town = :town,
+			phone = :phone
+		WHERE login = :login
+	");
+	$query->execute(array(
+		'name' => $name,
+		'lastname' => $lastname,
+		'gender' => $gender,
+		'email' => $email,
+		'birthdate' => $birthdate,
+		'address' => $address,
+		'postal' => $postal,
+		'town' => $town,
+		'phone' => $phone,
+		'login' => $login
+	));
 }
 
 /**

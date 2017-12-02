@@ -16,8 +16,7 @@ function favorisResponse(json) {
  */
 function removeFavori(i) {
 	$.post("ajax/favori.php", {
-        remove: i,
-        ajax: true
+        remove: i
 	})
 	.done(favorisResponse);
 }
@@ -28,8 +27,7 @@ function removeFavori(i) {
  */
 function addFavori(i) {
 	$.post("ajax/favori.php", {
-        add: i,
-        ajax: true
+        add: i
 	})
 	.done(favorisResponse);
 }
@@ -39,8 +37,7 @@ function addFavori(i) {
  */
 function cleanFavori() {
 	$.post("ajax/favori.php", {
-        removeAll: null,
-        ajax: true
+        removeAll: null
 	})
 	.done(function () {
         window.location.reload();

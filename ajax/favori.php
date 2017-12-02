@@ -3,7 +3,12 @@ require_once(__DIR__ . '/../includes/functions.inc.php');
 require_once(__DIR__ . '/../includes/user_functions.php');
 require_once(__DIR__ . '/../includes/Donnees.inc.php');
 
-init();
+$included = !(__FILE__ == get_included_files()[0]);
+
+if(!$included) {
+	init();
+}
+
 $db = getDB();
 $success = true;
 
@@ -24,6 +29,6 @@ if(isset($_SESSION['login'])) {
 	sessionToDB();
 }
 
-if(isset($_POST['ajax'])) {
+if(!$included) {
 	echo json_encode(['success' => true]);
 }

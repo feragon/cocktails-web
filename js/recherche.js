@@ -1,5 +1,4 @@
-document.addEventListener('keyup', (event) => {
-	
+document.addEventListener('keyup', function(event) {
 	var search = document.getElementById("recherche").value.toLowerCase();
 	var items  = document.getElementsByClassName("item");
 	var noResults = true;

@@ -1,13 +1,12 @@
 <?php
 require(__DIR__ . '/../ajax/favori.php');
+global $Recettes;
 ?>
 <main>
     <h1>Mes recettes préférées</h1>
 	<hr/>
 	
 <?php
-        global $Recettes;
-
         if(empty($_SESSION["Favoris"])) {
 ?>
 	<p id="noResults"><i class='fa fa-star-o'></i> Vous n'avez pas encore de favoris...</p>

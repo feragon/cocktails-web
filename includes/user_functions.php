@@ -302,7 +302,6 @@ function update($login, $name, $lastname, $gender, $email, $birthdate, $address,
  * Stocke les favoris dans la base de données
  */
 function sessionToDB() {
-	
 	$text = "";
 	
 	if(!empty($_SESSION['Favoris'])) {
@@ -320,7 +319,6 @@ function sessionToDB() {
  * Stocke les favoris dans la session
  */
 function DBToSession() {
-	
 	$db = getDB();
 	$query = $db->prepare("SELECT favs FROM users WHERE login = ?;");
 	$query->execute(array($_SESSION['login']));

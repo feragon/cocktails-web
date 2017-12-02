@@ -132,16 +132,64 @@
 		flex: 1;
 		margin-left: 5px;
 	}
+	.item a {
+		width: 100%;
+		height: 45px;
+		top: auto;
+		right: auto;
+		bottom: -45px;
+		left: 0;
+		background: #1de9b6;
+		transition: bottom 0.2s ease-in-out;
+		text-align: center;
+	}
+	.item.infav a {
+		background: #FFAA20;
+	}
+	.item:hover a {
+		bottom: 0;
+		transition: bottom 0.3s ease-in-out 0.1s;
+	}
+	.item a * {
+		color: #37474f;
+		width: auto;
+		display: inline-block;
+		margin-top: 15px;
+	}
+	.item .listeIngr {
+		max-height: 0px;
+		margin-left: 15px;
+		transition: max-height 0.3s ease-in-out;
+	}
+	.item:hover .listeIngr {
+		max-height: 300px;
+		transition: max-height 0.4s ease-in-out;
+	}
+	.item .listeIngr i {
+		margin-top: 10px;
+	}
+	.item .listeIngr p {
+		margin: 10px 0 60px 0;
+		width: auto;
+		max-width: 70vw;
+	}
 	.item .time {
-		right: 10px;
+		font-size: 12px;
+		right: 8px;
+		bottom: 5px;
 		left: auto;
+		transition: bottom 0.2s ease-in-out;
+	}
+	.item:hover .time {
+		bottom: 50px;
+		transition: bottom 0.3s ease-in-out 0.1s;
 	}
 	.item .image {
 		height: 60px;
 		width: 60px;
 		margin: 5px;
 	}
-	.item .listeIngr, .item .fa-star-o {
+	.item .fa-star-o {
 		display: none;
 	}
 	#formFavori {

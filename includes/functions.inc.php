@@ -152,7 +152,7 @@
         $html = '';
 
         foreach($_JS as $fileName) {
-            $html .= '<script type="text/javascript" src="js/' . $fileName . '.js"></script>';
+            $html .= '<script src="js/' . $fileName . '.js"></script>';
         }
 
         return $html;

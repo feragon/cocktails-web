@@ -7,7 +7,7 @@
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if($isRegister) {
-            require(__DIR__ . '/../ajax/user.php');
+            require_once(__DIR__ . '/../ajax/user.php');
         }
         else {
             require(__DIR__ . '/../ajax/login.php');

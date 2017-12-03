@@ -146,7 +146,7 @@ nav .menu {
 
 .boutonRond, .boutonRondPlein {
 	display: inline-block;
-	min-width: 140px;
+	min-width: 110px;
 	height: 44px;
 	color: #37474f;
 	font-size: 16px;
@@ -511,10 +511,6 @@ main .user_box {
 .info_colored {
 	font-weight: bold; 
 	color: #009688;
-}
-
-#editer, #valider_edit, #annuler_edit {
-	display: inline-block;
 }
 
 .info_input, .info_txt {

@@ -101,18 +101,15 @@ addJS('login');
         ?>
     </div>
 
-    <input class="boutonRond" name="submit" type="submit" value="Envoyer"/>
-
-	<a href="?R=MonEspace&register" id="registerLink">
-		<button type="button" id="register_button" class="boutonRond plein <?=($isRegister) ? 'hidden' : ''?>">
-			S'inscrire
-		</button>
+    <button type="submit" class="boutonRond">
+		Envoyer
+	</button>
+	
+	<a href="?R=MonEspace&register" id="register_button" class="boutonRond plein <?=($isRegister) ? 'hidden' : ''?>">
+		S'inscrire
 	</a>
-
-	<a href="?R=MonEspace" id="loginLink">
-		<button type="button" id="login_button" class="boutonRond plein <?=($isRegister) ? '' : 'hidden'?>">
-			Se connecter
-		</button>
+	<a href="?R=MonEspace" id="login_button" class="boutonRond plein <?=($isRegister) ? '' : 'hidden'?>">
+		Se connecter
 	</a>
 </form>
 

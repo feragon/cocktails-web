@@ -30,7 +30,7 @@
 	
 	<p style="font-style: italic; text-align: center;">Source : <a href="https://fr.wikipedia.org/wiki/Cocktail" target="_blank">fr.wikipedia.org</a></p>
 	
-	<a class="boutonRond" href="?R=Cocktail&K=<?php echo rand(0,count($Recettes)-1); ?>">
+	<a href="?R=Cocktail&K=<?php echo rand(0,count($Recettes)-1); ?>" class="boutonRond">
         <span class="fa fa-random"></span> Cocktail aléatoire
 	</a>
 </main>

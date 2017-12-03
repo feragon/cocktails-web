@@ -22,7 +22,7 @@ if(isset($_GET['C'])) $categorie = $_GET['C'];
     <?php
 	for($i = count($path)-1; $i > 0; $i--) {
 		echo '<a class="ingrds_path" href="?R=Ingredients&C=', $path[$i], '">', $path[$i], '</a>',
-	         '<i class="fa fa-arrow-right"></i>';
+	         ' <i class="fa fa-arrow-right"></i> ';
 	}
 
 	echo '<a class="ingrds_path ingrds_path_selected" href="?R=Ingredients&C=', $path[0], '">', $path[0], '</a>';

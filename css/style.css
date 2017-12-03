@@ -651,12 +651,13 @@ main input.town {
 	clip: rect(0,0,0,0);
 }
 #register_fields {
+	display: block!important;
 	overflow: hidden;
 	opacity: 1;
+	max-height: 1000px;
 	transition: max-height 0.3s ease-in-out, opacity 0.4s ease-in-out;
 }
 #register_fields.hidden {
-	display: block!important;
 	opacity: 0;
 	max-height: 0px;
 	transition: max-height 0.4s ease-in-out, opacity 0.3s ease-in-out;

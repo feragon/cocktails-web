@@ -21,6 +21,11 @@ function afficherElementMenu($nom, $page, $icone, $actif = false) {
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/style_mobile.css">
 	<link rel="stylesheet" href="resources/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<noscript>
+		<style>
+			#recherche { display: none; }
+		</style>
+	</noscript>
 </head>
 
 <body>
@@ -40,7 +45,7 @@ function afficherElementMenu($nom, $page, $icone, $actif = false) {
         afficherElementMenu('Accueil', '.', 'home', !isset($_GET['R']));
         afficherElementMenu('Ingredients', '?R=Ingredients', 'tint', isset($_GET["R"]) && $_GET["R"] == "Ingredients");
         afficherElementMenu('Cocktails', '?R=Cocktails', 'glass', isset($_GET['R']) && preg_match("/^Cocktail[s]?$/", $_GET['R']));
-        afficherElementMenu('Mes recettes préférées', '?R=MesRecettes', 'tint', isset($_GET["R"]) && $_GET["R"] == "MesRecettes");
+        afficherElementMenu('Mes recettes préférées', '?R=MesRecettes', 'star', isset($_GET["R"]) && $_GET["R"] == "MesRecettes");
         ?>
 		<li class="separator">│</li>
         <?php

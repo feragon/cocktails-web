@@ -29,7 +29,7 @@ addJS('login');
 <h1 id='connexion_title'>Connexion</h1>
 <hr/>
 
-<form method="post" action="?R=MonEspace" id="loginForm">
+<form method="post" action="?R=MonEspace<?=($isRegister) ? '&register' : ''?>" id="loginForm">
     <label for="login" class="sr-only">Login</label>
     <input type="text" name="login" id="login" placeholder="Login" <?php addValue("login"); ?> required/>
     <?php
@@ -103,15 +103,19 @@ addJS('login');
 
     <input class="boutonRond" name="submit" type="submit" value="Envoyer"/>
 
-    <button type="button" id="register_button" class="boutonRond plein <?=($isRegister) ? 'hidden' : ''?>">
-        S'inscrire
-    </button>
+	<a href="?R=MonEspace&register" id="registerLink">
+		<button type="button" id="register_button" class="boutonRond plein <?=($isRegister) ? 'hidden' : ''?>">
+			S'inscrire
+		</button>
+	</a>
 
-    <button type="button" id="login_button" class="boutonRond plein <?=($isRegister) ? '' : 'hidden'?>">
-        Se connecter
-    </button>
+	<a href="?R=MonEspace" id="loginLink">
+		<button type="button" id="login_button" class="boutonRond plein <?=($isRegister) ? '' : 'hidden'?>">
+			Se connecter
+		</button>
+	</a>
 </form>
 
-<script type="text/javascript">
+<script>
     var isLogin = <?=($isRegister) ? 'false' : 'true'?>;
 </script>

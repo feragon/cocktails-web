@@ -4,7 +4,7 @@ $(document).on("keyup", function() {
 	
 	$(".item").each(function (index) {
         var titre       = $(this).children("h4").first().text().toLowerCase();
-        var ingredients = $(this).children("p").eq(2).text().toLowerCase();
+        var ingredients = $(this).children(".listeIngr").children("p").text().toLowerCase();
 
         if(titre.match(search) || ingredients.match(search)) {
             $(this).removeClass("hidden");

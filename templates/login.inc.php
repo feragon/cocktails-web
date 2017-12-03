@@ -23,11 +23,13 @@ function addValue($post_index) {
         echo 'value="', htmlspecialchars($_POST[$post_index]), '"';
     }
 }
+
+addJS('login');
 ?>
 <h1 id='connexion_title'>Connexion</h1>
 <hr/>
 
-<form method="post" action="?R=MonEspace" onsubmit="event.preventDefault(); submitLoginForm();">
+<form method="post" action="?R=MonEspace" id="loginForm">
     <label for="login" class="sr-only">Login</label>
     <input type="text" name="login" id="login" placeholder="Login" <?php addValue("login"); ?> required/>
     <?php
@@ -101,11 +103,11 @@ function addValue($post_index) {
 
     <input class="boutonRond" name="submit" type="submit" value="Envoyer"/>
 
-    <button type="button" id="register_button" class="boutonRond plein <?=($isRegister) ? 'hidden' : ''?>" onclick="event.preventDefault(); toggleLoginMode(false)">
+    <button type="button" id="register_button" class="boutonRond plein <?=($isRegister) ? 'hidden' : ''?>">
         S'inscrire
     </button>
 
-    <button type="button" id="login_button" class="boutonRond plein <?=($isRegister) ? '' : 'hidden'?>" onclick="event.preventDefault(); toggleLoginMode(true)">
+    <button type="button" id="login_button" class="boutonRond plein <?=($isRegister) ? '' : 'hidden'?>">
         Se connecter
     </button>
 </form>

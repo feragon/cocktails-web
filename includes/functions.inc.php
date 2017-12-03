@@ -5,6 +5,9 @@
      */
     function init() {
         global $sessionStarted;
+		global $_JS;
+
+		$_JS = array();
 
         if(!$sessionStarted) {
 			session_start();
@@ -127,4 +130,30 @@
             throw new Exception("Fichier non trouvé");
         }
     }
-?>
+
+    /**
+     * Ajoute un fichier JavaScript à la file d'attente s'il existe
+     * @param string $js Script which will be added
+     */
+    function addJS($js) {
+        global $_JS;
+
+        if(file_exists(__DIR__ . '/../js/' . $js . '.js')) {
+			$_JS[] = $js;
+        }
+    }
+
+    /**
+     * Retourne le code HTML pour inclure les fichiers JavaScript
+     */
+    function getJSIncludeCode() {
+        global $_JS;
+
+        $html = '';
+
+        foreach($_JS as $fileName) {
+            $html .= '<script type="text/javascript" src="js/' . $fileName . '.js"></script>';
+        }
+
+        return $html;
+    }

@@ -32,14 +32,14 @@ function addFavori(i) {
 	.done(favorisResponse);
 }
 
-/**
- * Supprime tous les favoris
- */
-function cleanFavori() {
-	$.post("ajax/favori.php", {
-        removeAll: null
-	})
-	.done(function () {
-        window.location.reload();
-    });
-}
+$("#formFavori").on("submit", function (event) {
+    event.preventDefault();
+});
+
+$("#retirer").on("click", function () {
+    removeFavori($(".cocktail_desc").attr('id'));
+});
+
+$("#ajouter").on("click", function () {
+    addFavori($(".cocktail_desc").attr('id'));
+});

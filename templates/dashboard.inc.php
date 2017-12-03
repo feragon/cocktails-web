@@ -25,6 +25,8 @@ $query = $db->prepare("SELECT * FROM users WHERE login = ?");
 $query->execute(array($_SESSION['login']));
 
 $user = $query->fetch(PDO::FETCH_ASSOC);
+
+addJS('editInfos');
 ?>
 <h1>Bonjour @<?php echo $user['login'];?> !</h1>
 <hr/>
@@ -48,7 +50,7 @@ $user = $query->fetch(PDO::FETCH_ASSOC);
 
 <div class="user_box">
     <h2>Mes informations personelles</h2>
-    <form method="POST" action="?R=MonEspace" onsubmit="event.preventDefault(); submitInfos(1);">
+    <form method="POST" id="editForm" action="?R=MonEspace">
         <div id="user_edit">
             <div>
                 <span class="info_label">Login :</span>
@@ -88,8 +90,8 @@ $user = $query->fetch(PDO::FETCH_ASSOC);
 
         <input type="hidden" name="update" value="1"/>
 
-        <a href="?R=MonEspace&edit" onclick="event.preventDefault(); editInfos()">
-            <button id="editer" class="boutonRond <?=(isset($_GET['edit'])) ? 'hidden' : '' ?>" type="button" >
+        <a href="?R=MonEspace&edit" id="editLink">
+            <button id="editer" class="boutonRond <?=(isset($_GET['edit'])) ? 'hidden' : '' ?>" type="button">
                 <span class='fa fa-pencil'></span> Editer mes infos
             </button>
         </a>
@@ -98,7 +100,7 @@ $user = $query->fetch(PDO::FETCH_ASSOC);
             <span class='fa fa-check'></span> Valider
         </button>
 
-        <a href="?R=MonEspace" onclick="event.preventDefault(); submitInfos(0)">
+        <a href="?R=MonEspace" id="annulerLink">
             <button id="annuler_edit" class="boutonRond <?=(isset($_GET['edit'])) ? '' : 'hidden'?>" type="button">
                 <span class='fa fa-times'></span> Annuler
             </button>

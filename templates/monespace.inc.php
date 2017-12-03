@@ -3,6 +3,7 @@
     global $error;
     $error = array();
     $isRegister = isset($_GET['register']);
+    addJS('errors');
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if($isRegister) {

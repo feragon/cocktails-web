@@ -10,5 +10,6 @@ function drunk() {
 		document.getElementsByTagName("body")[0].classList.add("drunk");
 		drunk_count++;
 	}
-	
 }
+
+$("footer h2").on('click', drunk);

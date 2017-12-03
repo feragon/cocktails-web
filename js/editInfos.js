@@ -78,3 +78,18 @@ function submitInfos(soumettre) {
 		document.getElementById("annuler_edit").classList.add("hidden");
 	}
 }
+
+$("#editForm").on("submit", function (event) {
+    event.preventDefault();
+    submitInfos(1);
+});
+
+$("#editLink").on("click", function (event) {
+    event.preventDefault();
+    editInfos();
+});
+
+$("#annulerLink").on("click", function (event) {
+    event.preventDefault();
+    submitInfos(0);
+});

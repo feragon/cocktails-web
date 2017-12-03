@@ -1,6 +1,8 @@
 <?php
 require(__DIR__ . '/../ajax/favori.php');
 global $Recettes;
+
+addJS('mesrecettes');
 ?>
 <main>
     <h1>Mes recettes préférées</h1>
@@ -14,9 +16,9 @@ global $Recettes;
         }
         else {
 ?>
-    <form method="POST" onsubmit="event.preventDefault();">
+    <form method="POST" id="cleanForm">
         <input type="hidden" name="removeAll"/>
-        <button type="submit" class="boutonRond" onclick="cleanFavori()">
+        <button type="submit" class="boutonRond">
 			<span class='fa fa-trash'></span> Supprimer toutes mes recettes
 		</button>
     </form>

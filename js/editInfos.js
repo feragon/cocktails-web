@@ -84,7 +84,7 @@ $("#editForm").on("submit", function (event) {
     submitInfos(1);
 });
 
-$("#editLink").on("click", function (event) {
+$("#edit").on("click", function (event) {
     event.preventDefault();
     editInfos();
 });

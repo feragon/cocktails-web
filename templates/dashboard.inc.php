@@ -90,27 +90,21 @@ addJS('editInfos');
 
         <input type="hidden" name="update" value="1"/>
 
-        <a href="?R=MonEspace&edit" id="editLink">
-            <button id="editer" class="boutonRond <?=(isset($_GET['edit'])) ? 'hidden' : '' ?>" type="button">
-                <span class='fa fa-pencil'></span> Editer mes infos
-            </button>
+        <a href="?R=MonEspace&edit" id="editLink" class="boutonRond <?=(isset($_GET['edit'])) ? 'hidden' : '' ?>">
+            <span class='fa fa-pencil'></span> Editer mes infos
         </a>
 
         <button id="valider_edit" class="boutonRond plein <?=(isset($_GET['edit'])) ? '' : 'hidden'?>" type="submit">
             <span class='fa fa-check'></span> Valider
         </button>
 
-        <a href="?R=MonEspace" id="annulerLink">
-            <button id="annuler_edit" class="boutonRond <?=(isset($_GET['edit'])) ? '' : 'hidden'?>" type="button">
-                <span class='fa fa-times'></span> Annuler
-            </button>
+        <a href="?R=MonEspace" class="boutonRond <?=(isset($_GET['edit'])) ? '' : 'hidden'?>" id="annulerLink">
+            <span class='fa fa-times'></span> Annuler
         </a>
 
         <span id="spinner" class="fa fa-spinner fa-spin fa-2x hidden"></span>
-        <a href="?logout">
-            <button type="button" id="deconnexion" class="boutonRond plein <?=(isset($_GET['edit'])) ? 'hidden' : '' ?>">
-                <span class='fa fa-sign-out'></span> Déconnexion
-            </button>
+        <a href="?logout" id="deconnexion" class="boutonRond plein <?=(isset($_GET['edit'])) ? 'hidden' : '' ?>">
+            <span class='fa fa-sign-out'></span> Déconnexion
         </a>
     </form>
 

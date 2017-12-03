@@ -25,10 +25,10 @@ function editInfos() {
         }
 	}
 	
-	document.getElementById("editer").classList.add("hidden");
+	document.getElementById("editLink").classList.add("hidden");
 	document.getElementById("deconnexion").classList.add("hidden");
 	document.getElementById("valider_edit").classList.remove("hidden");
-	document.getElementById("annuler_edit").classList.remove("hidden");
+	document.getElementById("annulerLink").classList.remove("hidden");
 }
 
 /**
@@ -60,7 +60,7 @@ function submitInfos(soumettre) {
 				if(!showErrors(data)) {
 					
 					document.getElementById("valider_edit").classList.add("hidden");
-					document.getElementById("annuler_edit").classList.add("hidden");
+					document.getElementById("annulerLink").classList.add("hidden");
 					document.getElementById("spinner").classList.remove("hidden");
 					window.location = window.location.href;
 				}

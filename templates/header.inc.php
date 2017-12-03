@@ -1,3 +1,16 @@
+<?php
+function afficherElementMenu($nom, $page, $icone, $actif = false) {
+    echo '<li';
+    if($actif) {
+        echo ' class="selected"';
+    }
+    echo '>';
+
+	echo '<a href="', $page, '"><i class="fa fa-', $icone, ' fa-fw"></i> ', $nom, '</a>';
+
+    echo '</li>';
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -23,22 +36,21 @@
 		<a href="#" class="close_menu"><i class="fa fa-times"></i></a>
 	</div>
 	<ul>
-		<li <?php if(!isset($_GET["R"])) echo "class='selected'"; ?>>
-			<a href="."><i class="fa fa-home fa-fw"></i> Accueil</a>
-		</li>
-		<li <?php if(isset($_GET["R"])) if($_GET["R"] == "Ingredients") echo "class='selected'"; ?>>
-			<a href="?R=Ingredients"><i class="fa fa-tint fa-fw"></i> Ingrédients</a>
-		</li>
-		<li <?php if(isset($_GET["R"])) if(preg_match("/^Cocktail[s]?$/", $_GET["R"])) echo "class='selected'"; ?>>
-			<a href="?R=Cocktails"><i class="fa fa-glass fa-fw"></i> Cocktails</a>
-		</li>
-		<li <?php if(isset($_GET["R"])) if($_GET["R"] == "MesRecettes") echo "class='selected'"; ?>>
-			<a href="?R=MesRecettes"><i class="fa fa-star fa-fw"></i> Mes recettes préférées</a>
-		</li>
+        <?php
+        afficherElementMenu('Accueil', '.', 'home', !isset($_GET['R']));
+        afficherElementMenu('Ingredients', '?R=Ingredients', 'tint', isset($_GET["R"]) && $_GET["R"] == "Ingredients");
+        afficherElementMenu('Cocktails', '?R=Cocktails', 'glass', isset($_GET['R']) && preg_match("/^Cocktail[s]?$/", $_GET['R']));
+        afficherElementMenu('Mes recettes préférées', '?R=MesRecettes', 'tint', isset($_GET["R"]) && $_GET["R"] == "MesRecettes");
+        ?>
 		<li class="separator">│</li>
-		<li <?php if(isset($_GET["R"])) if($_GET["R"] == "MonEspace") echo "class='selected'"; ?>>
-			<a href="?R=MonEspace"><?php if(isset($_SESSION['login'])) echo "<i class='fa fa-user-circle fa-fw'></i> ".$_SESSION['login']; else echo "<i class='fa fa-sign-in fa-fw'></i> Connexion"; ?></a>
-		</li>
+        <?php
+        afficherElementMenu(
+            isset($_SESSION['login']) ? $_SESSION['login'] : 'Connexion',
+			'?R=MonEspace',
+			isset($_SESSION['login']) ? 'user-circle' : 'sign-in',
+			isset($_GET["R"]) && $_GET["R"] == "MonEspace"
+        )
+        ?>
 	</ul>
 </nav>
 
